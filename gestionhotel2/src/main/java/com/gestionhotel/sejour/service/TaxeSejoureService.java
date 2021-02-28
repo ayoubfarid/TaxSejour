@@ -6,66 +6,69 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.j2ee.projet1.Dao.Redevable;
 import com.example.j2ee.projet1.Dao.TaxeSejourDao;
+import com.example.j2ee.projet1.bean.Locale;
 import com.example.j2ee.projet1.bean.TaxeSejour;
 
 @Service
 public class TaxeSejoureService {
 
-Date  date= new Date();
-SimpleDateFormat forme =new SimpleDateFormat("yyyy");
- String An=forme.format(date);
- int AnneeActuelle=Integer.valueOf(An);
- @Autowired
-   private  TaxeSejourDao  taxesejourdao;
+	 @Autowired
+	   private  TaxeSejourDao  taxesejourdao;
+	@Autowired
+	private LocaleService localeservice;
+	@Autowired
+	private RedevableService redevableservice;
+
+	 public	List<TaxeSejour> findByLocaleRef(String reference){
+		return  taxesejourdao.findByLocaleRef(reference);
+	 }
+
+	 public List<TaxeSejour>  findByRedvableRef(String reference){
+		 return taxesejourdao.findByRedvableRef(reference);
+	 }
+	 public TaxeSejour findByRedevablerefandLocaleRef(String refredevable,String reflocale) {
+		 return taxesejourdao.findByRedevablerefandLocaleRef(refredevable, reflocale);
+	 }
+	 public TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(int annee,String locale,int trim,String red) {
+		 return taxesejourdao.findByAnneeAndLocaleRefAndTrimAndRedevableRef(annee, locale, trim, red);
+	 }
+	public List<TaxeSejour> findAll() {
+		return taxesejourdao.findAll();
+	}
+
+	public int save(TaxeSejour s) {
+		Locale locale=localeservice.findByRef(s.getLocale().getRef());
+		if (locale==null ) {
+			return  -1;
+		} 
+		Redevable redevable=redevableservice.findByRef(s.getRedevable().getRef());
+	  	
+		if (redevable==null){
+			return  -2;
+		} 
+		if( findByRedevablerefandLocaleRef(s.getRedevable().getRef(),s.getLocale().getRef())!=null){
+			return -3;
+		}
+		else if(findByAnneeAndLocaleRefAndTrimAndRedevableRef(s.getAnnee(),s.getLocale().getRef(),s.getTrim(),s.getRedevable().getRef())!=null){
+			return -4;
+		}
+		
+		else  {
+			if(s.getMontantNuite()*s.getNombreNuite()!=s.getmontantBase()) {
+				double m=s.getMontantNuite()*s.getNombreNuite();
+				s.setmontantBase(m);
+				taxesejourdao.save(s);
+			}
+			else {
+				taxesejourdao.save(s);
+			}
+			
+		return 1;
+			}
+	}
  
-public  List<TaxeSejour> findByRefRedevable(String refredevable) {
-	return taxesejourdao.findByRefRedevable(refredevable);
-}
-public TaxeSejour findByRefRedevableAndReflocale(String red,String locale) {
-	return  findByRefRedevableAndReflocale( red, locale);
-}
-public   TaxeSejour findByAnneeAndReflocaleAndMontantNuiteAndTrim(int annee,String locale,double montant,int trimestre) {
-	return findByAnneeAndReflocaleAndMontantNuiteAndTrim( annee, locale, montant, trimestre);
-}
-  public   TaxeSejour findByAnneeAndReflocaleAndTrimAndAndRefRedevable(int annee,String locale,int trim,String red) {
-	return taxesejourdao.findByAnneeAndReflocaleAndTrimAndRefRedevable(annee, locale,trim,red);
- }
-
-public List<TaxeSejour> findByReflocale(String reflocale) {
-	return taxesejourdao.findByReflocale(reflocale);
-}
-
-public List<TaxeSejour> findAll() {
-	return taxesejourdao.findAll();
-}
-
-public int save(TaxeSejour s) {
-	if (findByAnneeAndReflocaleAndTrimAndAndRefRedevable(s.getAnnee(),s.getReflocale(),s.getTrim(),s.getRefRedevable())!=null ) {
-		return  -1;
-	} 
-
-	// if(findByRef(s.getMontantNuite() )!=null pour verifier si le montant nuite existe dans la table TauTax
-	/*findByRef1(s.getReflocale())!=null et findByRef2(s.getRefRedevable())!=null pour verifier si les references de locale et  de redevable 
-	  existent deja dans les tables local et redevable*/
-	
-	/*if(findByRef(s.getMontantNuite() )!=null || findByRef1(s.getReflocale())!=null || findByRef2(s.getRefRedevable())!=null){
-		return -2;
-	}*/
-	else if (findByAnneeAndReflocaleAndMontantNuiteAndTrim(s.getAnnee() ,s.getReflocale(), s.getMontantNuite(), s.getTrim())!=null ) {
-		return -2;
-	}
-	else  if(s.getMontantNuite()*s.getNombreNuite()!=s.getmontantBase()) {
-		return -3;	
-	}
-	else if( findByRefRedevableAndReflocale(s.getRefRedevable(), s.getReflocale())!=null){
-		return -5;
-	}
-	else {
-		taxesejourdao.save(s);
-	return 1;
-	}}
-	
 	
 		
 	}

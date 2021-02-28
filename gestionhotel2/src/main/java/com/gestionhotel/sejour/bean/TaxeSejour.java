@@ -4,35 +4,41 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.example.j2ee.projet1.Dao.Redevable;
 
 @Entity
 public class TaxeSejour {
 	@Id @GeneratedValue(strategy =GenerationType.AUTO)
   private Long id;
-  private String refRedevable;
-  private String reflocale;
   private int annee;
   private int trim;
   private double nombreNuite;
   private double montantNuite ;
   private double montantBase;
+  @ManyToOne
+  private Locale locale;
+  @ManyToOne
+  private Redevable redevable;
+  
 public Long getId() {
 	return id;
 }
 public void setId(Long id) {
 	this.id = id;
 }
-public String getRefRedevable() {
-	return refRedevable;
+public Locale getLocale() {
+	return locale;
 }
-public void setRefRedevable(String refRedevable) {
-	this.refRedevable = refRedevable;
+public void setLocale(Locale locale) {
+	this.locale = locale;
 }
-public String getReflocale() {
-	return reflocale;
+public Redevable getRedevable() {
+	return redevable;
 }
-public void setReflocale(String reflocale) {
-	this.reflocale = reflocale;
+public void setRedevable(Redevable redevable) {
+	this.redevable = redevable;
 }
 public int getAnnee() {
 	return annee;
@@ -71,13 +77,12 @@ public TaxeSejour(Long id, String refRedevable, String reflocale, int annee, int
 		double montantNuite, double montantBase) {
 	super();
 	this.id = id;
-	this.refRedevable = refRedevable;
-	this.reflocale = reflocale;
 	this.annee = annee;
 	this.trim = trim;
 	this.nombreNuite = nombreNuite;
 	this.montantNuite = montantNuite;
 	this.montantBase =montantBase;
+	this.redevable = redevable;
 }
   
   
