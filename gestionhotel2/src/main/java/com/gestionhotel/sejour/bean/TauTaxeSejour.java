@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
 
@@ -14,6 +15,19 @@ public class TauTaxeSejour {
 	private long id;
 	private String refCategorie;
 	private double montantNuite;
+	
+	
+	
+	@OneToOne
+	private Categorie categorie;
+	
+	
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
 	public  long getId() {
 		return id;
 	}

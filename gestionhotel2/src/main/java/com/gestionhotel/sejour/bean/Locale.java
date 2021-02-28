@@ -1,4 +1,4 @@
-package com.example.projet1.beans;
+package com.gestionhotel.sejour.bean;
 
 
 import java.io.Serializable;

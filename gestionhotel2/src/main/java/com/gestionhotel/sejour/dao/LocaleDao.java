@@ -1,4 +1,4 @@
-package com.example.projet1.Dao;
+package com.gestionhotel.sejour.dao;
 
 import java.util.List;
 
