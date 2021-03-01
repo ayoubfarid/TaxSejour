@@ -18,7 +18,6 @@ public class TaxeSejoureService {
 	private LocaleService localeservice;
 	@Autowired
 	private RedevableService redevableservice;
-
 	 public	List<TaxeSejour> findByLocaleRef(String reference){
 		return  taxesejourdao.findByLocaleRef(reference);
 	 }
@@ -26,8 +25,8 @@ public class TaxeSejoureService {
 	 public List<TaxeSejour>  findByRedvableRef(String reference){
 		 return taxesejourdao.findByRedvableRef(reference);
 	 }
-	 public TaxeSejour findByRedevablerefandLocaleRef(String refredevable,String reflocale) {
-		 return taxesejourdao.findByRedevablerefandLocaleRef(refredevable, reflocale);
+	 public TaxeSejour findByRedevableRefAndLocaleRef(String refredevable,String reflocale) {
+		 return taxesejourdao.findByRedevableRefAndLocaleRef(refredevable, reflocale);
 	 }
 	 public TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(int annee,String locale,int trim,String red) {
 		 return taxesejourdao.findByAnneeAndLocaleRefAndTrimAndRedevableRef(annee, locale, trim, red);
@@ -46,7 +45,7 @@ public class TaxeSejoureService {
 		if (redevable==null){
 			return  -2;
 		} 
-		if( findByRedevablerefandLocaleRef(s.getRedevable().getRef(),s.getLocale().getRef())!=null){
+		if(findByRedevableRefAndLocaleRef(s.getRedevable().getRef(),s.getLocale().getRef())!=null){
 			return -3;
 		}
 		else if(findByAnneeAndLocaleRefAndTrimAndRedevableRef(s.getAnnee(),s.getLocale().getRef(),s.getTrim(),s.getRedevable().getRef())!=null){

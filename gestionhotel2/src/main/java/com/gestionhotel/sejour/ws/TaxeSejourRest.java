@@ -1,4 +1,4 @@
-package com.example.j2ee.projet1.RestController;
+package com.gestionhotel.sejour.ws;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.j2ee.projet1.bean.TaxeSejour;
-import com.example.j2ee.projet1.Service.TaxeSejoureService;
+import com.gestionhotel.sejour.bean.TaxeSejour;
+import com.gestionhotel.sejour.service.TaxeSejoureService;
 
 @RestController
 @RequestMapping("gestiontaxesejour/taxesejour")
@@ -29,8 +29,8 @@ public List<TaxeSejour> findByRedvableRef(@PathVariable String reference) {
 		return taxesejourservice.findByRedvableRef(reference);
 	}
 	@GetMapping("/referenceredevable/{refredevable}/referencelocale/{reflocale}")
-	public TaxeSejour findByRedevablerefandLocaleRef(@PathVariable String refredevable, @PathVariable String reflocale) {
-		return taxesejourservice.findByRedevablerefandLocaleRef(refredevable, reflocale);
+	public TaxeSejour findByRedevableRefAndLocaleRef(@PathVariable String refredevable, @PathVariable String reflocale) {
+		return taxesejourservice.findByRedevableRefAndLocaleRef(refredevable, reflocale);
 	}
 	@GetMapping("/annee/{annee}/reerencelocale/{locale}/trimestre/trim/referenceredevable/{red}")
 	public TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(@PathVariable int annee, @PathVariable String locale,@PathVariable int trim,@PathVariable String red) {
@@ -58,4 +58,4 @@ public List<TaxeSejour> findByRedvableRef(@PathVariable String reference) {
 	}
 }
 
-}
+

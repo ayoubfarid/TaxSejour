@@ -13,7 +13,7 @@ public interface  TaxeSejourDao extends JpaRepository<TaxeSejour,Long>{
    //un redevable peut avoir plusieurs locaux
      public List<TaxeSejour>  findByRedvableRef(String reference);
      //un locale a un seul redevable
-     public TaxeSejour findByRedevablerefandLocaleRef(String refredevable,String reflocale);
+     public TaxeSejour findByRedevableRefAndLocaleRef(String refredevable,String reflocale);
      //le taxe sejour se calcule une fois par trimestre
     public TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(int annee,String locale,int trim,String red);
 	public  List<TaxeSejour>findAll();

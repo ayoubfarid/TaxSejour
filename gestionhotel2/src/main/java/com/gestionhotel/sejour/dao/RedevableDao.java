@@ -8,5 +8,6 @@ import java.util.List;
 public interface RedevableDao  extends JpaRepository <Redevable,Long> {
      public Redevable findByRef(String ref);
      public List<Redevable> findByType(String t);
+     public int countByRef(String ref);
 
 }
