@@ -22,8 +22,8 @@ public class TaxeSejoureService {
 		return  taxesejourdao.findByLocaleRef(reference);
 	 }
 
-	 public List<TaxeSejour>  findByRedvableRef(String reference){
-		 return taxesejourdao.findByRedvableRef(reference);
+	 public List<TaxeSejour>  findByRedevableRef(String reference){
+		 return taxesejourdao.findByRedevableRef(reference);
 	 }
 	 public TaxeSejour findByRedevableRefAndLocaleRef(String refredevable,String reflocale) {
 		 return taxesejourdao.findByRedevableRefAndLocaleRef(refredevable, reflocale);

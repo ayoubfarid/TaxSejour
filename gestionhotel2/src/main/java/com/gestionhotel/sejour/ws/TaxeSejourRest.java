@@ -25,8 +25,8 @@ public class TaxeSejourRest {
 		return  taxesejourservice.findByLocaleRef(reference);
 	 }
 	@GetMapping("/referenceredevable/{reference}")
-public List<TaxeSejour> findByRedvableRef(@PathVariable String reference) {
-		return taxesejourservice.findByRedvableRef(reference);
+public List<TaxeSejour> findByRedevableRef(@PathVariable String reference) {
+		return taxesejourservice.findByRedevableRef(reference);
 	}
 	@GetMapping("/referenceredevable/{refredevable}/referencelocale/{reflocale}")
 	public TaxeSejour findByRedevableRefAndLocaleRef(@PathVariable String refredevable, @PathVariable String reflocale) {

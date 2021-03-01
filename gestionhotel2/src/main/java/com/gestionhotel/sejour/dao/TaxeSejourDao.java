@@ -11,7 +11,7 @@ public interface  TaxeSejourDao extends JpaRepository<TaxeSejour,Long>{
 		// chaque trim de chaque annee on doit payer le montant
      public	List<TaxeSejour>  findByLocaleRef(String reference);
    //un redevable peut avoir plusieurs locaux
-     public List<TaxeSejour>  findByRedvableRef(String reference);
+     public List<TaxeSejour>  findByRedevableRef(String reference);
      //un locale a un seul redevable
      public TaxeSejour findByRedevableRefAndLocaleRef(String refredevable,String reflocale);
      //le taxe sejour se calcule une fois par trimestre
