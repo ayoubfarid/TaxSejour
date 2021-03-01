@@ -1,9 +1,10 @@
-package com.example.j2ee.projet1.Dao;
-import java.util.List; 
+package com.gestionhotel.sejour.dao;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.j2ee.projet1.bean.TaxeSejour;
+import com.gestionhotel.sejour.bean.TaxeSejour;
  @Repository 
 public interface  TaxeSejourDao extends JpaRepository<TaxeSejour,Long>{
 	

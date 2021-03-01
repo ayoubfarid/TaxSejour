@@ -1,15 +1,13 @@
-package com.example.j2ee.projet1.Service;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package com.gestionhotel.sejour.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.j2ee.projet1.Dao.Redevable;
-import com.example.j2ee.projet1.Dao.TaxeSejourDao;
-import com.example.j2ee.projet1.bean.Locale;
-import com.example.j2ee.projet1.bean.TaxeSejour;
+import com.gestionhotel.sejour.bean.Locale;
+import com.gestionhotel.sejour.bean.Redevable;
+import com.gestionhotel.sejour.bean.TaxeSejour;
+import com.gestionhotel.sejour.dao.TaxeSejourDao;
 
 @Service
 public class TaxeSejoureService {

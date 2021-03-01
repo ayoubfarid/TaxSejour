@@ -2,19 +2,16 @@ package com.gestionhotel.sejour.bean;
 
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javassist.SerialVersionUID;
 
 @SuppressWarnings({ "serial", "unused" })
 @Entity
 public class Locale implements Serializable {
 
-	@SuppressWarnings("unused")
 	private static final long SerialVersionUID=1L; 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

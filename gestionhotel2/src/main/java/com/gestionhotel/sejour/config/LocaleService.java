@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gestionhotel.sejour.LocaleDao;
-import com.example.projet1.beans.Locale;
+import com.gestionhotel.sejour.bean.Locale;
+import com.gestionhotel.sejour.dao.LocaleDao;
 
 @Service
 public class LocaleService {

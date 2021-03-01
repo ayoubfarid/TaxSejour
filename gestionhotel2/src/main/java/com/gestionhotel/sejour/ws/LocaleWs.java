@@ -1,5 +1,4 @@
-package com.example.projet1.ws;
-
+package com.gestionhotel.sejour.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.projet1.beans.Locale;
-import com.example.projet1.service.LocaleService;
+import com.gestionhotel.sejour.bean.Locale;
+import com.gestionhotel.sejour.config.LocaleService;
 
 @RestController
 @RequestMapping("locale-api/monlocale")
