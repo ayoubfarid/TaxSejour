@@ -21,13 +21,13 @@ public class LocaleWs {
 	private LocaleService localeService;
 
 	@GetMapping("/refRedevable/{refRedevable}")
-	public List<Locale> findByRefRedevable(@PathVariable String refRedevable) {
-		return localeService.findByRefRedevable(refRedevable);
+	public Locale findByRedevable(@PathVariable String refRedevable) {
+		return localeService.findByRedevable(refRedevable);
 	}
 
 	@GetMapping("/refCategorie/{refCategorie}")
-	public List<Locale> findByRefCategorie(@PathVariable String refCategorie) {
-		return localeService.findByRefCategorie(refCategorie);
+	public Locale findByCategorie(@PathVariable String refCategorie) {
+		return localeService.findByCategorie(refCategorie);
 	}
 
 	@GetMapping("/ref/{ref}")

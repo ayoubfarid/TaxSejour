@@ -27,8 +27,6 @@ public class Locale implements Serializable {
 	private Redevable redevable;
 	@ManyToOne
 	private Categorie categorie;
-	@OneToMany
-	private List<TaxeSejour> taxeSejour;
 	
 	public Long getId() {
 		return id;
@@ -65,12 +63,6 @@ public class Locale implements Serializable {
 	}
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
-	}
-	public List<TaxeSejour> getTaxeSejour() {
-		return taxeSejour;
-	}
-	public void setTaxeSejour(List<TaxeSejour> taxeSejour) {
-		this.taxeSejour = taxeSejour;
 	}
 	public static long getSerialversionuid() {
 		return SerialVersionUID;
