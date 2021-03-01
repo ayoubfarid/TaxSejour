@@ -5,7 +5,7 @@ import com.gestionhotel.sejour.dao.CategorieDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-public class CateService {
+public class CategorieService {
     @Autowired
     CategorieDao cateDao;
     public String saveCate(Categorie categorie){
