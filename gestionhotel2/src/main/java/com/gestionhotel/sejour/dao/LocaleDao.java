@@ -1,6 +1,5 @@
 package com.gestionhotel.sejour.dao;
 
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.gestionhotel.sejour.bean.Locale;
@@ -9,7 +8,7 @@ import com.gestionhotel.sejour.bean.Locale;
 public interface LocaleDao extends JpaRepository<Locale,Long>{
 	
 	public Locale findByRef(String ref);
-	public List<Locale> findByRefRedevable(String refRedevable);
-	public List<Locale> findByRefCategorie(String refCategorie);
+	public Locale findByRedevable(String refRedevable);
+	public Locale findByCategorie(String refCategorie);
 	
 }

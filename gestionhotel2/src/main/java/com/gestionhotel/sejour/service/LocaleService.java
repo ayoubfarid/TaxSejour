@@ -14,12 +14,12 @@ public class LocaleService {
 	@Autowired
 	private LocaleDao localeDao;
 	
-	public List<Locale> findByRefRedevable(String refRe) {
-		return localeDao.findByRefRedevable(refRe);
+	public Locale findByRedevable(String refRe) {
+		return localeDao.findByRedevable(refRe);
 	}
 
-	public List<Locale> findByRefCategorie(String refCat) {
-		return localeDao.findByRefCategorie(refCat);
+	public Locale findByCategorie(String refCat) {
+		return localeDao.findByCategorie(refCat);
 	}
 
 	public Locale findByRef(String ref) {
