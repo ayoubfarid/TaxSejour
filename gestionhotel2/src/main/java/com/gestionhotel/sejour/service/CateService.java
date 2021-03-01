@@ -1,13 +1,13 @@
 package com.gestionhotel.sejour.service;
 
 import com.gestionhotel.sejour.bean.Categorie;
-import com.gestionhotel.sejour.dao.CateDao;
+import com.gestionhotel.sejour.dao.CategorieDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class CateService {
     @Autowired
-    CateDao cateDao;
+    CategorieDao cateDao;
     public String saveCate(Categorie categorie){
         if(cateDao.countByRef(categorie.getRef())==0){
             cateDao.save(categorie);
