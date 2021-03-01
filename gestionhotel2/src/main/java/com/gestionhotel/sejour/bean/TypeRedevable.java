@@ -1,29 +1,29 @@
 package com.gestionhotel.sejour.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class TypeRedevable {
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String code;
+	private String nomType;
 	private String libelle;
-	
-	public Long getId() {
-		return id;
+	@OneToMany
+	private List<Redevable> redevables;
+	public TypeRedevable(String name ,String lib){
+		this.nomType=name;
+		this.libelle=lib;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public TypeRedevable() {
+
 	}
-	public String getCode() {
-		return code;
+	public String getNomType() {
+		return nomType;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setnameType(String nomType) {
+		this.nomType = nomType;
 	}
 	public String getLibelle() {
 		return libelle;
@@ -31,8 +31,4 @@ public class TypeRedevable {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	
-	
-	
-	
 }
