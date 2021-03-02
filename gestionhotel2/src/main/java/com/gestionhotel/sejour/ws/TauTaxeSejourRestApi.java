@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gestionhotel.sejour.bean.Categorie;
 import com.gestionhotel.sejour.bean.TauTaxeSejour;
 import com.gestionhotel.sejour.service.TauTaxeSejourService;
 
 @RestController
-@RequestMapping("tax-api/tautaxesejour")
+@RequestMapping("gestiontaxesejour/tautaxesejour")
 
 public class TauTaxeSejourRestApi {
 	@Autowired
 	private TauTaxeSejourService tautaxesejourservice;
 	@GetMapping("/refCat/{RefCategorie}")
-	public List <TauTaxeSejour> findByRefCategorie(@PathVariable String RefCategorie) {
-		return tautaxesejourservice.findByRefCategorie(RefCategorie);
+	public Categorie findByCategorieRef(@PathVariable String RefCategorie) {
+		return tautaxesejourservice.findByCategorieRef(RefCategorie);
 	}
 	
 	@GetMapping("/")
