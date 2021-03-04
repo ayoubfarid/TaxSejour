@@ -20,14 +20,14 @@ public class LocaleWs {
 	@Autowired
 	private LocaleService localeService;
 
-	@GetMapping("/refRedevable/{refRedevable}")
-	public Locale findByRedevable(@PathVariable String refRedevable) {
-		return localeService.findByRedevable(refRedevable);
+	@GetMapping("/redevable/{redevable}")
+	public Locale findByRedevable(@PathVariable String redevable) {
+		return localeService.findByRedevable(redevable);
 	}
 
-	@GetMapping("/refCategorie/{refCategorie}")
-	public Locale findByCategorie(@PathVariable String refCategorie) {
-		return localeService.findByCategorie(refCategorie);
+	@GetMapping("/refCategorie/{Categorie}")
+	public Locale findByCategorie(@PathVariable String categorie) {
+		return localeService.findByCategorie(categorie);
 	}
 
 	@GetMapping("/ref/{ref}")
