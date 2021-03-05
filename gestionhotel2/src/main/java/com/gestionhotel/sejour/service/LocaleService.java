@@ -24,7 +24,7 @@ public class LocaleService {
 	}
 
 	
-	public Locale findByRedevable(String refRe) {
+	public List<Locale> findByRedevable(String refRe) {
 		return localeDao.findByRedevable(refRe);
 	}
 
