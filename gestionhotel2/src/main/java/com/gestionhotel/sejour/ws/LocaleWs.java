@@ -24,8 +24,8 @@ public class LocaleWs {
 		return localeService.findByRedevable(redevable);
 	}
 	@GetMapping("/refCategorie/{Categorie}")
-	public Locale findByCategorie(@PathVariable String categorie) {
-		return localeService.findByCategorie(categorie);
+	public List<Locale>findByCategorieRef(@PathVariable String categorie) {
+		return localeService.findByCategorieRef(categorie);
 	}
 	@GetMapping("/ref/{ref}")
 	public Locale findByRef(@PathVariable String ref) {
