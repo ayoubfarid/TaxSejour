@@ -14,14 +14,7 @@ public class Redevable {
     public String getRef() {
         return ref;
     }
-    public List<Locale> getLocales() {
-        return locales;
-    }
-    public void setLocales(List<Locale> locales) {
-        this.locales = locales;
-    }
-    @OneToMany
-    List <Locale> locales;
+
     public void setRef(String ref) {
         this.ref = ref;
     }

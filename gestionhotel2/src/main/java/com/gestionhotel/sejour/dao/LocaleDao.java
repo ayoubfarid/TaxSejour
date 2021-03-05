@@ -11,9 +11,8 @@ import com.gestionhotel.sejour.bean.Locale;
 public interface LocaleDao extends JpaRepository<Locale,Long>{
 	
 	public Locale findByRef(String ref);
-	public Locale deleteByRef(String ref);
+	public int deleteByRef(String ref);
 	public List<Locale> findByRedevable(String refRedevable);
 	public List<Locale> findByCategorieRef(String refCategorie);
-	
-	
+	public int deleteByRedevableRef(String s);
 }

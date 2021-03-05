@@ -35,6 +35,11 @@ public class TaxeSejoureService {
 	public int deleteByRedevableRefAndLocaleRef(String red, String loca) {
 		return taxesejourdao.deleteByRedevableRefAndLocaleRef(red, loca);
 	}
+	
+
+	public int deleteByRedevableRef(String s) {
+		return taxesejourdao.deleteByRedevableRef(s);
+	}
 
 	public List<TaxeSejour> findAll() {
 		return taxesejourdao.findAll();

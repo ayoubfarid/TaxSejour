@@ -13,7 +13,7 @@ public class RedeWS {
     @Autowired
     RedevableService redevableService;
     @PostMapping("/Redvable")
-    public int SaveRed(@RequestBody Redevable rd) {
+    public String SaveRed(@RequestBody Redevable rd) {
         return redevableService.SaveRed(rd);
     }
     @GetMapping("/Redvable/{ref}")
