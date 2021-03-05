@@ -16,7 +16,6 @@ import com.gestionhotel.sejour.service.LocaleService;
 @RequestMapping("locale-api/monlocale")
 
 public class LocaleWs {
-	
 	@Autowired
 	private LocaleService localeService;
 
@@ -24,17 +23,14 @@ public class LocaleWs {
 	public List <Locale> findByRedevable(@PathVariable String redevable) {
 		return localeService.findByRedevable(redevable);
 	}
-
 	@GetMapping("/refCategorie/{Categorie}")
 	public Locale findByCategorie(@PathVariable String categorie) {
 		return localeService.findByCategorie(categorie);
 	}
-
 	@GetMapping("/ref/{ref}")
 	public Locale findByRef(@PathVariable String ref) {
 		return localeService.findByRef(ref);
 	}
-
 	@GetMapping("/")
 	public List<Locale> findAll() {
 		return localeService.findAll();

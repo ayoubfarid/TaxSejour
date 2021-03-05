@@ -3,7 +3,6 @@ package com.gestionhotel.sejour.service;
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.dao.RedevableDao;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +13,22 @@ public class RedevableService {
     @Autowired
     RedevableDao redevableDao;
     LocaleService localeService;
-     public int SaveRed(Redevable rd){
-         if(redevableDao.countByRef(rd.getRef())>0){
-             return -1;
-         }
-         else{
+    TypeRedevServ typeRedevServ;
+
+     public String SaveRed(Redevable rd){
+         if(redevableDao.countByRef(rd.getRef())==0 &&typeRedevServ.testType(rd.getType().getNomType())){
              redevableDao.save(rd);
-          return  1;
+             return "Redevable  seved";
          }
+         else if (!typeRedevServ.testType(rd.getType().getNomType())){
+             return "False Type";
+         }
+         else if(redevableDao.countByRef(rd.getRef())>0)
+             return "ref already exist";
+         else
+             return  return "False Type and ref already exist";
      }
-     public List <Locale> allLocoleOfRdv(String ref){
+     public List <Locale> allLocaleOfRdv(String ref){
          return localeService.findByRedevable(ref);
      }
     public Redevable findByRef(String ref) {

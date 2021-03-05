@@ -25,7 +25,7 @@ public class RedeWS {
         return redevableService.findByType(t);
     }
     @GetMapping("/Redevable/allLocal/{ref}")
-    public List<Locale> allLocoleOfRdv(@PathVariable String ref) {
-        return redevableService.allLocoleOfRdv(ref);
+    public List<Locale> allLocaleOfRdv(@PathVariable String ref) {
+        return redevableService.allLocaleOfRdv(ref);
     }
 }

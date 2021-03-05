@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TypeRedev {
+public class TypeRedevServ {
     @Autowired
   private TypeDao typeDao;
+    TypeRedevable pp= new TypeRedevable("personne physique","libil1");
+    TypeRedevable pm= new TypeRedevable("personne morale","libil2");
     public int saveType(){
-        TypeRedevable pp= new TypeRedevable("personne physique","libil1");
-        TypeRedevable pm= new TypeRedevable("personne morale","libil2");
         if (typeDao.countByNomType(pp.getNomType())>1 || typeDao.countByNomType(pm.getNomType())>1){
             return -1;
         }
@@ -20,6 +20,12 @@ public class TypeRedev {
             typeDao.save(pp);
             return 1;
         }
+    }
+    public boolean testType(String s){
+        if(s.equals(pm.getNomType())||s.equals(pp.getNomType()))
+            return true;
+        else
+            return false;
     }
 
     public String findByNomType(String code) {
