@@ -26,8 +26,8 @@ public class LocaleWs {
 	}
 
 	@GetMapping("/refCategorie/{Categorie}")
-	public Locale findByCategorie(@PathVariable String categorie) {
-		return localeService.findByCategorie(categorie);
+	public List<Locale>findByCategorieRef(@PathVariable String categorie) {
+		return localeService.findByCategorieRef(categorie);
 	}
 
 	@GetMapping("/ref/{ref}")

@@ -22,14 +22,16 @@ public class LocaleService {
 	public Locale deleteByRef(String ref) {
 		return localeDao.deleteByRef(ref);
 	}
-
+    
 	
+
+
 	public List<Locale> findByRedevable(String refRe) {
 		return localeDao.findByRedevable(refRe);
 	}
 
-	public Locale findByCategorie(String refCat) {
-		return localeDao.findByCategorie(refCat);
+	public List<Locale> findByCategorieRef(String refCat) {
+		return localeDao.findByCategorieRef(refCat);
 	}
 
 	public Locale findByRef(String ref) {

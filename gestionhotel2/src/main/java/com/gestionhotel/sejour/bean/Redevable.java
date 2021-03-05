@@ -1,4 +1,4 @@
-package com.gestionhotel.sejour.bean;
+ package com.gestionhotel.sejour.bean;
 
 import javax.persistence.*;
 import java.util.List;

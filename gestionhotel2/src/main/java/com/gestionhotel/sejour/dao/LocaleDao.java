@@ -13,6 +13,7 @@ public interface LocaleDao extends JpaRepository<Locale,Long>{
 	public Locale findByRef(String ref);
 	public Locale deleteByRef(String ref);
 	public List<Locale> findByRedevable(String refRedevable);
-	public Locale findByCategorie(String refCategorie);
+	public List<Locale> findByCategorieRef(String refCategorie);
+	
 	
 }
