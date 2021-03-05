@@ -13,7 +13,6 @@ public class TaxeSejour {
 	private int annee;
 	private int trim;
 	private double nombreNuite;
-	private double montantNuite ;
 	private double montantBase;
 	@ManyToOne
 	private Locale locale;
@@ -56,12 +55,7 @@ public class TaxeSejour {
 	public void setNombreNuite(double nombreNuite) {
 		this.nombreNuite = nombreNuite;
 	}
-	public double getMontantNuite() {
-		return montantNuite;
-	}
-	public void setMontantNuite(double montantNuite) {
-		this.montantNuite = montantNuite;
-	}
+	
 	public double getmontantBase() {
 		return montantBase;
 	}
@@ -71,17 +65,7 @@ public class TaxeSejour {
 	public TaxeSejour() {
 		super();
 	}
-	public TaxeSejour(Long id, String refRedevable, String reflocale, int annee, int trim, double nombreNuite,
-			double montantNuite, double montantBase) {
-		super();
-		this.id = id;
-		this.annee = annee;
-		this.trim = trim;
-		this.nombreNuite = nombreNuite;
-		this.montantNuite = montantNuite;
-		this.montantBase =montantBase;
-		this.redevable = redevable;
-	}
+	
 
 
 

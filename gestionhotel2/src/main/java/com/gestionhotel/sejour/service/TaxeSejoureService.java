@@ -25,53 +25,51 @@ public class TaxeSejoureService {
 	 public List<TaxeSejour>  findByRedevableRef(String reference){
 		 return taxesejourdao.findByRedevableRef(reference);
 	 }
-	 public TaxeSejour findByRedevableRefAndLocaleRef(String refredevable,String reflocale) {
+	 public  List<TaxeSejour> findByRedevableRefAndLocaleRef(String refredevable,String reflocale) {
 		 return taxesejourdao.findByRedevableRefAndLocaleRef(refredevable, reflocale);
 	 }
 	 public TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(int annee,String locale,int trim,String red) {
 		 return taxesejourdao.findByAnneeAndLocaleRefAndTrimAndRedevableRef(annee, locale, trim, red);
 	 }
+	 
+	public int deleteByRedevableRefAndLocaleRef(String red, String loca) {
+		return taxesejourdao.deleteByRedevableRefAndLocaleRef(red, loca);
+	}
+
 	public List<TaxeSejour> findAll() {
 		return taxesejourdao.findAll();
 	}
 
 	public int save(TaxeSejour s) {
 		Locale locale=localeservice.findByRef(s.getLocale().getRef());
+		s.setLocale(locale);
 		if (locale==null ) {
 			return  -1;
 		} 
 		Redevable redevable=redevableservice.findByRef(s.getRedevable().getRef());
-	  	
+	  	s.setRedevable(redevable);
 		if (redevable==null){
 			return  -2;
-		} 
-		if(findByRedevableRefAndLocaleRef(s.getRedevable().getRef(),s.getLocale().getRef())!=null){
+		} /*!*/
+		if(locale.getRedevable().getRef()!=redevable.getRef()){
 			return -3;
 		}
 		else if(findByAnneeAndLocaleRefAndTrimAndRedevableRef(s.getAnnee(),s.getLocale().getRef(),s.getTrim(),s.getRedevable().getRef())!=null){
 			return -4;
 		}
 		
-		else  {
-			if(s.getMontantNuite()*s.getNombreNuite()!=s.getmontantBase()) {
-				double m=s.getMontantNuite()*s.getNombreNuite();
+		else  {/*!*/
+			if(s.getmontantBase()!=locale.getCategorie().getTautaxsejour().getMontantNuite()*s.getNombreNuite()) {
+			double m=locale.getCategorie().getTautaxsejour().getMontantNuite()*s.getNombreNuite();
 				s.setmontantBase(m);
-				taxesejourdao.save(s);
-			}
-			else {
-				taxesejourdao.save(s);
+		}
+			taxesejourdao.save(s);	
+			return 1;
 			}
 			
-		return 1;
-			}
-	}
- 
 	
-		
 	}
-			 
-
-
+			}
 
 
 
