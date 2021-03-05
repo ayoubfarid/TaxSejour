@@ -1,8 +1,8 @@
 package com.gestionhotel.sejour.ws;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,14 +29,18 @@ public List<TaxeSejour> findByRedevableRef(@PathVariable String reference) {
 		return taxesejourservice.findByRedevableRef(reference);
 	}
 	@GetMapping("/referenceredevable/{refredevable}/referencelocale/{reflocale}")
-	public TaxeSejour findByRedevableRefAndLocaleRef(@PathVariable String refredevable, @PathVariable String reflocale) {
+	public  List<TaxeSejour> findByRedevableRefAndLocaleRef(@PathVariable String refredevable, @PathVariable String reflocale) {
 		return taxesejourservice.findByRedevableRefAndLocaleRef(refredevable, reflocale);
 	}
 	@GetMapping("/annee/{annee}/reerencelocale/{locale}/trimestre/trim/referenceredevable/{red}")
 	public TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(@PathVariable int annee, @PathVariable String locale,@PathVariable int trim,@PathVariable String red) {
 		return taxesejourservice.findByAnneeAndLocaleRefAndTrimAndRedevableRef(annee, locale, trim, red);
 	}
-
+	
+ @DeleteMapping("/redevable/{red}/locale/{loca}")
+public int deleteByRedevableRefAndLocaleRef(@PathVariable String red,@PathVariable String loca) {
+		return taxesejourservice.deleteByRedevableRefAndLocaleRef(red, loca);
+	}
 @GetMapping("/")
 	public List<TaxeSejour> findAll() {
 		return taxesejourservice.findAll();
