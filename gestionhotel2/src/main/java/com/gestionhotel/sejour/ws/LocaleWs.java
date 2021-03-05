@@ -21,7 +21,7 @@ public class LocaleWs {
 	private LocaleService localeService;
 
 	@GetMapping("/redevable/{redevable}")
-	public Locale findByRedevable(@PathVariable String redevable) {
+	public List <Locale> findByRedevable(@PathVariable String redevable) {
 		return localeService.findByRedevable(redevable);
 	}
 

@@ -1,5 +1,6 @@
 package com.gestionhotel.sejour.ws;
 
+import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.service.RedevableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,9 @@ public class RedeWS {
     @GetMapping("/Redvable/{Type}")
     public List<Redevable> findByType(@PathVariable String t) {
         return redevableService.findByType(t);
+    }
+    @GetMapping("/Redevable/allLocal/{ref}")
+    public List<Locale> allLocoleOfRdv(@PathVariable String ref) {
+        return redevableService.allLocoleOfRdv(ref);
     }
 }

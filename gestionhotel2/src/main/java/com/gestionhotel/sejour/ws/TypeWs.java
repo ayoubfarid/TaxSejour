@@ -14,15 +14,12 @@ public class TypeWs {
     public String findByNomType(String code) {
         return typeRedev.findByNomType(code);
     }
-
     public int countByNomType(String nt) {
         return typeRedev.countByNomType(nt);
     }
-
     public String findByLibelle(String le) {
         return typeRedev.findByLibelle(le);
     }
-
     public TypeRedevable deleteByNomType(String s) {
         return typeRedev.deleteByNomType(s);
     }

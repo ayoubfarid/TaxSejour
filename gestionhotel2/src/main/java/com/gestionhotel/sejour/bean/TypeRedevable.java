@@ -10,8 +10,6 @@ public class TypeRedevable {
 	private Long id;
 	private String nomType;
 	private String libelle;
-	@OneToMany
-	private List<Redevable> redevables;
 	public TypeRedevable(String name ,String lib){
 		this.nomType=name;
 		this.libelle=lib;
