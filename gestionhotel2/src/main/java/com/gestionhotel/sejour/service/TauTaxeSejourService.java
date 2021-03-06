@@ -3,6 +3,7 @@ package com.gestionhotel.sejour.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.gestionhotel.sejour.bean.Categorie;
@@ -14,7 +15,8 @@ public class TauTaxeSejourService {
 	@Autowired
 	private TauTaxeSejourDao tautaxesejourdao;
 
-
+	
+	
 	public Categorie findByCategorieRef(String ref) {
 		return tautaxesejourdao.findByCategorieRef(ref);
 	}

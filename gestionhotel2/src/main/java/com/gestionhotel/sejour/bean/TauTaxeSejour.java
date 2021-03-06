@@ -13,7 +13,7 @@ public class TauTaxeSejour {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String refCategorie;
+	
 	private double montantNuite;
 	
 	
@@ -34,12 +34,8 @@ public class TauTaxeSejour {
 	public void setId( long id) {
 		this.id = id;
 	}
-	public String getRefCategorie() {
-		return refCategorie;
-	}
-	public void setRefCategorie(String refCategorie) {
-		this.refCategorie = refCategorie;
-	}
+	
+	
 	public double getMontantNuite() {
 		return montantNuite;
 	}
