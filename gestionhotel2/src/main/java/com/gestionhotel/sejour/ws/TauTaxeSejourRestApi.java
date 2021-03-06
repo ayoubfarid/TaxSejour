@@ -20,16 +20,16 @@ import com.gestionhotel.sejour.service.TauTaxeSejourService;
 public class TauTaxeSejourRestApi {
 	@Autowired
 	private TauTaxeSejourService tautaxesejourservice;
-	@GetMapping("/refCat/{RefCategorie}")
+	@GetMapping("/tautaxesejour/categorie/{RefCategorie}")
 	public Categorie findByCategorieRef(@PathVariable String RefCategorie) {
 		return tautaxesejourservice.findByCategorieRef(RefCategorie);
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/tautaxesejour")
 	public List<TauTaxeSejour> findAll() {
 		return tautaxesejourservice.findAll();
 	}
-	@PostMapping("/")
+	@PostMapping("/tautaxesejour")
 	public int save(@RequestBody TauTaxeSejour tautaxesejour) {
 		return tautaxesejourservice.save(tautaxesejour);
 	}

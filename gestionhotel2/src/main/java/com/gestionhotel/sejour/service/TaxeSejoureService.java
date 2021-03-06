@@ -67,7 +67,7 @@ public class TaxeSejoureService {
 			if(s.getmontantBase()!=locale.getCategorie().getTautaxsejour().getMontantNuite()*s.getNombreNuite()) {
 			double m=locale.getCategorie().getTautaxsejour().getMontantNuite()*s.getNombreNuite();
 				s.setmontantBase(m);
-		}
+			}
 			taxesejourdao.save(s);	
 			return 1;
 			}

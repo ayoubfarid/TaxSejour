@@ -19,7 +19,7 @@ public class TauTaxeSejour {
 	
 	
 	@OneToOne
-	private Categorie categorie;
+	private Categorie categorie;	
 	
 	
 	public Categorie getCategorie() {

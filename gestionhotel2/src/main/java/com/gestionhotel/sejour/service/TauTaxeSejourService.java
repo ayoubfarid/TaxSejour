@@ -18,7 +18,8 @@ public class TauTaxeSejourService {
 	public Categorie findByCategorieRef(String ref) {
 		return tautaxesejourdao.findByCategorieRef(ref);
 	}
-
+	
+	
 
 	/*public List <TauTaxeSejour> findByCat(String cat) {
 		return tautaxesejourdao.findByCat(cat);
