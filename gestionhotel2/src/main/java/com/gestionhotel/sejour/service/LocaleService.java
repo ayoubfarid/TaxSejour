@@ -19,11 +19,14 @@ public class LocaleService {
 	private LocaleDao localeDao;
 	
 
-	public Locale deleteByRef(String ref) {
+	public int deleteByRef(String ref) {
 		return localeDao.deleteByRef(ref);
 	}
     
-	
+	public int deleteByRedevableRef(String ref) {
+		return localeDao.deleteByRedevableRef(ref);
+	}
+    
 
 
 	public List<Locale> findByRedevable(String refRe) {
