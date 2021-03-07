@@ -17,7 +17,12 @@ public class CategorieService {
             return "la Categorie est deja existe";
         }
     }
-
+   public boolean cateVr(Categorie categorie){
+        if(cateDao.countByRef(categorie.getRef())>0)
+            return true;
+        else
+            return false;
+   }
     public Categorie find(String r) {
         return cateDao.findByRef(r);
     }

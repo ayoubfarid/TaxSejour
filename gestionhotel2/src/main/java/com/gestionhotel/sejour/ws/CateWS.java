@@ -5,8 +5,7 @@ import com.gestionhotel.sejour.service.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("cate-api/cate")
-
+@RequestMapping("/redevable/cate")
 public class CateWS {
     @Autowired
     CategorieService cateService;

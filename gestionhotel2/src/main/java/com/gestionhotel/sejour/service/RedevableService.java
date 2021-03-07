@@ -14,9 +14,10 @@ public class RedevableService {
     RedevableDao redevableDao;
     LocaleService localeService;
     TypeRedevServ typeRedevServ;
+    CategorieService categorieService;
 
      public String SaveRed(Redevable rd){
-         if(redevableDao.countByRef(rd.getRef())==0 &&typeRedevServ.testType(rd.getType().getNomType())){
+         if(redevableDao.countByRef(rd.getRef())==0&&typeRedevServ.testType(rd.getType().getNomType())){
              redevableDao.save(rd);
              return "Redevable  seved";
          }
@@ -26,7 +27,7 @@ public class RedevableService {
          else if(redevableDao.countByRef(rd.getRef())>0)
              return "ref already exist";
          else
-             return  return "False Type and ref already exist";
+             return   "False Type and ref already exist";
      }
      public List <Locale> allLocaleOfRdv(String ref){
          return localeService.findByRedevable(ref);

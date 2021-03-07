@@ -3,24 +3,28 @@ package com.gestionhotel.sejour.ws;
 import com.gestionhotel.sejour.bean.TypeRedevable;
 import com.gestionhotel.sejour.service.TypeRedevServ;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/redevable/type")
+
 public class TypeWs {
     @Autowired
     TypeRedevServ typeRedevServ;
-    @GetMapping("  /")
-    public String findByNomType(String code) {
-        return typeRedevServ.findByNomType(code);
+    @PostMapping("/")
+    public String saveType() {
+        return typeRedevServ.saveType();
     }
-    public int countByNomType(String nt) {
+    @GetMapping("/findbynome{name}")
+    public String findByNomType(@PathVariable String name) {
+        return typeRedevServ.findByNomType(name);
+    }
+    @GetMapping("/count{nt}")
+    public int countByNomType(@PathVariable String nt) {
         return typeRedevServ.countByNomType(nt);
     }
-    public String findByLibelle(String le) {
+    @GetMapping("/findbylibelle{name}")
+    public String findByLibelle(@PathVariable String le) {
         return typeRedevServ.findByLibelle(le);
-    }
-    public TypeRedevable deleteByNomType(String s) {
-        return typeRedevServ.deleteByNomType(s);
     }
 }

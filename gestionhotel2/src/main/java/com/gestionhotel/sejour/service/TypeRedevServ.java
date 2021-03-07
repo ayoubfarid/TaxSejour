@@ -11,14 +11,21 @@ public class TypeRedevServ {
   private TypeDao typeDao;
     TypeRedevable pp= new TypeRedevable("personne physique","libil1");
     TypeRedevable pm= new TypeRedevable("personne morale","libil2");
-    public int saveType(){
-        if (typeDao.countByNomType(pp.getNomType())>1 || typeDao.countByNomType(pm.getNomType())>1){
-            return -1;
+    public String saveType(){
+        if (typeDao.countByNomType(pp.getNomType())>=1 || typeDao.countByNomType(pm.getNomType())>=1){
+            if (typeDao.countByNomType(pp.getNomType())>=1 && typeDao.countByNomType(pm.getNomType())==0){
+                typeDao.save(pm);
+            return "pp est deja existe";
+            }else {
+                typeDao.save(pp);
+                return "pm est deja existe";
+            }
+
         }
         else{
             typeDao.save(pm);
             typeDao.save(pp);
-            return 1;
+            return "pm et pp sont enregestre";
         }
     }
     public boolean testType(String s){
