@@ -14,18 +14,31 @@ import com.gestionhotel.sejour.dao.TauTaxeSejourDao;
 public class TauTaxeSejourService {
 	@Autowired
 	private TauTaxeSejourDao tautaxesejourdao;
+	
+	
+	
+	public List<TauTaxeSejour> findByMontantNuiteSuperieur(double montant) {
+		return tautaxesejourdao.findByMontantNuiteSuperieur(montant);
+	}
 
+
+
+	@Autowired
+	private CategorieService categorieservice;
 	
 	
-	public Categorie findByCategorieRef(String ref) {
+	public TauTaxeSejour findByMontantNuite(double montant) {
+		return tautaxesejourdao.findByMontantNuite(montant);
+	}
+
+
+
+	public TauTaxeSejour findByCategorieRef(String ref) {
 		return tautaxesejourdao.findByCategorieRef(ref);
 	}
 	
 	
 
-	/*public List <TauTaxeSejour> findByCat(String cat) {
-		return tautaxesejourdao.findByCat(cat);
-	}*/
 
 	public List <TauTaxeSejour> findAll() {
 		return tautaxesejourdao.findAll();
@@ -39,7 +52,7 @@ public class TauTaxeSejourService {
 		{
 			return -1;
 		}else {
-			Categorie categorie = findByCategorieRef(tautaxesejour.getCategorie().getRef());
+			Categorie categorie = categorieservice.cateDao.findByRef(tautaxesejour.getCategorie().getRef());
 			tautaxesejour.setCategorie(categorie);
 			
 			tautaxesejourdao.save(tautaxesejour);

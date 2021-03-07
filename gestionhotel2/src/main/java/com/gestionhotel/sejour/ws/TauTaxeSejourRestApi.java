@@ -20,8 +20,21 @@ import com.gestionhotel.sejour.service.TauTaxeSejourService;
 public class TauTaxeSejourRestApi {
 	@Autowired
 	private TauTaxeSejourService tautaxesejourservice;
-	@GetMapping("/tautaxesejour/categorie/{RefCategorie}")
-	public Categorie findByCategorieRef(@PathVariable String RefCategorie) {
+	
+	
+	
+	@GetMapping("/tautaxesejour/montant-nuite-greaterthan/{montant}")
+	public List<TauTaxeSejour> findByMontantNuiteSuperieur(@PathVariable double montant) {
+		return tautaxesejourservice.findByMontantNuiteSuperieur(montant);
+	}
+
+	@GetMapping("/tautaxesejour/montant-nuite/{montantnuite}")
+	public TauTaxeSejour findByMontantNuite(@PathVariable double montantnuite) {
+		return tautaxesejourservice.findByMontantNuite(montantnuite);
+	}
+
+	@GetMapping("/tautaxesejour/categorieRef/{RefCategorie}")
+	public TauTaxeSejour findByCategorieRef(@PathVariable String RefCategorie) {
 		return tautaxesejourservice.findByCategorieRef(RefCategorie);
 	}
 	
