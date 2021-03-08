@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 public class TauTaxeSejour {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	
 	private double montantNuite;
 	
@@ -28,10 +28,10 @@ public class TauTaxeSejour {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
-	public  long getId() {
+	public  Long getId() {
 		return id;
 	}
-	public void setId( long id) {
+	public void setId( Long id) {
 		this.id = id;
 	}
 	

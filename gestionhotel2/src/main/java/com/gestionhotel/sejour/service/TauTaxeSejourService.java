@@ -18,6 +18,9 @@ import com.gestionhotel.sejour.vo.TauTaxSejourVo;
 public class TauTaxeSejourService {
 	@Autowired
 	private TauTaxeSejourDao tautaxesejourdao;
+	
+
+
 	@Autowired 
 	EntityManager entitymanager;
 	
@@ -25,10 +28,24 @@ public class TauTaxeSejourService {
 	public Optional<TauTaxeSejour> findById(Long id) {
 		return tautaxesejourdao.findById(id);
 	}
+	
+	public int updateById(TauTaxeSejour tautaxesejour) {
+		if(findById(tautaxesejour.getId()) != null  )
+		{
+			tautaxesejourdao.save(tautaxesejour);
+			return 1;
+		}
+		else 
+			return -1;
+		
+	}
+	
+	
 	@Transactional
-	public int deleteById(Long id) {
+	public void deleteById(Long id) {
+		
 		tautaxesejourdao.deleteById(id);
-		return 1;
+		
 	}
 
 	public List<TauTaxeSejour> findByMontantNuiteSuperieur(double montant) {
