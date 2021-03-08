@@ -20,16 +20,16 @@ public interface LocaleDao extends JpaRepository<Locale,Long>{
 	public List<Locale> findByRedevable(String refRedevable);
 	public List<Locale> findByCategorieRef(String refCategorie);
 	
-	@Autowired
+	/*@Autowired
 	@Query("select r from Redevable r where r.Redevable.ref=:reference")
 	public Redevable findByRedevableQuery(String reference);
 	
 	/*@Query("select c from Categorie c where c.Categorie.ref=:reference")
-	public Categorie findByCatQuery(String reference);*/
+	public Categorie findByCatQuery(String reference);
 	
 	@Autowired
 	@Query("select l from Locale l where l.Locale.rue=:rue")
-	public Redevable findByRue(@Param("rue") String rue);
+	public Redevable findByRue(@Param("rue") String rue);*/
 	
 	
 }
