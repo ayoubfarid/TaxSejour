@@ -11,11 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/redevable")
 
-public class RedeWS {
+public class RedevableWS {
     @Autowired
     RedevableService redevableService;
     @PostMapping("/")
-    public String SaveRed(@RequestBody Redevable rd) {
+    public int Save(@RequestBody Redevable rd) {
         return redevableService.save(rd);
     }
     @GetMapping("/Redvable/{ref}")

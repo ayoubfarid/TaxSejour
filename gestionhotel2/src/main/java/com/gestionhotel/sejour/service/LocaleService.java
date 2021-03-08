@@ -17,6 +17,11 @@ public class LocaleService {
 
 	@Autowired 
 	private TaxeSejoureService  taxeSejourService;
+
+	public Locale findAllByRedevableRef(String ref) {
+		return localeDao.findAllByRedevableRef(ref);
+	}
+
 	public int deleteByRef(String ref) {
 		taxeSejourService.deleteByLocaleRef(ref);
 		localeDao.deleteByRef(ref);

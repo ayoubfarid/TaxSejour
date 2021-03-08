@@ -19,6 +19,7 @@ public interface LocaleDao extends JpaRepository<Locale,Long>{
 	public int deleteByRedevableRef(String s);
 	public List<Locale> findByRedevable(String refRedevable);
 	public List<Locale> findByCategorieRef(String refCategorie);
+	Locale findAllByRedevableRef(String ref);
 	
 	/*@Autowired
 	@Query("select r from Redevable r where r.Redevable.ref=:reference")

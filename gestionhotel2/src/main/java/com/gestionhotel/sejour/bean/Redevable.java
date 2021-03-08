@@ -1,25 +1,24 @@
  package com.gestionhotel.sejour.bean;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Entity
+ @Entity
 public class Redevable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
     @ManyToOne
-    private TypeRedevable type;
+    private RedevableType type;
     public String getRef() {
         return ref;
     }
     public void setRef(String ref) {
         this.ref = ref;
     }
-    public TypeRedevable getType() {
+    public RedevableType getType() {
         return type;
     }
-    public void setType(TypeRedevable type) {
+    public void setType(RedevableType type) {
         this.type = type;}
 }
