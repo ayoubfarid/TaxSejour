@@ -23,7 +23,7 @@ public class RedeWS {
         return redevableService.findByRef(ref);
     }
     @GetMapping("/Redvable/{Type}")
-    public List<Redevable> findByType(@PathVariable String t) {
-        return redevableService.findByType(t);
+    public List<Redevable> findByType(@PathVariable String type) {
+        return redevableService.findByType(type);
     }
 }

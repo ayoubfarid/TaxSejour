@@ -3,10 +3,6 @@ package com.gestionhotel.sejour.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.gestionhotel.sejour.bean.Locale;
@@ -19,8 +15,12 @@ public class LocaleService {
 	private LocaleDao localeDao;
 	
 
+	@Autowired 
+	private TaxeSejoureService  taxeSejourService;
 	public int deleteByRef(String ref) {
-		return localeDao.deleteByRef(ref);
+		taxeSejourService.deleteByLocaleRef(ref);
+		localeDao.deleteByRef(ref);
+		return 1 ;
 	}
     
 	public int deleteByRedevableRef(String ref) {
