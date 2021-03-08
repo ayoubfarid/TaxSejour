@@ -21,7 +21,7 @@ public class TauTaxeSejourService {
 		return tautaxesejourdao.findByMontantNuiteSuperieur(montant);
 	}
 
-
+	
 
 	@Autowired
 	private CategorieService categorieservice;
@@ -30,7 +30,8 @@ public class TauTaxeSejourService {
 	public TauTaxeSejour findByMontantNuite(double montant) {
 		return tautaxesejourdao.findByMontantNuite(montant);
 	}
-
+	
+	
 
 
 	public TauTaxeSejour findByCategorieRef(String ref) {

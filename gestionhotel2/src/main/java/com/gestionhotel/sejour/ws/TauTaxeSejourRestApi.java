@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gestionhotel.sejour.bean.Categorie;
+  
 import com.gestionhotel.sejour.bean.TauTaxeSejour;
 import com.gestionhotel.sejour.service.TauTaxeSejourService;
 
