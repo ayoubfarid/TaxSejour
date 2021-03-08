@@ -32,7 +32,7 @@ public class TauTaxeSejourService {
 	public int updateById(TauTaxeSejour tautaxesejour) {
 		if(findById(tautaxesejour.getId()) != null  )
 		{
-			tautaxesejourdao.updateById(tautaxesejour);
+			tautaxesejourdao.save(tautaxesejour);
 			return 1;
 		}
 		else 
