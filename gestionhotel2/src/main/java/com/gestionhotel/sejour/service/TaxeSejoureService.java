@@ -41,10 +41,6 @@ public class TaxeSejoureService {
 	public int deleteByRedevableRefAndLocaleRef(String red, String loca) {
 		return taxesejourdao.deleteByRedevableRefAndLocaleRef(red, loca);
 	}
-	@Transactional
-
-
-
 	public TaxeSejour deleteByRedevableRef(String s) {
 		return taxesejourdao.deleteByRedevableRef(s);
 	}

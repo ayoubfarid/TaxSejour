@@ -4,6 +4,7 @@ import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.dao.RedevableDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class RedevableService {
     public List<Redevable> findByType(String t) {
         return redevableDao.findByType(t);
     }
+    @Transactional
     public int deleteByRef(String ref) {
          taxeSejoureService.deleteByRedevableRef(ref);
          localeService.deleteByRedevableRef(ref);
