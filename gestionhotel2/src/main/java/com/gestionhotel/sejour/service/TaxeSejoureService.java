@@ -15,6 +15,11 @@ public class TaxeSejoureService {
 
 	 @Autowired
 	   private  TaxeSejourDao  taxesejourdao;
+	public int deleteByLocaleRef(String s) {
+		taxesejourdao.deleteByLocaleRef(s);
+		return 1;
+	}
+
 	@Autowired
 	private LocaleService localeservice;
 	@Autowired

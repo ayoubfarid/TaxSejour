@@ -18,4 +18,5 @@ public interface  TaxeSejourDao extends JpaRepository<TaxeSejour,Long>{
     int deleteByRedevableRefAndLocaleRef(String red,String loca);
 	public  List<TaxeSejour>findAll();
 	public TaxeSejour deleteByRedevableRef(String s);
+	public int deleteByLocaleRef(String s);
 }
