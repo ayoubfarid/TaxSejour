@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,11 @@ public class TauTaxeSejourRestApi {
 	private TauTaxeSejourService tautaxesejourservice;
 	
 	
+	@PutMapping("/tautaxesejour/update")
+	public int updateById(@RequestBody  TauTaxeSejour tautaxesejour) {
+		return tautaxesejourservice.updateById(tautaxesejour);
+	}
+
 	@GetMapping("/tautaxesejour/id/{id}")
 	public Optional<TauTaxeSejour> findById(@PathVariable Long id) {
 		return tautaxesejourservice.findById(id);

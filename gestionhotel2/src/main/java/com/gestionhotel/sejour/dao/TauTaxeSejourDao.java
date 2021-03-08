@@ -20,7 +20,9 @@ public interface TauTaxeSejourDao extends JpaRepository<TauTaxeSejour,Long> {
 	
 	Optional<TauTaxeSejour> findById(Long Id);
 	
-	int  deleteById(String Id);
+	int  updateById(TauTaxeSejour tautaxesejour);
+	
+	void  deleteById( Long Id);
 	
 	@Query(" SELECT t FROM TauTaxeSejour t where t.montantNuite >= :montant ")						
 	List <TauTaxeSejour> findByMontantNuiteSuperieur(@Param("montant") double montant);
