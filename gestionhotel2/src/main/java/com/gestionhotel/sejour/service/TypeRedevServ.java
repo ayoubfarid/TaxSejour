@@ -10,35 +10,16 @@ import org.springframework.stereotype.Service;
 public class TypeRedevServ {
     @Autowired
   private TypeDao typeDao;
-    TypeRedevable pp= new TypeRedevable("personne physique","libil1");
-    TypeRedevable pm= new TypeRedevable("personne morale","libil2");
-    public String saveType(){
-        if (typeDao.countByNomType(pp.getNomType())>=1 || typeDao.countByNomType(pm.getNomType())>=1){
-            if (typeDao.countByNomType(pp.getNomType())>=1 && typeDao.countByNomType(pm.getNomType())==0){
-                typeDao.save(pm);
-            return "pp est deja existe";
-            }else {
-                typeDao.save(pp);
-                return "pm est deja existe";
-            }
 
+    public int save(TypeRedevable type){
+        if(typeDao.findByNomType(type.getNomType())==null) {
+            typeDao.save(type);
+            return 1;
         }
-        else{
-            typeDao.save(pm);
-            typeDao.save(pp);
-            return "pm et pp sont enregestre";
-        }
-    }
-    public boolean testType(String s){
-        if(s.equals(pm.getNomType())||s.equals(pp.getNomType()))
-            return true;
         else
-            return false;
+            return -1;
     }
-    public void savredh(Redevable rd){
-       TypeRedevable t1 = findByNomType(rd.getType().getNomType());
-       rd.setType(t1);
-    }
+
     public TypeRedevable findByNomType(String code) {
         return typeDao.findByNomType(code);
     }

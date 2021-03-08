@@ -12,8 +12,9 @@ public class TypeWs {
     @Autowired
     TypeRedevServ typeRedevServ;
     @PostMapping("/")
-    public String saveType() {
-        return typeRedevServ.saveType();
+
+    public int save(@RequestBody TypeRedevable type) {
+        return typeRedevServ.save(type);
     }
     @GetMapping("/findbynome{name}")
     public TypeRedevable findByNomType(@PathVariable String name) {

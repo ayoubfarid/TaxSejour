@@ -4,7 +4,7 @@ import com.gestionhotel.sejour.bean.Categorie;
 import com.gestionhotel.sejour.service.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+@RestController
 @RequestMapping("/redevable/cate")
 public class CateWS {
     @Autowired

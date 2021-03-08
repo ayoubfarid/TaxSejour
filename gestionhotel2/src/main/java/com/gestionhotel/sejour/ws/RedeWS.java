@@ -14,9 +14,9 @@ import java.util.List;
 public class RedeWS {
     @Autowired
     RedevableService redevableService;
-    @PostMapping("/Redvable")
+    @PostMapping("/")
     public String SaveRed(@RequestBody Redevable rd) {
-        return redevableService.SaveRed(rd);
+        return redevableService.save(rd);
     }
     @GetMapping("/Redvable/{ref}")
     public Redevable findByRef(@PathVariable String ref) {
@@ -25,9 +25,5 @@ public class RedeWS {
     @GetMapping("/Redvable/{Type}")
     public List<Redevable> findByType(@PathVariable String t) {
         return redevableService.findByType(t);
-    }
-    @GetMapping("/Redevable/allLocal/{ref}")
-    public List<Locale> allLocaleOfRdv(@PathVariable String ref) {
-        return redevableService.allLocaleOfRdv(ref);
     }
 }

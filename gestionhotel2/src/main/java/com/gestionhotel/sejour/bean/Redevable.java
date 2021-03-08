@@ -14,7 +14,6 @@ public class Redevable {
     public String getRef() {
         return ref;
     }
-
     public void setRef(String ref) {
         this.ref = ref;
     }

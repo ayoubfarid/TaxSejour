@@ -2,12 +2,12 @@ package com.gestionhotel.sejour.dao;
 
 import com.gestionhotel.sejour.bean.Redevable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface RedevableDao  extends JpaRepository <Redevable,Long> {
-     public Redevable findByRef(String ref);
-     public List<Redevable> findByType(String t);
-     public int countByRef(String ref);
-     public int deleteByRef(String ref);
+      Redevable findByRef(String ref);
+      List<Redevable> findByType(String t);
+      int deleteByRef(String ref);
 }
