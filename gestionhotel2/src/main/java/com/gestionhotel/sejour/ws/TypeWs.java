@@ -16,7 +16,7 @@ public class TypeWs {
         return typeRedevServ.saveType();
     }
     @GetMapping("/findbynome{name}")
-    public String findByNomType(@PathVariable String name) {
+    public TypeRedevable findByNomType(@PathVariable String name) {
         return typeRedevServ.findByNomType(name);
     }
     @GetMapping("/count{nt}")

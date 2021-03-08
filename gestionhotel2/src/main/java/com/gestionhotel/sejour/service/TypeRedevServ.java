@@ -1,5 +1,6 @@
 package com.gestionhotel.sejour.service;
 
+import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.bean.TypeRedevable;
 import com.gestionhotel.sejour.dao.TypeDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,11 @@ public class TypeRedevServ {
         else
             return false;
     }
-
-    public String findByNomType(String code) {
+    public void savredh(Redevable rd){
+       TypeRedevable t1 = findByNomType(rd.getType().getNomType());
+       rd.setType(t1);
+    }
+    public TypeRedevable findByNomType(String code) {
         return typeDao.findByNomType(code);
     }
 

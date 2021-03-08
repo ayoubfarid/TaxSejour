@@ -8,6 +8,7 @@ import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.bean.TaxeSejour;
 import com.gestionhotel.sejour.dao.TaxeSejourDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TaxeSejoureService {
@@ -35,9 +36,11 @@ public class TaxeSejoureService {
 	public int deleteByRedevableRefAndLocaleRef(String red, String loca) {
 		return taxesejourdao.deleteByRedevableRefAndLocaleRef(red, loca);
 	}
-	
+	@Transactional
 
-	public int deleteByRedevableRef(String s) {
+
+
+	public TaxeSejour deleteByRedevableRef(String s) {
 		return taxesejourdao.deleteByRedevableRef(s);
 	}
 
