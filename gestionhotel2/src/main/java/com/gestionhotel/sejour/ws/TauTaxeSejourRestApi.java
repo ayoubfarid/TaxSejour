@@ -1,8 +1,10 @@
 package com.gestionhotel.sejour.ws;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-  
 import com.gestionhotel.sejour.bean.TauTaxeSejour;
 import com.gestionhotel.sejour.service.TauTaxeSejourService;
+import com.gestionhotel.sejour.vo.TauTaxSejourVo;
 
 @RestController
 @RequestMapping("gestiontaxesejour/tautaxesejour")
@@ -22,7 +24,21 @@ public class TauTaxeSejourRestApi {
 	private TauTaxeSejourService tautaxesejourservice;
 	
 	
+	@GetMapping("/tautaxesejour/id/{id}")
+	public Optional<TauTaxeSejour> findById(@PathVariable Long id) {
+		return tautaxesejourservice.findById(id);
+	}
 	
+	@DeleteMapping("/tautaxesejour/id/{id}")
+	public void deleteById(Long id) {
+		tautaxesejourservice.deleteById(id);
+	}
+	
+	@GetMapping("/tautaxesejour/serach-multi-criterie")
+	public List<TauTaxeSejour> searchByCriteria(@RequestBody  TauTaxSejourVo tautaxesejourvo) {
+		return tautaxesejourservice.searchByCriteria(tautaxesejourvo);
+	}
+
 	@GetMapping("/tautaxesejour/montant-nuite-greaterthan/{montant}")
 	public List<TauTaxeSejour> findByMontantNuiteSuperieur(@PathVariable double montant) {
 		return tautaxesejourservice.findByMontantNuiteSuperieur(montant);

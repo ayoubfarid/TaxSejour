@@ -1,23 +1,23 @@
 package com.gestionhotel.sejour.vo;
 
 public class TauTaxSejourVo {
-	private long id;
-	private double montantNuiteMin;
-	private double montantNuiteMax;
+	private Long id;
+	private Double montantNuiteMin;
+	private Double montantNuiteMax;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public double getMontantNuiteMin() {
+	public Double getMontantNuiteMin() {
 		return montantNuiteMin;
 	}
 	public void setMontantNuiteMin(double montantNuiteMin) {
 		this.montantNuiteMin = montantNuiteMin;
 	}
-	public double getMontantNuiteMax() {
+	public Double getMontantNuiteMax() {
 		return montantNuiteMax;
 	}
 	public void setMontantNuiteMax(double montantNuiteMax) {

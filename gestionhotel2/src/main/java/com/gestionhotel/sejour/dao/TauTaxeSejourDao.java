@@ -1,6 +1,7 @@
 package com.gestionhotel.sejour.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +17,10 @@ public interface TauTaxeSejourDao extends JpaRepository<TauTaxeSejour,Long> {
 	
 	
 	TauTaxeSejour findByMontantNuite(double montant);
+	
+	Optional<TauTaxeSejour> findById(Long Id);
+	
+	int  deleteById(String Id);
 	
 	@Query(" SELECT t FROM TauTaxeSejour t where t.montantNuite >= :montant ")						
 	List <TauTaxeSejour> findByMontantNuiteSuperieur(@Param("montant") double montant);
