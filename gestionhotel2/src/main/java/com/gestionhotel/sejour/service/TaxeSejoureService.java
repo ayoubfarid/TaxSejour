@@ -6,13 +6,17 @@ import org.springframework.stereotype.Service;
 
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Redevable;
+import com.gestionhotel.sejour.bean.TauTaxeSejour;
 import com.gestionhotel.sejour.bean.TaxeSejour;
 import com.gestionhotel.sejour.dao.TaxeSejourDao;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TaxeSejoureService {
 
+	
+	@Autowired  //ajouter par ayoub
+	TauTaxeSejourService tautaxesejourservice;
+	
 	 @Autowired
 	   private  TaxeSejourDao  taxesejourdao;
 	public int deleteByLocaleRef(String s) {
@@ -68,10 +72,23 @@ public class TaxeSejoureService {
 		}
 		
 		else  {/*!*/
+			
+			//ajouter par ayoub
+			TauTaxeSejour tautaxesejour=tautaxesejourservice.findByCategorieRef(locale.getCategorie().getRef());
+			if(s.getmontantBase()!=tautaxesejour.getMontantNuite())
+			{
+				double montant=tautaxesejour.getMontantNuite()*s.getNombreNuite();
+				s.setmontantBase(montant);
+			}
+			
+			/*
 			if(s.getmontantBase()!=locale.getCategorie().getTautaxsejour().getMontantNuite()*s.getNombreNuite()) {
 			double m=locale.getCategorie().getTautaxsejour().getMontantNuite()*s.getNombreNuite();
 				s.setmontantBase(m);
-			}
+				
+				
+				
+			}*/
 			taxesejourdao.save(s);	
 			return 1;
 			}

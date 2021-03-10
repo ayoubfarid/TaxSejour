@@ -13,8 +13,7 @@ public class Categorie {
 	private String ref;
 	private String libelle;
 	
-	@OneToOne 
-	private TauTaxeSejour tautaxsejour;
+	
 
 	public Long getId() {
 		return id;
@@ -40,13 +39,7 @@ public class Categorie {
 		this.libelle = libelle;
 	}
 
-	public TauTaxeSejour getTautaxsejour() {
-		return tautaxsejour;
-	}
-
-	public void setTautaxsejour(TauTaxeSejour tautaxsejour) {
-		this.tautaxsejour = tautaxsejour;
-	}
+	
 	
 	
 	

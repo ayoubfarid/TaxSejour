@@ -1,9 +1,11 @@
 package com.gestionhotel.sejour.service;
 
-import com.gestionhotel.sejour.bean.Categorie;
-import com.gestionhotel.sejour.dao.CategorieDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.gestionhotel.sejour.bean.Categorie;
+import com.gestionhotel.sejour.dao.CategorieDao;
+
 @Service
 public class CategorieService {
     @Autowired
