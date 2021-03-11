@@ -1,8 +1,11 @@
 package com.gestionhotel.sejour.service;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Redevable;
@@ -14,15 +17,12 @@ import com.gestionhotel.sejour.dao.TaxeSejourDao;
 public class TaxeSejoureService {
 
 	
-	@Autowired  //ajouter par ayoub
+	@Autowired  
 	TauTaxeSejourService tautaxesejourservice;
 	
 	 @Autowired
 	   private  TaxeSejourDao  taxesejourdao;
-	public int deleteByLocaleRef(String s) {
-		taxesejourdao.deleteByLocaleRef(s);
-		return 1;
-	}
+	
 
 	@Autowired
 	private LocaleService localeservice;
@@ -31,7 +31,7 @@ public class TaxeSejoureService {
 	 public	List<TaxeSejour> findByLocaleRef(String reference){
 		return  taxesejourdao.findByLocaleRef(reference);
 	 }
-
+     
 	 public List<TaxeSejour>  findByRedevableRef(String reference){
 		 return taxesejourdao.findByRedevableRef(reference);
 	 }
@@ -41,16 +41,24 @@ public class TaxeSejoureService {
 	 public TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(int annee,String locale,int trim,String red) {
 		 return taxesejourdao.findByAnneeAndLocaleRefAndTrimAndRedevableRef(annee, locale, trim, red);
 	 }
-	 
+	 @Transactional
 	public int deleteByRedevableRefAndLocaleRef(String red, String loca) {
 		return taxesejourdao.deleteByRedevableRefAndLocaleRef(red, loca);
 	}
-	public TaxeSejour deleteByRedevableRef(String s) {
+	 @Transactional
+	public int deleteByRedevableRef(String s) {
 		return taxesejourdao.deleteByRedevableRef(s);
 	}
+	 @Transactional
+	 public int deleteByLocaleRef(String s) {
+		return	taxesejourdao.deleteByLocaleRef(s);
+		}
+	
 
-	public List<TaxeSejour> findAll() {
-		return taxesejourdao.findAll();
+	
+  @GetMapping("/recherche-par-an/{an}")
+	public List<TaxeSejour> findByAnneespecifique(int an) {
+		return taxesejourdao.findByAnneespecifique(an);
 	}
 
 	public int save(TaxeSejour s) {
@@ -71,24 +79,13 @@ public class TaxeSejoureService {
 			return -4;
 		}
 		
-		else  {/*!*/
-			
-			//ajouter par ayoub
+		else  {
 			TauTaxeSejour tautaxesejour=tautaxesejourservice.findByCategorieRef(locale.getCategorie().getRef());
-			if(s.getmontantBase()!=tautaxesejour.getMontantNuite())
-			{
+			
 				double montant=tautaxesejour.getMontantNuite()*s.getNombreNuite();
 				s.setmontantBase(montant);
-			}
+		
 			
-			/*
-			if(s.getmontantBase()!=locale.getCategorie().getTautaxsejour().getMontantNuite()*s.getNombreNuite()) {
-			double m=locale.getCategorie().getTautaxsejour().getMontantNuite()*s.getNombreNuite();
-				s.setmontantBase(m);
-				
-				
-				
-			}*/
 			taxesejourdao.save(s);	
 			return 1;
 			}

@@ -12,8 +12,7 @@ import javax.persistence.*;
 @Entity
 public class Locale implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private static final long SerialVersionUID=1L; 
+	private static final long serialVersionUID = 1L; 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String ref;
@@ -60,9 +59,7 @@ public class Locale implements Serializable {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
-	public static long getSerialversionuid() {
-		return SerialVersionUID;
-	}
+	
 	
 	
 }
