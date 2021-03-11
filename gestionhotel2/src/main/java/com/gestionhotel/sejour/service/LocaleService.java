@@ -15,6 +15,10 @@ public class LocaleService {
 	private LocaleDao localeDao;
 	
 
+	public Locale getOne(Long id) {
+		return localeDao.getOne(id);
+	}
+
 	@Autowired 
 	private TaxeSejoureService  taxeSejourService;
 
