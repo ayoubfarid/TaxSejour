@@ -1,27 +1,40 @@
 package com.gestionhotel.sejour.service;
 
-import com.gestionhotel.sejour.bean.Redevable;
-import com.gestionhotel.sejour.dao.RedevableDao;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.gestionhotel.sejour.bean.Redevable;
+import com.gestionhotel.sejour.bean.RedevableType;
+import com.gestionhotel.sejour.dao.RedevableDao;
 
 @Service
 public class RedevableService {
 
     @Autowired
     RedevableDao redevableDao;
-    @Autowired
+    
+	@Autowired
     TypeRedevableService typeRedevServ;
     @Autowired
     TaxeSejoureService taxeSejoureService;
     @Autowired
     LocaleService localeService;
+    
+    RedevableType typeredevable;
+    
+    public List<Redevable> findAll() {
+		return redevableDao.findAll();
+	}
+    
      public int save(Redevable rd){
-         if(redevableDao.findByRef(rd.getRef())==null){
-             typeRedevServ.save(rd.getType());
+    	 
+    	 typeredevable =typeRedevServ.findByCode( rd.getType().getCode());
+         if(redevableDao.findByRef(rd.getRef())==null && typeredevable!=null ){
+        	 
+             rd.setType(typeredevable);
              redevableDao.save(rd);
              return 1;
          }

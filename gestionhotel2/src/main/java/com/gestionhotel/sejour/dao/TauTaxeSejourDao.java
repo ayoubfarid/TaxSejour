@@ -26,6 +26,9 @@ public interface TauTaxeSejourDao extends JpaRepository<TauTaxeSejour,Long> {
 	
 	@Query(" SELECT t FROM TauTaxeSejour t where t.montantNuite >= :montant ")						
 	List <TauTaxeSejour> findByMontantNuiteSuperieur(@Param("montant") double montant);
+
+
+	
 	
 	
 		

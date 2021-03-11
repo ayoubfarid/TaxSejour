@@ -8,6 +8,7 @@ import java.util.List;
 @Repository
 public interface RedevableDao  extends JpaRepository <Redevable,Long> {
       Redevable findByRef(String ref);
+      List<Redevable> findAll();
       List<Redevable> findByType(String t);
       int deleteByRef(String ref);
 }

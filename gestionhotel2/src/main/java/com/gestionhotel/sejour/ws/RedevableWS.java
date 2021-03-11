@@ -16,7 +16,12 @@ public class RedevableWS {
     @Autowired
     RedevableService redevableService;
 
-    @PostMapping("/")
+    
+    @GetMapping("/Redvable")
+    public List<Redevable> findAll() {
+		return redevableService.findAll();
+	}
+	@PostMapping("/")
     public int Save(@RequestBody Redevable rd) {
         return redevableService.save(rd);
     }

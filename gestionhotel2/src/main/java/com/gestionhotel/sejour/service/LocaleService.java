@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gestionhotel.sejour.bean.Categorie;
 import com.gestionhotel.sejour.bean.Locale;
+import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.dao.LocaleDao;
 
 @Service
@@ -49,15 +51,26 @@ public class LocaleService {
 	public List<Locale> findAll() {
 		return localeDao.findAll();
 	}
-
+	@Autowired 
+	RedevableService redevableservice;
+	
+	@Autowired 
+	CategorieService categorieservice;
 	public int save(Locale locale) {
 		Locale monlocale = findByRef(locale.getRef());
+		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
+		Categorie categorie = categorieservice.find(locale.getCategorie().getRef()) ;;
+		
 		if(monlocale != null) {
 			return -1;
 		}
-		else{
+		else if (redevable != null && categorie != null) {
+			locale.setRedevable(redevable);
+			locale.setCategorie(categorie);
 			localeDao.save(locale);
 			return 1;
 		}
+		else return -2;
+		
 	}
 }

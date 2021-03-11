@@ -1,5 +1,7 @@
 package com.gestionhotel.sejour.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,10 @@ public class CategorieService {
     @Autowired
     CategorieDao cateDao;
 
-    public String saveCate(Categorie categorie){
+    public List<Categorie> findAll() {
+		return cateDao.findAll();
+	}
+	public String saveCate(Categorie categorie){
         if(cateDao.countByRef(categorie.getRef())==0){
             cateDao.save(categorie);
             return "la Categorie est save";

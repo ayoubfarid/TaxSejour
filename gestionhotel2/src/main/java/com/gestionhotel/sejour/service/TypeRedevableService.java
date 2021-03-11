@@ -18,7 +18,9 @@ public class TypeRedevableService {
         else
             return -1;
     }
-
+    public RedevableType findByCode(String code) {
+    	return typeDao.findByCode(code);
+    }
     public RedevableType findByNomType(String code) {
         return typeDao.findByCode(code);
     }

@@ -2,6 +2,9 @@ package com.gestionhotel.sejour.ws;
 
 import com.gestionhotel.sejour.bean.Categorie;
 import com.gestionhotel.sejour.service.CategorieService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 @RestController
@@ -9,7 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class CateWS {
     @Autowired
     CategorieService cateService;
-    @PostMapping("/Categorie")
+    
+    @GetMapping("/Categorie")
+    public List<Categorie> findAll() {
+		return cateService.findAll();
+	}
+	@PostMapping("/Categorie")
     public String saveCate(@RequestBody Categorie categorie) {
         return cateService.saveCate(categorie);
     }

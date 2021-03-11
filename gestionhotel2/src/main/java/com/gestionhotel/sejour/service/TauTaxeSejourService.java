@@ -29,9 +29,12 @@ public class TauTaxeSejourService {
 		return tautaxesejourdao.findById(id);
 	}
 	
+	
+	
 	public int updateById(TauTaxeSejour tautaxesejour) {
 		if(findById(tautaxesejour.getId()) != null  )
 		{
+			
 			tautaxesejourdao.save(tautaxesejour);
 			return 1;
 		}
@@ -52,11 +55,12 @@ public class TauTaxeSejourService {
 		return tautaxesejourdao.findByMontantNuiteSuperieur(montant);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<TauTaxeSejour> searchByCriteria(TauTaxSejourVo tautaxesejourvo)
 	{
 			String query ="SELECT t FROM TauTaxeSjour t where 1=1";
-			if ( tautaxesejourvo.getId() != null  )
-				query+=" And t.id like "+tautaxesejourvo.getId()+" ";
+			/*if ( tautaxesejourvo.getId() != null  )
+				query+=" And t.id like "+tautaxesejourvo.getId()+" ";*/
 			if ( tautaxesejourvo.getMontantNuiteMin() !=  null  )
 				query+=" And t.montantnuite >= "+tautaxesejourvo.getMontantNuiteMin()+" ";
 			if ( tautaxesejourvo.getMontantNuiteMax() !=  null  )
