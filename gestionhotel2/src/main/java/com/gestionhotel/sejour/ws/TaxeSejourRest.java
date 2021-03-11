@@ -37,14 +37,22 @@ public List<TaxeSejour> findByRedevableRef(@PathVariable String reference) {
 		return taxesejourservice.findByAnneeAndLocaleRefAndTrimAndRedevableRef(annee, locale, trim, red);
 	}
 	
- @DeleteMapping("/redevable/{red}/locale/{loca}")
+	@DeleteMapping("/redevable/{s}")
+ public int deleteByRedevableRef(@PathVariable String s) {
+		return taxesejourservice.deleteByRedevableRef(s);
+	}
+ @DeleteMapping("/locale/{loca}")
+	public int deleteByLocaleRef(@PathVariable String loca) {
+		return taxesejourservice.deleteByLocaleRef(loca);
+	}
+@DeleteMapping("/redevable/{red}/locale/{loca}")
 public int deleteByRedevableRefAndLocaleRef(@PathVariable String red,@PathVariable String loca) {
 		return taxesejourservice.deleteByRedevableRefAndLocaleRef(red, loca);
 	}
-@GetMapping("/")
-	public List<TaxeSejour> findAll() {
-		return taxesejourservice.findAll();
-	}
+ @GetMapping("/recherche-par-an/{an}")
+public List<TaxeSejour> findByAnneespecifique(@PathVariable int an) {
+	return taxesejourservice.findByAnneespecifique(an);
+}
 @PostMapping("/")
 	public int save( @RequestBody  TaxeSejour s) {
 		return taxesejourservice.save(s);
