@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gestionhotel.sejour.bean.TaxeSejour;
 import com.gestionhotel.sejour.service.TaxeSejoureService;
+import com.gestionhotel.sejour.vo.TaxeSejourVo;
 
 @RestController
 @RequestMapping("gestiontaxesejour/taxesejour")
@@ -68,6 +69,11 @@ public List<TaxeSejour> findByAnneespecifique(@PathVariable int an) {
 	public String toString() {
 		return taxesejourservice.toString();
 	}
+	/*@PostMapping("/trimestre")
+	public List<TaxeSejourVo> findByTrimestre(@RequestBody TaxeSejourVo vo) {
+		return taxesejourservice.findByTrimestre(vo);
+	}*/
+
 }
 
 

@@ -1,6 +1,7 @@
 package com.gestionhotel.sejour.service;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.bean.TauTaxeSejour;
 import com.gestionhotel.sejour.bean.TaxeSejour;
 import com.gestionhotel.sejour.dao.TaxeSejourDao;
+import com.gestionhotel.sejour.vo.TaxeSejourVo;
 
 @Service
 public class TaxeSejoureService {
@@ -54,12 +56,19 @@ public class TaxeSejoureService {
 		return	taxesejourdao.deleteByLocaleRef(s);
 		}
 	
-
-	
-  @GetMapping("/recherche-par-an/{an}")
 	public List<TaxeSejour> findByAnneespecifique(int an) {
 		return taxesejourdao.findByAnneespecifique(an);
 	}
+ /* public List<TaxeSejourVo>  findByTrimestre(TaxeSejourVo vo){
+	  String query="Select Count(t) from TaxeSejour t,Locale l where 1=1";
+	  if(vo.getReflo()!=null && !vo.getReflo().isEmpty()) {
+		  query+="  And locale.ref='" +vo.getReflo()+"' ";  
+	  }
+	  if(vo.getAnnee()!=null ) {
+		  query+="  And t.getAnnee='" +vo.getAnnee()+"' ";  
+	  }
+	  return entity.createQuery(query).getResultList();
+  }*/
 
 	public int save(TaxeSejour s) {
 		Locale locale=localeservice.findByRef(s.getLocale().getRef());
@@ -71,7 +80,7 @@ public class TaxeSejoureService {
 	  	s.setRedevable(redevable);
 		if (redevable==null){
 			return  -2;
-		} /*!*/
+		} 
 		if(locale.getRedevable().getRef()!=redevable.getRef()){
 			return -3;
 		}
@@ -90,8 +99,9 @@ public class TaxeSejoureService {
 			return 1;
 			}
 			
-	
 	}
+	@Autowired
+	private EntityManager entity;
 			}
 
 
