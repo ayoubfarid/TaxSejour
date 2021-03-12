@@ -27,6 +27,7 @@ public class TauTaxeSejourRestApi {
 	
 	@PutMapping("/tautaxesejour/update")
 	public int updateById(@RequestBody  TauTaxeSejour tautaxesejour) {
+		
 		return tautaxesejourservice.updateById(tautaxesejour);
 	}
 
@@ -40,7 +41,7 @@ public class TauTaxeSejourRestApi {
 		tautaxesejourservice.deleteById(id);
 	}
 	
-	@GetMapping("/tautaxesejour/serach-multi-criterie")
+	@PostMapping("/tautaxesejour/serach-multi-criterie")
 	public List<TauTaxeSejour> searchByCriteria(@RequestBody  TauTaxSejourVo tautaxesejourvo) {
 		return tautaxesejourservice.searchByCriteria(tautaxesejourvo);
 	}

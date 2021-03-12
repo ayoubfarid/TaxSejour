@@ -2,6 +2,7 @@ package com.gestionhotel.sejour.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,14 @@ public class LocaleWs {
 	@Autowired
 	private LocaleService localeService;
 
+	@DeleteMapping("/")
+	public int deleteByRef(@PathVariable String ref) {
+		return localeService.deleteByRef(ref);
+	}
+	@GetMapping("/id/{id}")
+	public Locale getOne(@PathVariable Long monId) {
+		return localeService.getOne(monId);
+	}
 	@GetMapping("/redevable/{redevable}")
 	public List <Locale> findByRedevable(@PathVariable String redevable) {
 		return localeService.findByRedevable(redevable);
