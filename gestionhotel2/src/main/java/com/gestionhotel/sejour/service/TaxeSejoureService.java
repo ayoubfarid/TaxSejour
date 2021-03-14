@@ -6,14 +6,12 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.bean.TauTaxeSejour;
 import com.gestionhotel.sejour.bean.TaxeSejour;
 import com.gestionhotel.sejour.dao.TaxeSejourDao;
-import com.gestionhotel.sejour.vo.TaxeSejourVo;
 
 @Service
 public class TaxeSejoureService {
