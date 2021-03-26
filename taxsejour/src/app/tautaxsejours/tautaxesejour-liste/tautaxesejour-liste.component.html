@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-footer"></div>
+  <div class="card-body">
+    <table class="table table-hover table-stripes ">
+      <thead>
+
+      <th> Montant Nuite </th>
+
+      <th> Categorie Ref </th>
+      <th> Categorie Lib</th>
+      <th> Action </th>
+
+      </thead>
+      <tbody>
+      <tr *ngFor="  let t of tautaxesejours  ; index as i " >
+
+        <td> {{ t.montantNuite }}  </td>
+        <td> {{ t.categorie.ref }} </td>
+        <td> {{ t.categorie.libelle}} </td>
+        <td> <span class="fa fa-trash btn btn-danger" (click)="delete(i)" ></span>
+        <td><span class="fa fa-edit btn btn-warning "  (click)="update(t,i)"></span> </td>
+
+
+      </tr>
+      </tbody>
+      </table>
+  </div>
+</div>

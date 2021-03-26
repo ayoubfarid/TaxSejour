@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header"> Ajouter Categorie </div>
+  <div class="card-body">
+
+    <div class="form-group">
+      <label >Ref</label>
+      <input type="text" [(ngModel)]="categorie.ref" class="form-control">
+    </div>
+    <div class="form-group">
+      <label >Libelle</label>
+      <input type="text" [(ngModel)]="categorie.libelle" class="form-control">
+    </div>
+
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-outline-dark btn-block " (click) = "save()">
+      Save
+
+    </button>
+  </div>
+</div>
+

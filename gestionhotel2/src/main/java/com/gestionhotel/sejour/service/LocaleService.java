@@ -14,12 +14,8 @@ import com.gestionhotel.sejour.dao.LocaleDao;
 public class LocaleService {
 
 	@Autowired
-	private LocaleDao localeDao; 
+	private LocaleDao localeDao;
 	
-
-	public List<Locale> findByRue(String rue) {
-		return localeDao.findByRue(rue);
-	}
 
 	public Locale getOne(Long id) {
 		return localeDao.getOne(id);
@@ -72,13 +68,14 @@ public class LocaleService {
 		if(monlocale != null) {
 			return -1;
 		}
-		else if (redevable != null && categorie != null) {
+		if (redevable != null && categorie != null) {
 			locale.setRedevable(redevable);
-			locale.setCategorie(categorie); 
+			locale.setCategorie(categorie);
 			localeDao.save(locale);
 			return 1;
 		}
-		else return -2;
+		else 
+			return -2;
 		
 	}
 }

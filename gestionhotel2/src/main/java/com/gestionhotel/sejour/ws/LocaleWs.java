@@ -20,10 +20,6 @@ public class LocaleWs {
 	@Autowired
 	private LocaleService localeService;
 
-	@GetMapping("/Locaux-meme-rue/{rue}")
-	public List<Locale> findByRue(@PathVariable String rue) {
-		return localeService.findByRue(rue);
-	}
 	@DeleteMapping("/")
 	public int deleteByRef(@PathVariable String ref) {
 		return localeService.deleteByRef(ref);

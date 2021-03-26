@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,54 +19,55 @@ import com.gestionhotel.sejour.service.TauTaxeSejourService;
 import com.gestionhotel.sejour.vo.TauTaxSejourVo;
 
 @RestController
-@RequestMapping("gestiontaxesejour/tautaxesejour")
+@CrossOrigin( origins = {"http://localhost:4200"} )
+@RequestMapping("/gestiontaxesejour/")
 
 public class TauTaxeSejourRestApi {
 	@Autowired
 	private TauTaxeSejourService tautaxesejourservice;
 	
 	
-	@PutMapping("/tautaxesejour/update")
+	@PutMapping("tautaxesejour/")
 	public int updateById(@RequestBody  TauTaxeSejour tautaxesejour) {
 		
 		return tautaxesejourservice.updateById(tautaxesejour);
 	}
 
-	@GetMapping("/tautaxesejour/id/{id}")
+	@GetMapping("tautaxesejour/id/{id}")
 	public Optional<TauTaxeSejour> findById(@PathVariable Long id) {
 		return tautaxesejourservice.findById(id);
 	}
 	
-	@DeleteMapping("/tautaxesejour/id/{id}")
+	@DeleteMapping("tautaxesejour/id/{id}")
 	public void deleteById(Long id) {
 		tautaxesejourservice.deleteById(id);
 	}
 	
-	@PostMapping("/tautaxesejour/serach-multi-criterie")
+	@PostMapping("tautaxesejour/serach-multi-criterie")
 	public List<TauTaxeSejour> searchByCriteria(@RequestBody  TauTaxSejourVo tautaxesejourvo) {
 		return tautaxesejourservice.searchByCriteria(tautaxesejourvo);
 	}
 
-	@GetMapping("/tautaxesejour/montant-nuite-greaterthan/{montant}")
+	@GetMapping("tautaxesejour/montant-nuite-greaterthan/{montant}")
 	public List<TauTaxeSejour> findByMontantNuiteSuperieur(@PathVariable double montant) {
 		return tautaxesejourservice.findByMontantNuiteSuperieur(montant);
 	}
 
-	@GetMapping("/tautaxesejour/montant-nuite/{montantnuite}")
+	@GetMapping("tautaxesejour/montant-nuite/{montantnuite}")
 	public TauTaxeSejour findByMontantNuite(@PathVariable double montantnuite) {
 		return tautaxesejourservice.findByMontantNuite(montantnuite);
 	}
 
-	@GetMapping("/tautaxesejour/categorieRef/{RefCategorie}")
+	@GetMapping("tautaxesejour/categorieRef/{RefCategorie}")
 	public TauTaxeSejour findByCategorieRef(@PathVariable String RefCategorie) {
 		return tautaxesejourservice.findByCategorieRef(RefCategorie);
 	}
 	
-	@GetMapping("/tautaxesejour")
+	@GetMapping("tautaxesejour")
 	public List<TauTaxeSejour> findAll() {
 		return tautaxesejourservice.findAll();
 	}
-	@PostMapping("/tautaxesejour")
+	@PostMapping("")
 	public int save(@RequestBody TauTaxeSejour tautaxesejour) {
 		return tautaxesejourservice.save(tautaxesejour);
 	}
