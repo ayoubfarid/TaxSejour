@@ -1,1 +1,22 @@
-<p>redevable-liste works!</p>
+<div class="card shadow p-3 mb-5 bg-body rounded">
+  <div class="card-body ">
+    <table class="table  table-hover table-stripeds ">
+      <thead>
+      <th> Id</th>
+      <th> code</th>
+      <th> Libelle</th>
+      <th> Edite</th>
+      <th> Delete</th>
+      </thead>
+      <tbody>
+      <tr *ngFor=" let c of redvableList , index as i">
+        <td> {{ i + 1 }} </td>
+        <td> {{ c.ref }}  </td>
+        <td>   {{ c.type}} </td>
+        <td><button class="btn btn-outline-warning" (click)="edit(c,i)">Edite</button></td>
+        <td><button class="btn  btn-outline-danger" (click)="delete(c,i)">Delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

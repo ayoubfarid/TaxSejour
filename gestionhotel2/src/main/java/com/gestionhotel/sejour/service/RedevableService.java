@@ -1,7 +1,10 @@
 package com.gestionhotel.sejour.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.gestionhotel.sejour.vo.RedevableTypeVo;
+import com.gestionhotel.sejour.vo.RedevableVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,46 +18,50 @@ public class RedevableService {
 
     @Autowired
     RedevableDao redevableDao;
-    
-	@Autowired
-    TypeRedevableService typeRedevServ;
+    @Autowired
+    RedevableTypeService typeRedevServ;
     @Autowired
     TaxeSejoureService taxeSejoureService;
     @Autowired
     LocaleService localeService;
-    
-    RedevableType typeredevable;
-    
+
     public List<Redevable> findAll() {
-		return redevableDao.findAll();
-	}
-    
-     public int save(Redevable rd){
-    	 
-    	 typeredevable =typeRedevServ.findByCode( rd.getType().getCode());
-         if(redevableDao.findByRef(rd.getRef())==null && typeredevable!=null ){
-        	 
-             rd.setType(typeredevable);
-             redevableDao.save(rd);
-             return 1;
-         }
-         else
-             return  -1;
-     }
+        return redevableDao.findAll();
+    }
+
+    public int edit(Redevable redevable) {
+        Redevable editredvable = redevableDao.findByRef(redevable.getRef());
+        if (editredvable == null) {
+            return -1;
+        } else {
+            editredvable.setRef(redevable.getRef());
+            editredvable.setType(typeRedevServ.findByCode(redevable.getType().getCode()));
+            return 1;
+        }
+    }
+
+    public int save(Redevable redevable) {
+        RedevableType typeredevable = typeRedevServ.findByCode(redevable.getType().getCode());
+        if (redevableDao.findByRef(redevable.getRef()) == null && typeredevable != null) {
+            redevableDao.save(redevable);
+            return 1;
+        } else
+            return -1;
+    }
+
     public Redevable findByRef(String ref) {
         return redevableDao.findByRef(ref);
     }
+
     public List<Redevable> findByType(String t) {
         return redevableDao.findByType(t);
     }
+
     @Transactional
     public int deleteByRef(String ref) {
-         taxeSejoureService.deleteByRedevableRef(ref);
-         localeService.deleteByRedevableRef(ref);
-         if (taxeSejoureService.findByRedevableRef(ref)==null&&localeService.findAllByRedevableRef(ref)==null)
+//        taxeSejoureService.deleteByRedevableRef(ref);
+//        localeService.deleteByRedevableRef(ref);
         return redevableDao.deleteByRef(ref);
-         else
-             return -1;
     }
 
 }

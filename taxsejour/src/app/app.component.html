@@ -1,12 +1,46 @@
-<div class="container">
-  <div class="row-md-12">
-    <app-tautaxsejours></app-tautaxsejours>
-  </div>
+<div class="d-flex" id="wrapper">
+<!--  <div class="col-2 aside">-->
+<!--    <div class="aside-head"><H1 class="h1">Taxe se jour</H1></div>-->
+<!--    <ul class="menu">-->
+<!--      <li><a href="">Redevable</a></li>-->
+<!--      <li><a href="">Local</a></li>-->
+<!--      <li><a href="">taux se jour</a></li>-->
+<!--      <li><a href="">Tax se joure</a></li>-->
+<!--    </ul>-->
+<!--  </div>-->
+  <nav id="asidMenu" class="col-2">
+    <div>
+      <h1>Taxe se Jour</h1>
+    </div>
+    <ul id="menu" class="">
+      <li class="col-" ><a href="#">
+        <span class="text">Home</span>
+      </a></li>
+      <li class=""><a routerLink="/Redevable" routerLinkActive="active shadow">
+        <Span class="text" >Redevable</Span>
+      </a></li>
+      <li  class=""><a routerLink="/typeredevable" routerLinkActive="active shadow">
+        <Span class="text" >Type de Redevable</Span>
+      </a></li>
+      <li class=""><a href="#">
+        <span class="text">Local</span>
+      </a></li>
+      <li class=""><a href="#">
+        <span class="text">Taux se jour</span>
+      </a></li>
+      <li class=""><a routerLink="/">
+        <span class="text">Taxe se jour</span>
+      </a></li>
+    </ul>
+  </nav>
+
+  <div class="col-10">
+   <h1>Dashboard</h1>
   <div class="row">
-
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <div class="row-md-12">
-    <app-categories></app-categories>
   </div>
-
 </div>
+

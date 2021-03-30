@@ -1,1 +1,18 @@
-<p>redevable-create works!</p>
+<div class="card shadow p-3 mb-5 bg-body rounded">
+  <div class="card-header">
+    <h1>Type Redevable</h1>
+  </div>
+  <div class="row">
+    <div class="col-4 form-group">
+      <label>Ref</label>
+      <input type="Text" class="form-control" name="code" [(ngModel)]="redevable().ref">
+    </div>
+    <div class="col-3 form-group">
+      <label>Type</label>
+      <input type="text" class="form-control" name="libelle" [(ngModel)]="redevable().type">
+    </div>
+    <div class="col-2">
+      <button class="btn" id="btn1" (click)="save()">SAVE</button>
+    </div>
+  </div>
+</div>

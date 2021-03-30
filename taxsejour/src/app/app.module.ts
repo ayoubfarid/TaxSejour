@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule, routingComponent} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TautaxsejoursComponent } from './tautaxsejours/tautaxsejours.component';
 import { TautaxesejourListeComponent } from './tautaxsejours/tautaxesejour-liste/tautaxesejour-liste.component';
@@ -24,26 +24,25 @@ import { TaxesejourCreateComponent } from './taxesejours/taxesejour-create/taxes
 import { TaxesejourListComponent } from './taxesejours/taxesejour-list/taxesejour-list.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TautaxsejoursComponent,
-    TautaxesejourListeComponent,
-    TautaxesejourCreateComponent,
-    CategoriesComponent,
-    CategorieCreateComponent,
-    CategorieListeComponent,
-    RedevablesComponent,
-    RedevableCreateComponent,
-    RedevableListeComponent,
-    TypesredevableComponent,
-    TyperedevableCreateComponent,
-    TyperedevableListComponent,
-    LocalesComponent,
-    LocaleCreateComponent,
-    LocaleListComponent,
-    TaxesejourCreateComponent,
-    TaxesejourListComponent
-  ],
+    declarations: [
+        AppComponent,
+        TautaxsejoursComponent,
+        TautaxesejourListeComponent,
+        TautaxesejourCreateComponent,
+        LocalesComponent,
+        LocaleCreateComponent,
+        LocaleListComponent,
+        TaxesejourCreateComponent,
+        TaxesejourListComponent,
+        routingComponent,
+        RedevableCreateComponent,
+        RedevableListeComponent,
+        TyperedevableCreateComponent,
+        CategorieCreateComponent,
+        CategorieListeComponent,
+        TyperedevableListComponent
+
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
