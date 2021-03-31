@@ -10,7 +10,7 @@ import {FormsModule} from "@angular/forms";
 import { CategoriesComponent } from './categories/categories.component';
 import { CategorieCreateComponent } from './categories/categorie-create/categorie-create.component';
 import { CategorieListeComponent } from './categories/categorie-liste/categorie-liste.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import { RedevablesComponent } from './redevables/redevables.component';
 import { RedevableCreateComponent } from './redevables/redevable-create/redevable-create.component';
 import { RedevableListeComponent } from './redevables/redevable-liste/redevable-liste.component';

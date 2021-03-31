@@ -1,1 +1,29 @@
-<p>locale-list works!</p>
+<div class="card">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <table class="table table-hover table-striped">
+      <Thead>
+      <th>reference</th>
+      <th>adresse</th>
+      <th>rue</th>
+      <th>ref redevable</th>
+      <th>ref categorie</th>
+      <th>Action</th>
+      </Thead>
+      <tbody>
+      <tr *ngFor="let c of locales;index as i">
+        <td>{{c.reference}}</td>
+        <td>{{c.adresse}}</td>
+        <td>{{c.rue}}</td>
+        <td>{{c.refRedevable}}</td>
+        <td>{{c.refCategorie}}</td>
+        <td>
+          <i (click)="delete(i)"><spam class="fa fa-trash btn btn-danger"></spam></i>
+          <i (click)="update(i,c)"><spam class="fa fa-edit btn btn-warning"></spam></i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer"></div>
+</div>
