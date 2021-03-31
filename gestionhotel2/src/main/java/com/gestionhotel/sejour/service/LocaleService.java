@@ -28,9 +28,9 @@ public class LocaleService {
 		return localeDao.findAllByRedevableRef(ref);
 	}
 
-	public int deleteByRef(String ref) {
+	public int deleteByReference(String ref) {
 		taxeSejourService.deleteByLocaleRef(ref);
-		localeDao.deleteByRef(ref);
+		localeDao.deleteByReference(ref);
 		return 1 ;
 	}
     
@@ -48,8 +48,8 @@ public class LocaleService {
 		return localeDao.findByCategorieRef(refCat);
 	}
 
-	public Locale findByRef(String ref) {
-		return localeDao.findByRef(ref);
+	public Locale findByReference(String ref) {
+		return localeDao.findByReference(ref);
 	}
 
 	public List<Locale> findAll() {
@@ -61,7 +61,7 @@ public class LocaleService {
 	@Autowired 
 	CategorieService categorieservice;
 	public int save(Locale locale) {
-		Locale monlocale = findByRef(locale.getRef());
+		Locale monlocale = findByReference(locale.getReference());
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
 		Categorie categorie = categorieservice.find(locale.getCategorie().getRef()) ;;
 		

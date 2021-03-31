@@ -15,7 +15,7 @@ public class Locale implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String ref;
+	private String reference;
 	private String adresse;
 	private String rue;
 	@ManyToOne
@@ -29,11 +29,11 @@ public class Locale implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getRef() {
-		return ref;
+	public String getReference() {
+		return reference;
 	}
-	public void setRef(String ref) {
-		this.ref = ref;
+	public void setReference(String ref) {
+		this.reference = ref;
 	}
 	public String getAdresse() {
 		return adresse;
