@@ -1,10 +1,7 @@
 package com.gestionhotel.sejour.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.gestionhotel.sejour.vo.RedevableTypeVo;
-import com.gestionhotel.sejour.vo.RedevableVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.bean.RedevableType;
 import com.gestionhotel.sejour.dao.RedevableDao;
+import com.gestionhotel.sejour.service.facade.LocaleService;
 
 @Service
 public class RedevableService {

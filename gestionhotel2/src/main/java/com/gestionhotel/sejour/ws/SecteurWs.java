@@ -1,0 +1,67 @@
+package com.gestionhotel.sejour.ws;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gestionhotel.sejour.bean.Locale;
+import com.gestionhotel.sejour.service.facade.LocaleService;
+
+@RestController
+@RequestMapping("locale-api/monlocale")
+
+public class SecteurWs {
+	@Autowired
+	private LocaleService localeService;
+
+	@DeleteMapping("/")
+	public int deleteByReference(@PathVariable String ref) {
+		return localeService.deleteByReference(ref);
+	}
+	@GetMapping("/id/{id}")
+	public Locale getOne(@PathVariable Long monId) {
+		return localeService.getOne(monId);
+	}
+	@GetMapping("/redevable/{redevable}")
+	public List <Locale> findByRedevable(@PathVariable String redevable) {
+		return localeService.findByRedevable(redevable);
+	}
+	@GetMapping("/refCategorie/{Categorie}")
+	public List<Locale>findByCategorieRef(@PathVariable String categorie) {
+		return localeService.findByCategorieRef(categorie);
+	}
+	@GetMapping("/ref/{ref}")
+	public Locale findByReference(@PathVariable String ref) {
+		return localeService.findByReference(ref);
+	}
+	@GetMapping("/")
+	public List<Locale> findAll() {
+		return localeService.findAll();
+	}
+
+	@PostMapping("/")
+	public int save(@RequestBody Locale locale) {
+		return localeService.save(locale);
+	}
+
+	public int hashCode() {
+		return localeService.hashCode();
+	}
+
+	public boolean equals(Object obj) {
+		return localeService.equals(obj);
+	}
+
+	public String toString() {
+		return localeService.toString();
+	}
+	
+	
+	
+}

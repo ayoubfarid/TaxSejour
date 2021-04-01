@@ -16,13 +16,23 @@ public class Locale implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String reference;
-	private String adresse;
-	private String rue;
 	@ManyToOne
 	private Redevable redevable;
 	@ManyToOne
+	private Secteur secteur;
+	@ManyToOne
 	private Categorie categorie;
 	
+	
+	public Secteur getSecteur() {
+		return secteur;
+	}
+	public void setSecteur(Secteur secteur) {
+		this.secteur = secteur;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -35,18 +45,7 @@ public class Locale implements Serializable {
 	public void setReference(String ref) {
 		this.reference = ref;
 	}
-	public String getAdresse() {
-		return adresse;
-	}
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-	public String getRue() {
-		return rue;
-	}
-	public void setRue(String rue) {
-		this.rue = rue;
-	}
+
 	public Redevable getRedevable() {
 		return redevable;
 	}

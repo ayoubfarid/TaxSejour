@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.gestionhotel.sejour.bean.Locale;
+import com.gestionhotel.sejour.bean.Quartier;
+import com.gestionhotel.sejour.bean.Secteur;
 
 @Repository
 public interface LocaleDao extends JpaRepository<Locale,Long>{

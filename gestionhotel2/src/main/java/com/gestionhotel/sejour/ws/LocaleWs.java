@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestionhotel.sejour.bean.Locale;
-import com.gestionhotel.sejour.service.LocaleService;
+import com.gestionhotel.sejour.service.facade.LocaleService;
 
 @RestController
 @RequestMapping("locale-api/monlocale")

@@ -1,4 +1,4 @@
-package com.gestionhotel.sejour.service;
+package com.gestionhotel.sejour.service.impl;
 
 import java.util.List;
 
@@ -8,10 +8,14 @@ import org.springframework.stereotype.Service;
 import com.gestionhotel.sejour.bean.Categorie;
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Redevable;
+import com.gestionhotel.sejour.bean.Secteur;
 import com.gestionhotel.sejour.dao.LocaleDao;
+import com.gestionhotel.sejour.service.CategorieService;
+import com.gestionhotel.sejour.service.RedevableService;
+import com.gestionhotel.sejour.service.TaxeSejoureService;
 
 @Service
-public class LocaleService {
+public class LocaleServiceImpl {
 
 	@Autowired
 	private LocaleDao localeDao;
@@ -60,7 +64,7 @@ public class LocaleService {
 	
 	@Autowired 
 	CategorieService categorieservice;
-	public int save(Locale locale) {
+	public int save(Locale locale,List<Secteur> secteur) {
 		Locale monlocale = findByReference(locale.getReference());
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
 		Categorie categorie = categorieservice.find(locale.getCategorie().getRef()) ;;
