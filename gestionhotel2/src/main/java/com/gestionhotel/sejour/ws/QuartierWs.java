@@ -2,6 +2,7 @@ package com.gestionhotel.sejour.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +19,10 @@ import com.gestionhotel.sejour.service.facade.QuartierService;
 import com.gestionhotel.sejour.service.impl.QuartierServiceImpl;
 
 @RestController
-@RequestMapping("locale-api/monlocale")
+@CrossOrigin( origins = {"http://localhost:4200"} )
+@RequestMapping("v1-app3/monQuartier")
 
-public class QuartiesWs {
+public class QuartierWs {
 	
 	@Autowired
 	private QuartierServiceImpl localeServiceImpl;

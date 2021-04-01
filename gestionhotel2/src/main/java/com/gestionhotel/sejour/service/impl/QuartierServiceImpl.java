@@ -21,33 +21,33 @@ public class QuartierServiceImpl implements QuartierService {
 	private SecteurService secteurService;
 	
 	@Autowired
-	private QuartierDao quartiesDao;
+	private QuartierDao quartierDao;
 	
 	
 	public Quartier getOne(Long id) {
-		return quartiesDao.getOne(id);
+		return quartierDao.getOne(id);
 	}
 	public int save(Secteur secteur) {
 		return secteurService.save(secteur);
 	}
 	@Override
 	public Quartier findByReference(String reference) {
-		return quartiesDao.findByReference(reference);
+		return quartierDao.findByReference(reference);
 	}
 	@Override
 	public List<Quartier> findBySecteurReference(String reference) {
-		return quartiesDao.findBySecteurReference(reference);
+		return quartierDao.findBySecteurReference(reference);
 	}
 	@Override
 	@Transactional
 	public int deleteByReference(String reference) {
-		return quartiesDao.deleteByReference(reference);
+		return quartierDao.deleteByReference(reference);
 	}
 	@Override
 	public int save(Secteur secteur, List<Locale> locales, List<Quartier> quartiers) {
 		for(Quartier quartie : quartiers) {
 			quartie.setSecteur(secteur);
-			quartiesDao.save(quartie);
+			quartierDao.save(quartie);
 		}
 		
 		return 1;

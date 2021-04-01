@@ -1,5 +1,6 @@
 package com.gestionhotel.sejour.ws;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,9 +8,9 @@ import com.gestionhotel.sejour.bean.Secteur;
 import com.gestionhotel.sejour.service.impl.SecteurServiceImpl;
 
 @RestController
-@RequestMapping("locale-api/monlocale")
-
-public class SecteurWs {
+@CrossOrigin( origins = {"http://localhost:4200"} )
+@RequestMapping("v3-app/monSecteur")
+public class SecteurRest {
 
 	@Autowired
 	private SecteurServiceImpl secteurServiceImpl;
