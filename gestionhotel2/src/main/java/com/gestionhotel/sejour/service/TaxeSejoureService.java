@@ -31,30 +31,30 @@ public class TaxeSejoureService {
 	private LocaleServiceImpl localeservice;
 	@Autowired
 	private RedevableService redevableservice;
-	 public	List<TaxeSejour> findByLocaleRef(String reference){
-		return  taxesejourdao.findByLocaleRef(reference);
+	 public	List<TaxeSejour> findByLocaleReference(String reference){
+		return  taxesejourdao.findByLocaleReference(reference);
 	 }
      
 	 public List<TaxeSejour>  findByRedevableRef(String reference){
 		 return taxesejourdao.findByRedevableRef(reference);
 	 }
-	 public  List<TaxeSejour> findByRedevableRefAndLocaleRef(String refredevable,String reflocale) {
-		 return taxesejourdao.findByRedevableRefAndLocaleRef(refredevable, reflocale);
+	 public  List<TaxeSejour> findByRedevableRefAndLocaleReference(String refredevable,String reflocale) {
+		 return taxesejourdao.findByRedevableRefAndLocaleReference(refredevable, reflocale);
 	 }
-	 public TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(int annee,String locale,int trim,String red) {
-		 return taxesejourdao.findByAnneeAndLocaleRefAndTrimAndRedevableRef(annee, locale, trim, red);
+	 public TaxeSejour findByAnneeAndLocaleReferenceAndTrimAndRedevableRef(int annee,String locale,int trim,String red) {
+		 return taxesejourdao.findByAnneeAndLocaleReferenceAndTrimAndRedevableRef(annee, locale, trim, red);
 	 }
 	 @Transactional
-	public int deleteByRedevableRefAndLocaleRef(String red, String loca) {
-		return taxesejourdao.deleteByRedevableRefAndLocaleRef(red, loca);
+	public int deleteByRedevableRefAndLocaleReference(String red, String loca) {
+		return taxesejourdao.deleteByRedevableRefAndLocaleReference(red, loca);
 	}
 	 @Transactional
 	public int deleteByRedevableRef(String s) {
 		return taxesejourdao.deleteByRedevableRef(s);
 	}
 	 @Transactional
-	 public int deleteByLocaleRef(String s) {
-		return	taxesejourdao.deleteByLocaleRef(s);
+	 public int deleteByLocaleReference(String s) {
+		return	taxesejourdao.deleteByLocaleReference(s);
 		}
 	
 	public List<TaxeSejour> findByAnneespecifique(int an) {
@@ -85,7 +85,7 @@ public class TaxeSejoureService {
 		if(locale.getRedevable().getRef()!=redevable.getRef()){
 			return -3;
 		}
-		else if(findByAnneeAndLocaleRefAndTrimAndRedevableRef(s.getAnnee(),s.getLocale().getReference(),s.getTrim(),s.getRedevable().getRef())!=null){
+		else if(findByAnneeAndLocaleReferenceAndTrimAndRedevableRef(s.getAnnee(),s.getLocale().getReference(),s.getTrim(),s.getRedevable().getRef())!=null){
 			return -4;
 		}
 		
