@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Quartier;
-import com.gestionhotel.sejour.bean.Secteur;
-import com.gestionhotel.sejour.service.facade.LocaleService;
-import com.gestionhotel.sejour.service.facade.QuartierService;
-import com.gestionhotel.sejour.service.impl.QuartierServiceImpl;
+import com.gestionhotel.sejour.service.QuartierService;
 
 @RestController
 @CrossOrigin( origins = {"http://localhost:4200"} )
@@ -25,46 +21,45 @@ import com.gestionhotel.sejour.service.impl.QuartierServiceImpl;
 public class QuartierWs {
 	
 	@Autowired
-	private QuartierServiceImpl localeServiceImpl;
+	private QuartierService quartierService;
+
+	@PostMapping("/")
+	public int save(@RequestBody Quartier quartier) {
+		return quartierService.save(quartier);
+	}
 
 	@GetMapping("/id/{id}")
 	public Quartier getOne(Long id) {
-		return localeServiceImpl.getOne(id);
+		return quartierService.getOne(id);
 	}
-
-	@PostMapping("/")
-	public int save(Secteur secteur) {
-		return localeServiceImpl.save(secteur);
-	}
-
 
 	@GetMapping("/reference/{reference}")
 	public Quartier findByReference(@PathVariable  String reference) {
-		return localeServiceImpl.findByReference(reference);
+		return quartierService.findByReference(reference);
 	}
 
 
 	@GetMapping("/secteur/reference/{reference}")
 	public List<Quartier> findBySecteurReference(@PathVariable  String reference) {
-		return localeServiceImpl.findBySecteurReference(reference);
+		return quartierService.findBySecteurReference(reference);
 	}
 
 	@DeleteMapping("/")
 	public int deleteByReference(@PathVariable  String reference) {
-		return localeServiceImpl.deleteByReference(reference);
+		return quartierService.deleteByReference(reference);
 	}
 
 
 	public int hashCode() {
-		return localeServiceImpl.hashCode();
+		return quartierService.hashCode();
 	}
 
 	public boolean equals(@PathVariable  Object obj) {
-		return localeServiceImpl.equals(obj);
+		return quartierService.equals(obj);
 	}
 
 	public String toString() {
-		return localeServiceImpl.toString();
+		return quartierService.toString();
 	}
 
 	

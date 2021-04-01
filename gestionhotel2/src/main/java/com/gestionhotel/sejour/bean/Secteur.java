@@ -23,9 +23,10 @@ public class Secteur implements Serializable {
 	private String reference;
 	private String nomSecteur;
 	@OneToMany(mappedBy = "secteur")
-	@JsonProperty(access = Access.READ_WRITE)
-	private List<Locale> locales = new ArrayList<Locale>(); 
-	@OneToMany
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private List<Locale> locales = new ArrayList<Locale>();
+	
+	@OneToMany(mappedBy = "secteur")
 	private List<Quartier> quatriers = new ArrayList<Quartier>(); 
 	
 	

@@ -21,6 +21,7 @@ public interface LocaleDao extends JpaRepository<Locale,Long>{
 	public int deleteByReference(String ref);
 	public int deleteByRedevableRef(String ref);
 	
+	
 	/*@Autowired
 	@Query("select r from Redevable r where r.Redevable.ref=:reference")
 	public Redevable findByRedevableQuery(String reference);

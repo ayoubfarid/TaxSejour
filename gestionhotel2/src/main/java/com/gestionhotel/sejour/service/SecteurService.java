@@ -1,4 +1,4 @@
-package com.gestionhotel.sejour.service.impl;
+package com.gestionhotel.sejour.service;
 
 import javax.transaction.Transactional;
 
@@ -7,26 +7,21 @@ import org.springframework.stereotype.Service;
 
 import com.gestionhotel.sejour.bean.Secteur;
 import com.gestionhotel.sejour.dao.SecteurDao;
-import com.gestionhotel.sejour.service.facade.LocaleService;
-import com.gestionhotel.sejour.service.facade.QuartierService;
-import com.gestionhotel.sejour.service.facade.SecteurService;
+import com.gestionhotel.sejour.vo.SecteurServiceVo;
 
 @Service
-public class SecteurServiceImpl implements SecteurService {
+public class SecteurService implements SecteurServiceVo {
 
-	@Autowired
 	private SecteurDao secteurDao;
 	@Autowired
 	private QuartierService quartierService;
 	@Autowired
 	private LocaleService localeService;
 
-	@Override
 	public Secteur findByReference(String ref) {
 		return secteurDao.findByReference(ref);
 	}
 
-	@Override
 	@Transactional
 	public int deleteByReference(String ref) {
 		int x = quartierService.deleteByReference(ref);
@@ -42,7 +37,8 @@ public class SecteurServiceImpl implements SecteurService {
 			return -1;
 		}else {
 			secteurDao.save(secteur);
-			localeService.save(secteur, secteur.getLocales(),secteur.getQuatriers());
+			localeService.save(secteur, secteur.getLocales());
+			quartierService.save(secteur, secteur.getQuatriers());
 			return 1;
 		}
 	}

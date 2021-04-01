@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 public class Quartier implements Serializable {
 
@@ -17,6 +20,7 @@ public class Quartier implements Serializable {
 	private String reference;
 	private String nomQuartier;
 	@ManyToOne
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Secteur secteur;
 	
 	
