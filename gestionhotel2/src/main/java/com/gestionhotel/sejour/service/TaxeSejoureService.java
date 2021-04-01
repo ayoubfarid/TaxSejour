@@ -71,7 +71,7 @@ public class TaxeSejoureService {
   }*/
 
 	public int save(TaxeSejour s) {
-		Locale locale=localeservice.findByRef(s.getLocale().getRef());
+		Locale locale=localeservice.findByReference(s.getLocale().getReference());
 		s.setLocale(locale);
 		if (locale==null ) {
 			return  -1;
@@ -84,7 +84,7 @@ public class TaxeSejoureService {
 		if(locale.getRedevable().getRef()!=redevable.getRef()){
 			return -3;
 		}
-		else if(findByAnneeAndLocaleRefAndTrimAndRedevableRef(s.getAnnee(),s.getLocale().getRef(),s.getTrim(),s.getRedevable().getRef())!=null){
+		else if(findByAnneeAndLocaleRefAndTrimAndRedevableRef(s.getAnnee(),s.getLocale().getReference(),s.getTrim(),s.getRedevable().getRef())!=null){
 			return -4;
 		}
 		

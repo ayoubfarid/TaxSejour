@@ -21,8 +21,8 @@ public class LocaleWs {
 	private LocaleService localeService;
 
 	@DeleteMapping("/")
-	public int deleteByRef(@PathVariable String ref) {
-		return localeService.deleteByRef(ref);
+	public int deleteByReference(@PathVariable String ref) {
+		return localeService.deleteByReference(ref);
 	}
 	@GetMapping("/id/{id}")
 	public Locale getOne(@PathVariable Long monId) {
@@ -37,8 +37,8 @@ public class LocaleWs {
 		return localeService.findByCategorieRef(categorie);
 	}
 	@GetMapping("/ref/{ref}")
-	public Locale findByRef(@PathVariable String ref) {
-		return localeService.findByRef(ref);
+	public Locale findByReference(@PathVariable String ref) {
+		return localeService.findByReference(ref);
 	}
 	@GetMapping("/")
 	public List<Locale> findAll() {
