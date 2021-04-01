@@ -2,6 +2,7 @@ package com.gestionhotel.sejour.ws;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,55 +12,69 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestionhotel.sejour.bean.Locale;
-import com.gestionhotel.sejour.service.facade.LocaleService;
+import com.gestionhotel.sejour.bean.Quartier;
+import com.gestionhotel.sejour.bean.Secteur;
+import com.gestionhotel.sejour.service.impl.LocaleServiceImpl;
 
-@RestController
-@RequestMapping("locale-api/monlocale")
-
+@RestController@CrossOrigin(origins = {"http://localhost:4200"})
+@RequestMapping("v2-stock-app20/locale")
 public class LocaleWs {
 	@Autowired
-	private LocaleService localeService;
-
-	@DeleteMapping("/")
-	public int deleteByReference(@PathVariable String ref) {
-		return localeService.deleteByReference(ref);
-	}
-	@GetMapping("/id/{id}")
-	public Locale getOne(@PathVariable Long monId) {
-		return localeService.getOne(monId);
-	}
-	@GetMapping("/redevable/{redevable}")
-	public List <Locale> findByRedevable(@PathVariable String redevable) {
-		return localeService.findByRedevable(redevable);
-	}
-	@GetMapping("/refCategorie/{Categorie}")
-	public List<Locale>findByCategorieRef(@PathVariable String categorie) {
-		return localeService.findByCategorieRef(categorie);
-	}
-	@GetMapping("/ref/{ref}")
-	public Locale findByReference(@PathVariable String ref) {
-		return localeService.findByReference(ref);
-	}
-	@GetMapping("/")
-	public List<Locale> findAll() {
-		return localeService.findAll();
-	}
+	private LocaleServiceImpl localeServiceImpl;
 
 	@PostMapping("/")
 	public int save(@RequestBody Locale locale) {
-		return localeService.save(locale);
+		return localeServiceImpl.save(locale);
+	}
+
+
+	@GetMapping("/")
+	public List<Locale> findAll() {
+		return localeServiceImpl.findAll();
+	}
+
+	@GetMapping("/id/{id}")
+	public Locale getOne(@PathVariable Long id) {
+		return localeServiceImpl.getOne(id);
+	}
+
+	@DeleteMapping("/secteur/reference/{ref}")
+	public int deleteBySecteurReference(@PathVariable String ref) {
+		return localeServiceImpl.deleteBySecteurReference(ref);
+	}
+
+	@GetMapping("/secteur/reference/{ref}")
+	public List<Quartier> findBySecteurReference(@PathVariable String ref) {
+		return localeServiceImpl.findBySecteurReference(ref);
+	}
+
+	@GetMapping("/reference/{ref}")
+	public Locale findByReference(@PathVariable String ref) {
+		return localeServiceImpl.findByReference(ref);
+	}
+
+
+	@GetMapping("/categorie/ref/{refategorie}")
+	public List<Locale> findByCategorieRef(@PathVariable String refcategorie) {
+		return localeServiceImpl.findByCategorieRef(refcategorie);
+	}
+
+	
+	@DeleteMapping("/ref/{ref}")
+	public int deleteByReference(@PathVariable String ref) {
+		return localeServiceImpl.deleteByReference(ref);
 	}
 
 	public int hashCode() {
-		return localeService.hashCode();
+		return localeServiceImpl.hashCode();
 	}
 
 	public boolean equals(Object obj) {
-		return localeService.equals(obj);
+		return localeServiceImpl.equals(obj);
 	}
 
 	public String toString() {
-		return localeService.toString();
+		return localeServiceImpl.toString();
 	}
 	
 	

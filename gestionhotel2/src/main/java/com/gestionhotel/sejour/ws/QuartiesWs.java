@@ -11,17 +11,64 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestionhotel.sejour.bean.Locale;
+import com.gestionhotel.sejour.bean.Quartier;
+import com.gestionhotel.sejour.bean.Secteur;
 import com.gestionhotel.sejour.service.facade.LocaleService;
+import com.gestionhotel.sejour.service.facade.QuartierService;
+import com.gestionhotel.sejour.service.impl.QuartierServiceImpl;
 
 @RestController
 @RequestMapping("locale-api/monlocale")
 
 public class QuartiesWs {
+	
 	@Autowired
-	private LocaleService localeService;
+	private QuartierServiceImpl localeServiceImpl;
+
+	@GetMapping("/id/{id}")
+	public Quartier getOne(Long id) {
+		return localeServiceImpl.getOne(id);
+	}
+
+	@PostMapping("/")
+	public int save(Secteur secteur) {
+		return localeServiceImpl.save(secteur);
+	}
+
+
+	@GetMapping("/reference/{reference}")
+	public Quartier findByReference(@PathVariable  String reference) {
+		return localeServiceImpl.findByReference(reference);
+	}
+
+
+	@GetMapping("/secteur/reference/{reference}")
+	public List<Quartier> findBySecteurReference(@PathVariable  String reference) {
+		return localeServiceImpl.findBySecteurReference(reference);
+	}
 
 	@DeleteMapping("/")
-	public int deleteByReference(@PathVariable String ref) {
+	public int deleteByReference(@PathVariable  String reference) {
+		return localeServiceImpl.deleteByReference(reference);
+	}
+
+
+	public int hashCode() {
+		return localeServiceImpl.hashCode();
+	}
+
+	public boolean equals(@PathVariable  Object obj) {
+		return localeServiceImpl.equals(obj);
+	}
+
+	public String toString() {
+		return localeServiceImpl.toString();
+	}
+
+	
+	
+	/*
+	public int deleteByReference(String ref) {
 		return localeService.deleteByReference(ref);
 	}
 	@GetMapping("/id/{id}")
@@ -50,17 +97,7 @@ public class QuartiesWs {
 		return localeService.save(locale);
 	}
 
-	public int hashCode() {
-		return localeService.hashCode();
-	}
-
-	public boolean equals(Object obj) {
-		return localeService.equals(obj);
-	}
-
-	public String toString() {
-		return localeService.toString();
-	}
+	*/
 	
 	
 	

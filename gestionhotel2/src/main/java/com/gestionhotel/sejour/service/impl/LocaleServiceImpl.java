@@ -3,83 +3,98 @@ package com.gestionhotel.sejour.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.gestionhotel.sejour.bean.Categorie;
 import com.gestionhotel.sejour.bean.Locale;
-import com.gestionhotel.sejour.bean.Redevable;
+import com.gestionhotel.sejour.bean.Quartier;
 import com.gestionhotel.sejour.bean.Secteur;
 import com.gestionhotel.sejour.dao.LocaleDao;
-import com.gestionhotel.sejour.service.CategorieService;
-import com.gestionhotel.sejour.service.RedevableService;
-import com.gestionhotel.sejour.service.TaxeSejoureService;
+import com.gestionhotel.sejour.service.facade.LocaleService;
 
 @Service
-public class LocaleServiceImpl {
+public class LocaleServiceImpl implements LocaleService {
 
 	@Autowired
 	private LocaleDao localeDao;
-	
+
+	public int save(Locale locale) {
+		Locale  loc = findByReference(locale.getReference());
+		if(loc != null) {
+			return -1;
+		}
+		else {
+			localeDao.save(locale);
+			return 1;
+		}
+	}
+
+
+	public List<Locale> findAll() {
+		return localeDao.findAll();
+	}
+
 
 	public Locale getOne(Long id) {
 		return localeDao.getOne(id);
 	}
 
-	@Autowired 
-	private TaxeSejoureService  taxeSejourService;
 
-	public Locale findAllByRedevableRef(String ref) {
-		return localeDao.findAllByRedevableRef(ref);
+	@Override
+	public int deleteBySecteurReference(String ref) {
+		return localeDao.deleteBySecteurReference(ref);
 	}
 
-	public int deleteByReference(String ref) {
-		taxeSejourService.deleteByLocaleRef(ref);
-		localeDao.deleteByReference(ref);
-		return 1 ;
-	}
-    
-	public int deleteByRedevableRef(String ref) {
-		return localeDao.deleteByRedevableRef(ref);
-	}
-    
-
-
-	public List<Locale> findByRedevable(String refRe) {
-		return localeDao.findByRedevable(refRe);
+	
+	@Override
+	public List<Quartier> findBySecteurReference(String ref) {
+		return localeDao.findBySecteurReference(ref);
 	}
 
-	public List<Locale> findByCategorieRef(String refCat) {
-		return localeDao.findByCategorieRef(refCat);
+	@Override
+	public int save(Secteur secteur, List<Locale> locales,List<Quartier> quartiers) {
+		for (Locale loc : locales) {
+			loc.setSecteur(secteur);
+			localeDao.save(loc);
+		}
+		
+		return 1;
 	}
 
+
+	@Override
 	public Locale findByReference(String ref) {
 		return localeDao.findByReference(ref);
 	}
 
-	public List<Locale> findAll() {
-		return localeDao.findAll();
+
+	@Override
+	public Locale findAllByRedevableRef(String ref) {
+		return localeDao.findAllByRedevableRef(ref);
 	}
-	@Autowired 
-	RedevableService redevableservice;
-	
-	@Autowired 
-	CategorieService categorieservice;
-	public int save(Locale locale,List<Secteur> secteur) {
-		Locale monlocale = findByReference(locale.getReference());
-		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
-		Categorie categorie = categorieservice.find(locale.getCategorie().getRef()) ;;
-		
-		if(monlocale != null) {
-			return -1;
-		}
-		if (redevable != null && categorie != null) {
-			locale.setRedevable(redevable);
-			locale.setCategorie(categorie);
-			localeDao.save(locale);
-			return 1;
-		}
-		else 
-			return -2;
-		
+
+
+	@Override
+	public List<Locale> findByRedevable(String rfRedevable) {
+		return localeDao.findByRedevable(rfRedevable);
 	}
+
+
+	@Override
+	public List<Locale> findByCategorieRef(String refcategorie) {
+		return localeDao.findByCategorieRef(refcategorie);
+	}
+
+
+	@Override
+	public int deleteByRedevableRef(String ref) {
+		return localeDao.deleteByRedevableRef(ref);
+	}
+
+
+	@Override
+	public int deleteByReference(String ref) {
+		return localeDao.deleteByReference(ref);
+	}
+
 }

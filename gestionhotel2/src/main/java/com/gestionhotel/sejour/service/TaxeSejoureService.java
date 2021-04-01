@@ -13,6 +13,7 @@ import com.gestionhotel.sejour.bean.TauTaxeSejour;
 import com.gestionhotel.sejour.bean.TaxeSejour;
 import com.gestionhotel.sejour.dao.TaxeSejourDao;
 import com.gestionhotel.sejour.service.facade.LocaleService;
+import com.gestionhotel.sejour.service.impl.LocaleServiceImpl;
 
 
 @Service
@@ -27,7 +28,7 @@ public class TaxeSejoureService {
 	
 
 	@Autowired
-	private LocaleService localeservice;
+	private LocaleServiceImpl localeservice;
 	@Autowired
 	private RedevableService redevableservice;
 	 public	List<TaxeSejour> findByLocaleRef(String reference){

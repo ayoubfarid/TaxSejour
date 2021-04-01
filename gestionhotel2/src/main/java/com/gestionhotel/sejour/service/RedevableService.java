@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.bean.RedevableType;
 import com.gestionhotel.sejour.dao.RedevableDao;
-import com.gestionhotel.sejour.service.facade.LocaleService;
+import com.gestionhotel.sejour.service.impl.LocaleServiceImpl;
 
 @Service
 public class RedevableService {
@@ -21,7 +21,7 @@ public class RedevableService {
     @Autowired
     TaxeSejoureService taxeSejoureService;
     @Autowired
-    LocaleService localeService;
+    LocaleServiceImpl localeService;
 
     public List<Redevable> findAll() {
         return redevableDao.findAll();

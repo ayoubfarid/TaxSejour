@@ -7,15 +7,17 @@ import org.springframework.stereotype.Repository;
 
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Quartier;
-import com.gestionhotel.sejour.bean.Secteur;
 
 @Repository
 public interface LocaleDao extends JpaRepository<Locale,Long>{
 	
+	public int deleteBySecteurReference(String ref);
+	public List<Quartier> findBySecteurReference(String ref);
 	public Locale findByReference(String ref);
+	public Locale findAllByRedevableRef(String ref);
+	
 	public List<Locale> findByRedevable(String redevable);
 	public List<Locale> findByCategorieRef(String categorie);
-	public Locale findAllByRedevableRef(String ref);
 	public int deleteByReference(String ref);
 	public int deleteByRedevableRef(String ref);
 	
