@@ -15,8 +15,15 @@ export class RedevableCreateComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
   public save() {
+    if (this.redevable().type=='1'){
+      this.redevable().type ='personne morale';
+    }
+    else if(this.redevable().type=='2'){
+      this.redevable().type='personne physique';
+    }else{
+      alert('please select type');
+    }
     return this.redevableService.save();
   }
   redevable(){

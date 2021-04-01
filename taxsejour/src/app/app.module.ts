@@ -22,6 +22,7 @@ import { LocaleCreateComponent } from './locales/locale-create/locale-create.com
 import { LocaleListComponent } from './locales/locale-list/locale-list.component';
 import { TaxesejourCreateComponent } from './taxesejours/taxesejour-create/taxesejour-create.component';
 import { TaxesejourListComponent } from './taxesejours/taxesejour-list/taxesejour-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,8 @@ import { TaxesejourListComponent } from './taxesejours/taxesejour-list/taxesejou
         TyperedevableCreateComponent,
         CategorieCreateComponent,
         CategorieListeComponent,
-        TyperedevableListComponent
+        TyperedevableListComponent,
+        DashboardComponent
 
     ],
     imports: [

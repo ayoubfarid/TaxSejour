@@ -1,46 +1,71 @@
-<div class="d-flex" id="wrapper">
-<!--  <div class="col-2 aside">-->
-<!--    <div class="aside-head"><H1 class="h1">Taxe se jour</H1></div>-->
-<!--    <ul class="menu">-->
-<!--      <li><a href="">Redevable</a></li>-->
-<!--      <li><a href="">Local</a></li>-->
-<!--      <li><a href="">taux se jour</a></li>-->
-<!--      <li><a href="">Tax se joure</a></li>-->
-<!--    </ul>-->
-<!--  </div>-->
-  <nav id="asidMenu" class="col-2">
-    <div>
-      <h1>Taxe se Jour</h1>
-    </div>
-    <ul id="menu" class="">
-      <li class="col-" ><a href="#">
-        <span class="text">Home</span>
-      </a></li>
-      <li class=""><a routerLink="/Redevable" routerLinkActive="active shadow">
-        <Span class="text" >Redevable</Span>
-      </a></li>
-      <li  class=""><a routerLink="/typeredevable" routerLinkActive="active shadow">
-        <Span class="text" >Type de Redevable</Span>
-      </a></li>
-      <li class=""><a href="#">
-        <span class="text">Local</span>
-      </a></li>
-      <li class=""><a href="#">
-        <span class="text">Taux se jour</span>
-      </a></li>
-      <li class=""><a routerLink="/">
-        <span class="text">Taxe se jour</span>
-      </a></li>
+<input type="checkbox" id="sidebar-toggle" xmlns="http://www.w3.org/1999/html">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h3 class="brand">
+      <span class="ti-unlink"></span>
+      <span>Taxe seJour</span>
+    </h3>
+    <label for="sidebar-toggle">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list"
+           viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </label>
+  </div>
+  <div class="sidebar-menu">
+    <ul>
+      <li>
+        <a routerLink="dashboard" routerLinkActive="active">
+          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                  class="bi bi-pie-chart" viewBox="0 0 16 16">
+  <path
+    d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793V1.018zm1 0V7.5h6.482A7.001 7.001 0 0 0 8.5 1.018zM14.982 8.5H8.207l-4.79 4.79A7 7 0 0 0 14.982 8.5zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+</svg></span>
+          <span>dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a >
+          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
+  <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
+</svg></span>
+          <span>Local</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="Redevable" routerLinkActive="active">
+          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+  <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+</svg></span>
+          <span>Redevable</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="dashboard">
+          <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bookmark-star" viewBox="0 0 16 16">
+  <path d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"/>
+  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+</svg></span>
+          <span>Taux sejour</span>
+        </a>
+      </li>
     </ul>
-  </nav>
-
-  <div class="col-10">
-   <h1>Dashboard</h1>
-  <div class="row">
-    <div class="container-fluid">
-      <router-outlet></router-outlet>
+  </div>
+</div>
+<div class="main-content">
+  <header>
+    <div class="search-wrapper">
+      <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg></span>
+      <input type="search" placeholder="Search">
     </div>
-  </div>
-  </div>
+  </header>
+
+  <main>
+<router-outlet></router-outlet>
+  </main>
 </div>
 

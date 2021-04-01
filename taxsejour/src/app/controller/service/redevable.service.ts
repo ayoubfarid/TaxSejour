@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Redevable} from "../model/redevable.model";
+import {HttpClient} from '@angular/common/http';
+import {Redevable} from '../model/redevable.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +9,23 @@ export class RedevableService {
 
   private _redevable: Redevable;
   private _redevabllist: Array<Redevable>;
-  private url: string = "http://localhost:8039/app-redevable/";
+  private url = 'http://localhost:8039/app-redevable/';
   private statumsg: String = null;
-  private _checkvalue :number;
-  private _index:number;
+  private _checkvalue: number;
+  private _index: number;
   constructor(private http: HttpClient) {
   }
 
   public save() {
     this.check(this.redevable);
-    if (this._checkvalue == 1) {
-      this.http.put(this.url + "edit/", this.redevable).subscribe(
+    if (this._checkvalue = 1) {
+      this.http.put(this.url + 'update/', this.redevable).subscribe(
         data => {
           if (data == 1) {
-            this.statumsg = "Redevable was changed";
+            this.statumsg = 'Redevable was changed';
             this._redevabllist[this._index] = this.redevable;
           } else if (data = -1) {
-            this.statumsg = "Redevable didnt exist";
+            this.statumsg = 'Redevable didnt exist';
             console.log(this.statumsg);
           }
         }, error => {
@@ -38,9 +38,9 @@ export class RedevableService {
           data => {
             if (data == 1) {
               this._redevabllist.push(this.cloneType(this._redevable));
-              this.statumsg = "type was saved";
+              this.statumsg = 'type was saved';
             } else if (data == -1) {
-              this.statumsg = "Type deja exist";
+              this.statumsg = 'Type deja exist';
             }
           },
           error => {
@@ -51,27 +51,28 @@ export class RedevableService {
       }
       else
       {
-        alert("les champs sont vide");
+        alert('les champs sont vide');
       }
     }
   }
-  public verifyNull(redevable :Redevable): boolean{
-    if(redevable.ref==null|| redevable.type==null){
+  public verifyNull(redevable: Redevable): boolean{
+    if (redevable.ref == null || redevable.type == null){
       return false;
     }
     else {
       return true;
     }
   }
-  public check(checkvo: Redevable) {
-    this.http.get<number>(this.url+"ref/"+checkvo.ref).subscribe(
+  public check(checkvo: Redevable):number {
+    this._checkvalue
+    this.http.get<number>(this.url + '/Redvable/findByReference/' + checkvo.ref).subscribe(
       data => {
         this._checkvalue = data;
-      },error => {
+      }, error => {
         console.log(error);
       }
     );
-
+    return
   }
   public findAll() {
     this.http.get<Array<Redevable>>(this.url).subscribe(
@@ -84,16 +85,16 @@ export class RedevableService {
     );
   }
 
-  public edit(c:Redevable ,i:number){
-    this.redevable=c;
-    this._index=i;
+  public edit(c: Redevable , i: number){
+    this.redevable = c;
+    this._index = i;
   }
-  public delete(c: Redevable, i:number) {
-    this.http.delete<number>(this.url+"ref/"+c.ref).subscribe(
+  public delete(c: Redevable, i: number) {
+    this.http.delete<number>(this.url + 'ref/' + c.ref).subscribe(
       data => {
-        if (data>0){
-          this.redevabllist.splice(i,1);
-          this.statumsg=data+" object was deleted!";
+        if (data > 0){
+          this.redevabllist.splice(i, 1);
+          this.statumsg = data + ' object was deleted!';
         }
       }, error => {
         console.log(error);

@@ -1,6 +1,6 @@
-<div class="card shadow p-3 mb-5 bg-body rounded">
+<div class="card p-3 mb-5 bg-body">
   <div class="card-header">
-    <h1>Type Redevable</h1>
+    <h1>Redevable</h1>
   </div>
   <div class="row">
     <div class="col-4 form-group">
@@ -9,7 +9,11 @@
     </div>
     <div class="col-3 form-group">
       <label>Type</label>
-      <input type="text" class="form-control" name="libelle" [(ngModel)]="redevable().type">
+      <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" [(ngModel)]="redevable().type">
+        <option selected>Selectioner un type</option>
+        <option value="1">personne morale</option>
+        <option value="2">personne physique</option>
+      </select>
     </div>
     <div class="col-2">
       <button class="btn" id="btn1" (click)="save()">SAVE</button>

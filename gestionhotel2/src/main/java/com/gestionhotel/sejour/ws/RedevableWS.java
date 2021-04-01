@@ -17,10 +17,8 @@ import java.util.List;
 public class RedevableWS {
     @Autowired
     RedevableService redevableService;
-
     @Autowired
     Converter converter;
-
     @GetMapping("/")
     public List<RedevableVo> findAll() {
         return converter.convertRedevableList(redevableService.findAll());
@@ -31,21 +29,15 @@ public class RedevableWS {
         return redevableService.save(converter.convertRedevable(redevableVo));
     }
 
-    @GetMapping("/Redvable/{ref}")
-    public Redevable findByRef(@PathVariable String ref) {
-        return redevableService.findByRef(ref);
+    @GetMapping("/Redvable/findByReference/{ref}")
+    public int findByReference(@PathVariable String ref) {
+        return redevableService.findByReferrence(ref);
     }
 
-    @GetMapping("/Redvable/{Type}")
-    public List<Redevable> findByType(@PathVariable String type) {
-        return redevableService.findByType(type);
+    @PutMapping("/update/")
+    public int update(@RequestBody RedevableVo redevableVo) {
+        return redevableService.update(converter.convertRedevable(redevableVo));
     }
-
-    @PutMapping("/")
-    public int edit(@RequestBody RedevableVo redevableVo) {
-        return redevableService.edit(converter.convertRedevable(redevableVo));
-    }
-
     @DeleteMapping("/ref/{ref}")
     public int deleteByRef(@PathVariable String ref) {
         return redevableService.deleteByRef(ref);

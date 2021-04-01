@@ -29,13 +29,13 @@ public class RedevableService {
         return redevableDao.findAll();
     }
 
-    public int edit(Redevable redevable) {
+    public int update(Redevable redevable) {
         Redevable editredvable = redevableDao.findByRef(redevable.getRef());
         if (editredvable == null) {
             return -1;
         } else {
-            editredvable.setRef(redevable.getRef());
             editredvable.setType(typeRedevServ.findByCode(redevable.getType().getCode()));
+            redevableDao.save(editredvable);
             return 1;
         }
     }
@@ -52,6 +52,15 @@ public class RedevableService {
     public Redevable findByRef(String ref) {
         return redevableDao.findByRef(ref);
     }
+    public int findByReferrence(String ref) {
+       if(redevableDao.findByRef(ref)==null){
+           return -1;
+       }
+       else{
+           return 1;
+       }
+    }
+
 
     public List<Redevable> findByType(String t) {
         return redevableDao.findByType(t);
