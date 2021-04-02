@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import com.gestionhotel.sejour.vo.TaxeSejourVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,7 +74,7 @@ public class TaxeSejoureService {
   }
 
 	public int save(TaxeSejour s) {
-		Locale locale=localeservice.findByReference(s.getLocale().getReference());
+		Locale locale=localeservice.findByRef(s.getLocale().getReference());
 		s.setLocale(locale);
 		if (locale==null ) {
 			return  -1;

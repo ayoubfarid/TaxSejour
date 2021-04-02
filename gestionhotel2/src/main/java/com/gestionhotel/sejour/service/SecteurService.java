@@ -37,7 +37,7 @@ public class SecteurService implements SecteurServiceVo {
 			return -1;
 		}else {
 			secteurDao.save(secteur);
-			localeService.save(secteur, secteur.getLocales());
+			//localeService.save(secteur, secteur.getLocales());
 			quartierService.save(secteur, secteur.getQuatriers());
 			return 1;
 		}

@@ -1,7 +1,9 @@
 package com.gestionhotel.sejour.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.gestionhotel.sejour.bean.Quartier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +31,8 @@ public class LocaleService {
 	}
 
 	public int deleteByRef(String ref) {
-		taxeSejourService.deleteByLocaleRef(ref);
-		localeDao.deleteByRef(ref);
+		taxeSejourService.deleteByLocaleReference(ref);
+		localeDao.deleteByReference(ref);
 		return 1 ;
 	}
     
@@ -41,7 +43,7 @@ public class LocaleService {
 
 
 	public List<Locale> findByRedevable(String refRe) {
-		return localeDao.findByRedevable(refRe);
+		return localeDao.findByRedevableRef(refRe);
 	}
 
 	public List<Locale> findByCategorieRef(String refCat) {
@@ -49,7 +51,7 @@ public class LocaleService {
 	}
 
 	public Locale findByRef(String ref) {
-		return localeDao.findByRef(ref);
+		return localeDao.findByReference(ref);
 	}
 
 	public List<Locale> findAll() {
@@ -61,9 +63,9 @@ public class LocaleService {
 	@Autowired 
 	CategorieService categorieservice;
 	public int save(Locale locale) {
-		Locale monlocale = findByRef(locale.getRef());
+		Locale monlocale = findByRef(locale.getReference());
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
-		Categorie categorie = categorieservice.findByRef(locale.getCategorie().getRef()) ;;
+		Categorie categorie = categorieservice.findByRef(locale.getCategorie().getRef()) ;
 		
 		if(monlocale != null) {
 			return -1;
@@ -77,5 +79,22 @@ public class LocaleService {
 		else 
 			return -2;
 		
+	}
+
+	public int deleteBySecteurReference(String ref) {
+		return 1;
+	}
+
+	public List<Quartier> findBySecteurReference(String ref) {
+		return new ArrayList<Quartier>();
+	}
+
+	public int deleteByReference(String ref) {
+		return 1;
+	}
+
+	public Locale findByReference(String ref) {
+		return new Locale();
+
 	}
 }
