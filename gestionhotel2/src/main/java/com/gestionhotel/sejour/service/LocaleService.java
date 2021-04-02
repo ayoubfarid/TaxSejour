@@ -30,7 +30,7 @@ public class LocaleService implements LocaleServiceVo {
 	}
 
 	public List<Locale> findByRedevable(String redevable) {
-		return localeDao.findByRedevable(redevable);
+		return localeDao.findByRedevableRef(redevable);
 	}
 
 	public List<Locale> findByCategorieRef(String categorie) {
