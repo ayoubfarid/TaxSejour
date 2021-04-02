@@ -58,16 +58,19 @@ public class TaxeSejoureService {
 	public List<TaxeSejour> findByAnneespecifique(int an) {
 		return taxesejourdao.findByAnneespecifique(an);
 	}
- /* public List<TaxeSejourVo>  findByTrimestre(TaxeSejourVo vo){
-	  String query="Select Count(t) from TaxeSejour t,Locale l where 1=1";
+ public List<TaxeSejourVo>  findByTrimestre(TaxeSejourVo vo){
+	  String query="Select t from TaxeSejour t where 1=1";
 	  if(vo.getReflo()!=null && !vo.getReflo().isEmpty()) {
-		  query+="  And locale.ref='" +vo.getReflo()+"' ";  
+		  query+="  And l.ref='" +vo.getReflo()+"' ";  
 	  }
-	  if(vo.getAnnee()!=null ) {
-		  query+="  And t.getAnnee='" +vo.getAnnee()+"' ";  
+	  if(vo.getMontantbasemax()!=null) {
+		  query+="   And t.montantbase<= "+vo.getMontantbasemax();
 	  }
-	  return entity.createQuery(query).getResultList();
-  }*/
+	  if(vo.getMontantbasemin()!=null) {
+		  query+="   And t.montantbase >=+ "+vo.getMontantbasemin();
+	  }
+	  return   entity.createQuery(query).getResultList();
+  }
 
 	public int save(TaxeSejour s) {
 		Locale locale=localeservice.findByReference(s.getLocale().getReference());
@@ -84,6 +87,13 @@ public class TaxeSejoureService {
 			return -3;
 		}
 		else if(findByAnneeAndLocaleReferenceAndTrimAndRedevableRef(s.getAnnee(),s.getLocale().getReference(),s.getTrim(),s.getRedevable().getRef())!=null){
+			s.setAnnee(s.getAnnee());
+			s.setLocale(locale);
+			s.setRedevable(redevable);
+			s.setmontantBase(s.getmontantBase());
+			s.setNombreNuite(s.getNombreNuite());
+			s.setTrim(s.getTrim());
+			taxesejourdao.save(s);
 			return -4;
 		}
 		

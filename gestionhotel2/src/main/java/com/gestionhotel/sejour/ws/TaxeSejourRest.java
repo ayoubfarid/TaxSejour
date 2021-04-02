@@ -17,6 +17,7 @@ import com.gestionhotel.sejour.service.TaxeSejoureService;
 
 @RestController
 @RequestMapping("gestiontaxesejour/taxesejour")
+@CrossOrigin(origins ={"http://localhost:4200"})
 public class TaxeSejourRest {
 	
 	@Autowired
@@ -69,10 +70,10 @@ public List<TaxeSejour> findByAnneespecifique(@PathVariable int an) {
 	public String toString() {
 		return taxesejourservice.toString();
 	}
-	/*@PostMapping("/trimestre")
+	@PostMapping("/trimestre")
 	public List<TaxeSejourVo> findByTrimestre(@RequestBody TaxeSejourVo vo) {
 		return taxesejourservice.findByTrimestre(vo);
-	}*/
+	}
 
 }
 
