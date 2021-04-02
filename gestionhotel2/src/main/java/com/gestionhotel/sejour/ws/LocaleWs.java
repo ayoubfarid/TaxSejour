@@ -45,7 +45,10 @@ public class LocaleWs {
 	public List<Quartier> findBySecteurReference(@PathVariable String ref) {
 		return localeServiceImpl.findBySecteurReference(ref);
 	}
-
+	@GetMapping("/Redevable/{refRe}")
+	public List<Locale> findByRedevable(String refRe) {
+		return localeServiceImpl.findByRedevable(refRe);
+	}
 	@GetMapping("/reference/{ref}")
 	public Locale findByReference(@PathVariable String ref) {
 		return localeServiceImpl.findByReference(ref);
