@@ -15,46 +15,59 @@ public class RedevableService {
 
     @Autowired
     RedevableDao redevableDao;
-    
-	@Autowired
-    TypeRedevableService typeRedevServ;
+    @Autowired
+    RedevableTypeService typeRedevServ;
     @Autowired
     TaxeSejoureService taxeSejoureService;
     @Autowired
     LocaleService localeService;
-    
-    RedevableType typeredevable;
-    
+
     public List<Redevable> findAll() {
-		return redevableDao.findAll();
-	}
-    
-     public int save(Redevable rd){
-    	 
-    	 typeredevable =typeRedevServ.findByCode( rd.getType().getCode());
-         if(redevableDao.findByRef(rd.getRef())==null && typeredevable!=null ){
-        	 
-             rd.setType(typeredevable);
-             redevableDao.save(rd);
-             return 1;
-         }
-         else
-             return  -1;
-     }
+        return redevableDao.findAll();
+    }
+
+    public int update(Redevable redevable) {
+        Redevable editredvable = redevableDao.findByRef(redevable.getRef());
+        if (editredvable == null) {
+            return -1;
+        } else {
+            editredvable.setType(typeRedevServ.findByCode(redevable.getType().getCode()));
+            redevableDao.save(editredvable);
+            return 1;
+        }
+    }
+
+    public int save(Redevable redevable) {
+        RedevableType typeredevable = typeRedevServ.findByCode(redevable.getType().getCode());
+        if (redevableDao.findByRef(redevable.getRef()) == null && typeredevable != null) {
+            redevableDao.save(redevable);
+            return 1;
+        } else
+            return -1;
+    }
+
     public Redevable findByRef(String ref) {
         return redevableDao.findByRef(ref);
     }
+    public int findByReferrence(String ref) {
+       if(redevableDao.findByRef(ref)==null){
+           return -1;
+       }
+       else{
+           return 1;
+       }
+    }
+
+
     public List<Redevable> findByType(String t) {
         return redevableDao.findByType(t);
     }
+
     @Transactional
     public int deleteByRef(String ref) {
-         taxeSejoureService.deleteByRedevableRef(ref);
-         localeService.deleteByRedevableRef(ref);
-         if (taxeSejoureService.findByRedevableRef(ref)==null&&localeService.findAllByRedevableRef(ref)==null)
+//        taxeSejoureService.deleteByRedevableRef(ref);
+//        localeService.deleteByRedevableRef(ref);
         return redevableDao.deleteByRef(ref);
-         else
-             return -1;
     }
 
 }

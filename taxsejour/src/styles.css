@@ -1,3 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
 @Import "~bootstrap/dist/css/bootstrap.min.css";
-@Import "~font-awesome/css/font-awesome.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+@import "~bootstrap-icons/icons";

@@ -22,20 +22,20 @@ public class TaxeSejourRest {
 	@Autowired
 	TaxeSejoureService taxesejourservice;
 	@GetMapping("/referencelocale/{reference}")
-	 public	List<TaxeSejour> findByLocaleRef(@PathVariable String reference){
-		return  taxesejourservice.findByLocaleRef(reference);
+	 public	List<TaxeSejour> findByLocaleReference(@PathVariable String reference){
+		return  taxesejourservice.findByLocaleReference(reference);
 	 }
 	@GetMapping("/referenceredevable/{reference}")
 public List<TaxeSejour> findByRedevableRef(@PathVariable String reference) {
 		return taxesejourservice.findByRedevableRef(reference);
 	}
 	@GetMapping("/referenceredevable/{refredevable}/referencelocale/{reflocale}")
-	public  List<TaxeSejour> findByRedevableRefAndLocaleRef(@PathVariable String refredevable, @PathVariable String reflocale) {
-		return taxesejourservice.findByRedevableRefAndLocaleRef(refredevable, reflocale);
+	public  List<TaxeSejour> findByRedevableReferenceAndLocaleReference(@PathVariable String refredevable, @PathVariable String reflocale) {
+		return taxesejourservice.findByRedevableRefAndLocaleReference(refredevable, reflocale);
 	}
 	@GetMapping("/annee/{annee}/reerencelocale/{locale}/trimestre/trim/referenceredevable/{red}")
-	public TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(@PathVariable int annee, @PathVariable String locale,@PathVariable int trim,@PathVariable String red) {
-		return taxesejourservice.findByAnneeAndLocaleRefAndTrimAndRedevableRef(annee, locale, trim, red);
+	public TaxeSejour findByAnneeAndLocaleReferenceerenceAndTrimAndRedevableRef(@PathVariable int annee, @PathVariable String locale,@PathVariable int trim,@PathVariable String red) {
+		return taxesejourservice.findByAnneeAndLocaleReferenceAndTrimAndRedevableRef(annee, locale, trim, red);
 	}
 	
 	@DeleteMapping("/redevable/{s}")
@@ -44,11 +44,11 @@ public List<TaxeSejour> findByRedevableRef(@PathVariable String reference) {
 	}
  @DeleteMapping("/locale/{loca}")
 	public int deleteByLocaleRef(@PathVariable String loca) {
-		return taxesejourservice.deleteByLocaleRef(loca);
+		return taxesejourservice.deleteByLocaleReference(loca);
 	}
 @DeleteMapping("/redevable/{red}/locale/{loca}")
-public int deleteByRedevableRefAndLocaleRef(@PathVariable String red,@PathVariable String loca) {
-		return taxesejourservice.deleteByRedevableRefAndLocaleRef(red, loca);
+public int deleteByRedevableRefAndLocaleReference(@PathVariable String red,@PathVariable String loca) {
+		return taxesejourservice.deleteByRedevableRefAndLocaleReference(red, loca);
 	}
  @GetMapping("/recherche-par-an/{an}")
 public List<TaxeSejour> findByAnneespecifique(@PathVariable int an) {

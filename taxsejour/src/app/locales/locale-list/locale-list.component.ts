@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LocaleService} from '../../controller/service/locale.service';
+import {Locale} from '../../controller/model/locale.model';
 
 @Component({
   selector: 'app-locale-list',
@@ -7,7 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocaleListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localService: LocaleService) { }
+
+  get locales(): Array<Locale>{
+    return this.localService.locales;
+  }
+
+  public delete(index: number){
+    this.locales.splice(index, 1);
+  }
+
+  public update(index: number, locale: Locale){
+    this.localService.update(index, locale);
+  }
 
   ngOnInit(): void {
   }

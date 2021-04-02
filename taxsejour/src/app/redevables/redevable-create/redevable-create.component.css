@@ -1,0 +1,21 @@
+#btn1{
+  border-radius:20px;
+  background-color: #fd5e53;
+  height:40px;
+  width:80px;
+  margin-top:28px;
+  color: #fff;
+}
+.activity-card,
+.summary-card,
+.bday-card {
+  background: #ff0000;
+  border-radius: 7px;
+}
+section{
+  margin-bottom: 120px;
+}
+.card{
+  border:none;
+  border-radius:none;
+}

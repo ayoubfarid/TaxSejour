@@ -9,15 +9,15 @@ import org.springframework.stereotype.Repository;
 import com.gestionhotel.sejour.bean.TaxeSejour;
  @Repository 
 public interface  TaxeSejourDao extends JpaRepository<TaxeSejour,Long>{
-     public	List<TaxeSejour>  findByLocaleRef(String reference);
+     public	List<TaxeSejour>  findByLocaleReference(String reference);
    /*un redevable peut avoir plusieurs locaux*/
      public List<TaxeSejour>  findByRedevableRef(String reference);
-     public  List<TaxeSejour> findByRedevableRefAndLocaleRef(String refredevable,String reflocale);
+     public  List<TaxeSejour> findByRedevableRefAndLocaleReference(String refredevable,String reflocale);
      /*faut payer la taxe une fois par trim de chaque annee*/
-    public  TaxeSejour findByAnneeAndLocaleRefAndTrimAndRedevableRef(int annee,String locale,int trim,String red);
-    int deleteByRedevableRefAndLocaleRef(String red,String loca);
+    public  TaxeSejour findByAnneeAndLocaleReferenceAndTrimAndRedevableRef(int annee,String locale,int trim,String red);
+    int deleteByRedevableRefAndLocaleReference(String red,String loca);
 	public int deleteByRedevableRef(String s);
-	public int deleteByLocaleRef(String s);
+	public int deleteByLocaleReference(String s);
 	@Query("SELECT t from TaxeSejour t where t.annee=:an")// 
 	List<TaxeSejour> findByAnneespecifique(@Param("an") int an);
 }

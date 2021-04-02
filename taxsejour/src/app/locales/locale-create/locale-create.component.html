@@ -1,1 +1,61 @@
-<p>locale-create works!</p>
+
+<div class="card">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="">Reference*:</label>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class="form-control" [(ngModel)]="locale.reference">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="">Adresse*:</label>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class="form-control" [(ngModel)]="locale.adresse">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="">Rue*:</label>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class="form-control" [(ngModel)]="locale.rue">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="">Ref redevable*:</label>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class="form-control" [(ngModel)]="locale.refRedevable">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="">ref categorie*:</label>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class="form-control" [(ngModel)]="locale.refCategorie">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-outline-info btn-block" [disabled]="!validateSave()" (click)="save()">Save</button>
+  </div>
+</div>
+
+

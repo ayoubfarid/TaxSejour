@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {TyperedevableService} from "../controller/service/typeredevable.service";
 @Component({
   selector: 'app-typesredevable',
   templateUrl: './typesredevable.component.html',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypesredevableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private  typeservice:TyperedevableService) { }
 
   ngOnInit(): void {
   }
+
 
 }

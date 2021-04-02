@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RedevableListeComponent} from './redevable-liste/redevable-liste.component';
+import {RedevableService} from '../controller/service/redevable.service';
 
 @Component({
   selector: 'app-redevables',
@@ -7,9 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RedevablesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private listservice:RedevableService) { }
 
   ngOnInit(): void {
   }
-
 }
