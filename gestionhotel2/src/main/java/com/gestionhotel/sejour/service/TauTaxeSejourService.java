@@ -32,14 +32,12 @@ public class TauTaxeSejourService {
 	
 	
 	public int updateById(TauTaxeSejour tautaxesejour) {
-		if(findById(tautaxesejour.getId()) != null  )
-		{
+		Categorie categorie = categorieservice.findByRef(tautaxesejour.getCategorie().getRef());
+		tautaxesejour.setCategorie(categorie);
 			
 			tautaxesejourdao.save(tautaxesejour);
 			return 1;
-		}
-		else 
-			return -1;
+		
 		
 	}
 	
@@ -97,16 +95,12 @@ public class TauTaxeSejourService {
 
 	public int save(TauTaxeSejour tautaxesejour) {
 		
-		if (findByCategorieRef(tautaxesejour.getCategorie().getRef())!= null)
-		{
-			return -1;
-		}else {
-			Categorie categorie = categorieservice.cateDao.findByRef(tautaxesejour.getCategorie().getRef());
+			Categorie categorie = categorieservice.findByRef(tautaxesejour.getCategorie().getRef());
 			tautaxesejour.setCategorie(categorie);
 			
 			tautaxesejourdao.save(tautaxesejour);
 			return 1;
-		}
+		
 		
 	
 	}

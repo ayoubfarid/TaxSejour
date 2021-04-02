@@ -39,7 +39,7 @@ public class TauTaxeSejourRestApi {
 	}
 	
 	@DeleteMapping("tautaxesejour/id/{id}")
-	public void deleteById(Long id) {
+	public void deleteById(@PathVariable Long id) {
 		tautaxesejourservice.deleteById(id);
 	}
 	

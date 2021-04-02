@@ -4,7 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 
 
 
@@ -17,8 +21,8 @@ public class TauTaxeSejour {
 	private double montantNuite;
 	
 	
-	
-	@OneToOne
+	@JsonProperty(access  = Access.WRITE_ONLY)
+	@ManyToOne
 	private Categorie categorie;	
 	
 	

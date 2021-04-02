@@ -1,10 +1,13 @@
 package com.gestionhotel.sejour.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Categorie {
@@ -14,6 +17,16 @@ public class Categorie {
 	private String libelle;
 	
 	
+	@OneToMany(mappedBy = "categorie")
+	List<TauTaxeSejour> tautaxsejours = new ArrayList<TauTaxeSejour>();
+	
+	public List<TauTaxeSejour> getTautaxsejours() {
+		return tautaxsejours;
+	}
+
+	public void setTautaxsejours(List<TauTaxeSejour> tautaxsejours) {
+		this.tautaxsejours = tautaxsejours;
+	}
 
 	public Long getId() {
 		return id;

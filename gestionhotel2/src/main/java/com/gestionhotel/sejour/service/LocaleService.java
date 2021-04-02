@@ -63,7 +63,7 @@ public class LocaleService {
 	public int save(Locale locale) {
 		Locale monlocale = findByRef(locale.getRef());
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
-		Categorie categorie = categorieservice.find(locale.getCategorie().getRef()) ;;
+		Categorie categorie = categorieservice.findByRef(locale.getCategorie().getRef()) ;;
 		
 		if(monlocale != null) {
 			return -1;
