@@ -14,13 +14,13 @@ import com.gestionhotel.sejour.service.SecteurService;
 
 @RestController
 @CrossOrigin( origins = {"http://localhost:4200"} )
-@RequestMapping("v3-app/monSecteur")
+@RequestMapping("/v3-app/secteur")
 public class SecteurRest {
 
 	@Autowired
 	private SecteurService secteurServiceImpl;
 
-	@GetMapping("reference/{ref}")
+	@GetMapping("/reference/{ref}")
 	public Secteur findByReference(@PathVariable String ref) {
 		return secteurServiceImpl.findByReference(ref);
 	}

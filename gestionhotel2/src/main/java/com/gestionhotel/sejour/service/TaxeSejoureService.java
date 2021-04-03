@@ -74,7 +74,7 @@ public class TaxeSejoureService {
   }
 
 	public int save(TaxeSejour s) {
-		Locale locale=localeservice.findByRef(s.getLocale().getReference());
+		Locale locale=localeservice.findByReference(s.getLocale().getReference());
 		s.setLocale(locale);
 		if (locale==null ) {
 			return  -1;

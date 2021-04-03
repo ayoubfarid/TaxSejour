@@ -1,15 +1,11 @@
 package com.gestionhotel.sejour.vo;
 
-import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Secteur;
 
-public interface SecteurServiceVo {
+public interface SecteurServiceVo  {
 
+	public Secteur findByReference(String ref);
+	public int deleteByReference(String ref);
 	public int save(Secteur secteur);
-	
-	
 }

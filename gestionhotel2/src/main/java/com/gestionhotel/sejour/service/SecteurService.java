@@ -11,23 +11,21 @@ import com.gestionhotel.sejour.vo.SecteurServiceVo;
 
 @Service
 public class SecteurService implements SecteurServiceVo {
-
+	
+	@Autowired
 	private SecteurDao secteurDao;
-	@Autowired
-	private QuartierService quartierService;
-	@Autowired
-	private LocaleService localeService;
 
+	@Override
 	public Secteur findByReference(String ref) {
 		return secteurDao.findByReference(ref);
 	}
 
+	@Override
 	@Transactional
 	public int deleteByReference(String ref) {
-		int x = quartierService.deleteByReference(ref);
+		int x = quartierService.deleteBySecteurReference(ref);
 		int y = secteurDao.deleteByReference(ref);
-		int z = secteurDao.deleteByReference(ref);
-		return x+y+z;
+		return x+y;
 	}
 
 	@Override
@@ -37,7 +35,6 @@ public class SecteurService implements SecteurServiceVo {
 			return -1;
 		}else {
 			secteurDao.save(secteur);
-			//localeService.save(secteur, secteur.getLocales());
 			quartierService.save(secteur, secteur.getQuatriers());
 			return 1;
 		}
@@ -45,6 +42,13 @@ public class SecteurService implements SecteurServiceVo {
 	
 	
 
+	@Autowired
+	private QuartierService quartierService;
 
+	
+	
+
+	
+	
 
 }

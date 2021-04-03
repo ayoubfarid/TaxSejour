@@ -16,12 +16,18 @@ import com.gestionhotel.sejour.service.QuartierService;
 
 @RestController
 @CrossOrigin( origins = {"http://localhost:4200"} )
-@RequestMapping("v1-app3/monQuartier")
+@RequestMapping("/v1-app3/quartier")
 
 public class QuartierWs {
 	
 	@Autowired
 	private QuartierService quartierService;
+
+
+	@DeleteMapping("/secteur/reference/{reference}")
+	public int deleteBySecteurReference(@PathVariable String reference) {
+		return quartierService.deleteBySecteurReference(reference);
+	}
 
 	@PostMapping("/")
 	public int save(@RequestBody Quartier quartier) {
@@ -44,7 +50,7 @@ public class QuartierWs {
 		return quartierService.findBySecteurReference(reference);
 	}
 
-	@DeleteMapping("/")
+	@DeleteMapping("/reference/{reference}")
 	public int deleteByReference(@PathVariable  String reference) {
 		return quartierService.deleteByReference(reference);
 	}
@@ -62,40 +68,6 @@ public class QuartierWs {
 		return quartierService.toString();
 	}
 
-	
-	
-	/*
-	public int deleteByReference(String ref) {
-		return localeService.deleteByReference(ref);
-	}
-	@GetMapping("/id/{id}")
-	public Locale getOne(@PathVariable Long monId) {
-		return localeService.getOne(monId);
-	}
-	@GetMapping("/redevable/{redevable}")
-	public List <Locale> findByRedevable(@PathVariable String redevable) {
-		return localeService.findByRedevable(redevable);
-	}
-	@GetMapping("/refCategorie/{Categorie}")
-	public List<Locale>findByCategorieRef(@PathVariable String categorie) {
-		return localeService.findByCategorieRef(categorie);
-	}
-	@GetMapping("/ref/{ref}")
-	public Locale findByReference(@PathVariable String ref) {
-		return localeService.findByReference(ref);
-	}
-	@GetMapping("/")
-	public List<Locale> findAll() {
-		return localeService.findAll();
-	}
-
-	@PostMapping("/")
-	public int save(@RequestBody Locale locale) {
-		return localeService.save(locale);
-	}
-
-	*/
-	
 	
 	
 }
