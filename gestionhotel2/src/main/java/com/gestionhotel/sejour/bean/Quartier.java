@@ -21,15 +21,21 @@ public class Quartier implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String reference;
-	private String num;
-	/*
+	private int num;
+	
 	@OneToMany(mappedBy = "quartier")
-	private List<Locale> locales = new ArrayList<Locale>();*/
+	private List<Locale> locales = new ArrayList<Locale>();
 	
 	@ManyToOne
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Secteur secteur;
 	
+	public List<Locale> getLocales() {
+		return locales;
+	}
+	public void setLocales(List<Locale> locales) {
+		this.locales = locales;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -43,10 +49,10 @@ public class Quartier implements Serializable {
 		this.reference = reference;
 	}
 	
-	public String getNum() {
+	public int getNum() {
 		return num;
 	}
-	public void setNum(String num) {
+	public void setNum(int num) {
 		this.num = num;
 	}
 	public Secteur getSecteur() {

@@ -20,6 +20,10 @@ public class QuartierService implements QuartierServiceVo {
 	private QuartierDao quartierDao;
 	@Autowired
 	private SecteurService secteurService;
+	@Autowired
+	private QuartierService quartierService;
+	@Autowired
+	private LocaleService localeService;
 
 	@Transactional
 	public int deleteBySecteurReference(String reference) {
@@ -27,18 +31,18 @@ public class QuartierService implements QuartierServiceVo {
 	}
 
 	public int save(Quartier quartier) {
-		Quartier isExit = findByReference(quartier.getReference());
+		
 		Secteur isExitSecteur = secteurService.findByReference(quartier.getSecteur().getReference());
-		if(isExit != null)
+		if(isExitSecteur == null) {
 			return -1;
-		if(isExitSecteur == null)
-			return -2;
+		}
 		else {
 			quartier.setSecteur(isExitSecteur);
 			quartierDao.save(quartier);
-		return 1;
+			localeService.save(quartier, quartier.getLocales());
+			return 1;
 		}
-		
+
 	}
 
 	public Quartier getOne(Long id) {
@@ -55,14 +59,16 @@ public class QuartierService implements QuartierServiceVo {
 	
 	@Transactional
 	public int deleteByReference(String reference) {
-		return quartierDao.deleteByReference(reference);
+		int res1 = quartierDao.deleteByReference(reference);
+		int res2 = localeService.deleteByQuartierReference(reference);
+		return res1+res2;
 	}
 
 	@Override
 	public int save(Secteur secteur, List<Quartier> quartiers) {
 		for(Quartier quartie : quartiers) {
 			quartie.setSecteur(secteur);
-			quartierDao.save(quartie);
+			quartierService.save(quartie);
 		}
 		
 		return 1;

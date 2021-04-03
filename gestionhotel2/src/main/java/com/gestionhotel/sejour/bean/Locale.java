@@ -19,10 +19,17 @@ public class Locale implements Serializable {
 	private Redevable redevable;
 	@ManyToOne
 	private Categorie categorie;
-	/*
 	@ManyToOne
 	@JsonProperty(access = Access.WRITE_ONLY)
-	private Quartier quartier;*/
+	private Quartier quartier;
+	
+	public Quartier getQuartier() {
+		return quartier;
+	}
+	public void setQuartier(Quartier quartier) {
+		this.quartier = quartier;
+	}
+	
 	
 	
 	@Override

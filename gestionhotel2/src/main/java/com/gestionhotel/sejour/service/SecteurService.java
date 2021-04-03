@@ -1,19 +1,27 @@
 package com.gestionhotel.sejour.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gestionhotel.sejour.bean.Quartier;
 import com.gestionhotel.sejour.bean.Secteur;
 import com.gestionhotel.sejour.dao.SecteurDao;
+import com.gestionhotel.sejour.vo.QuartierServiceVo;
 import com.gestionhotel.sejour.vo.SecteurServiceVo;
 
 @Service
 public class SecteurService implements SecteurServiceVo {
-	
+
 	@Autowired
 	private SecteurDao secteurDao;
+	@Autowired
+	private QuartierServiceVo quartierServiceVo;
+	@Autowired
+	private QuartierService quartierService;
 
 	@Override
 	public Secteur findByReference(String ref) {
@@ -34,16 +42,16 @@ public class SecteurService implements SecteurServiceVo {
 		if(isExit != null) {
 			return -1;
 		}else {
+			List<Quartier> quart = secteur.getQuatriers();
 			secteurDao.save(secteur);
-			quartierService.save(secteur, secteur.getQuatriers());
+			quartierService.save(secteur , quart);
 			return 1;
 		}
 	}
 	
 	
 
-	@Autowired
-	private QuartierService quartierService;
+	
 
 	
 	

@@ -21,6 +21,17 @@ public class LocaleWs {
 	private LocaleService localeServiceImpl;
 
 
+	@DeleteMapping("/quartier/reference/{ref}")
+	public int deleteByQuartierReference(@PathVariable String ref) {
+		return localeServiceImpl.deleteByQuartierReference( ref);
+	}
+
+	@GetMapping("/quartier/reference/{ref}")
+	public List<Quartier> findByQuartierReference(@PathVariable String ref) {
+		return localeServiceImpl.findByQuartierReference(ref);
+	}
+
+	
 	@GetMapping("/redevable/ref/{ref}")
 	public Locale findAllByRedevableRef(@PathVariable String ref) {
 		return localeServiceImpl.findAllByRedevableRef(ref);
@@ -51,8 +62,8 @@ public class LocaleWs {
 
 	
 	@GetMapping("/Redevable/{refRe}")
-	public List<Locale> findByRedevable(String refRe) {
-		return localeServiceImpl.findByRedevable(refRe);
+	public List<Locale> findByRedevableRef(String refRe) {
+		return localeServiceImpl.findByRedevableRef(refRe);
 	}
 	@GetMapping("/reference/{ref}")
 	public Locale findByReference(@PathVariable String ref) {
