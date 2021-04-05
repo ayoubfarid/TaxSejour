@@ -21,4 +21,6 @@ public class Redevable {
     }
     public void setType(RedevableType type) {
         this.type = type;}
-}
+
+
+ }

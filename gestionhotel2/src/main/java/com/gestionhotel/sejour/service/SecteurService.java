@@ -17,7 +17,8 @@ import com.gestionhotel.sejour.vo.SecteurServiceVo;
 @Service
 public class SecteurService implements SecteurServiceVo {
 
-	@Autowired
+
+ @Autowired
 	private SecteurDao secteurDao;
 	@Autowired
 	private QuartierService quartierService;

@@ -9,12 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-import com.gestionhotel.sejour.service.CategorieService;
 
 @Entity
 public class Locale implements Serializable {
@@ -27,13 +25,29 @@ public class Locale implements Serializable {
 	private Redevable redevable;
 	@ManyToOne
 	private Categorie categorie;
-	
+	@ManyToOne
+	private Secteur secteur;
 	@ManyToOne
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Quartier quartier;
 	
 	public Quartier getQuartier() {
-		return quartier;
+		return quartier;}
+	
+	@OneToMany(mappedBy = "locale")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<TaxeSejour> taxessejour;
+
+	public List<TaxeSejour> getTaxessejour() {
+		return taxessejour;
+	}
+
+	public void setTaxessejour(List<TaxeSejour> taxessejour) {
+		this.taxessejour = taxessejour;
+	}
+
+	public Secteur getSecteur() {
+		return this.secteur;
 	}
 	public void setQuartier(Quartier quartier) {
 		this.quartier = quartier;

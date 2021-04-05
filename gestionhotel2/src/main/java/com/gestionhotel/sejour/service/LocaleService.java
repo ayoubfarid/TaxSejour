@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.gestionhotel.sejour.bean.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.gestionhotel.sejour.bean.Categorie;
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Quartier;
@@ -69,9 +69,11 @@ public class LocaleService implements LocaleServiceVo{
 	}
 	@Autowired 
 	RedevableService redevableservice;
-
+	@Autowired
+	SecteurService secteurrservice;
 	@Autowired 
 	CategorieService categorieservice;
+	@Autowired 
 	public int save(Locale locale) {
 		Locale monlocale = findByReference(locale.getReference());
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
@@ -101,9 +103,10 @@ public class LocaleService implements LocaleServiceVo{
 
 
 	public int deleteByReference(String ref) {
-		int x = taxeSejourService.deleteByLocaleReference(ref);
-		int y = localeDao.deleteByReference(ref);
-		return x+y ;
+		
+		int deleteByLocaleReference= taxeSejourService.deleteByLocaleReference(ref);
+		int deleteByref=localeDao.deleteByReference(ref);
+		return deleteByref+deleteByLocaleReference;
 	}
 
 	public Locale findByReference(String ref) {

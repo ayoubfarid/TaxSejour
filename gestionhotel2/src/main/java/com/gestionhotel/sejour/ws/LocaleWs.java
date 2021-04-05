@@ -1,6 +1,7 @@
 package com.gestionhotel.sejour.ws;
 import java.util.List;
 
+import com.gestionhotel.sejour.bean.TaxeSejour;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +30,7 @@ public class LocaleWs {
 	public List<Locale> findByQuartierReference(@PathVariable String ref) {
 		return localeServiceImpl.findByQuartierReference(ref);
 	}
-	
+
 	@GetMapping("/redevable/ref/{ref}")
 	public Locale findAllByRedevableRef(@PathVariable String ref) {
 		return localeServiceImpl.findAllByRedevableRef(ref);
@@ -44,10 +45,7 @@ public class LocaleWs {
 
 	@PostMapping("/")
 	public int save(@RequestBody Locale locale) {
-		return localeServiceImpl.save(locale);
-	}
-
-
+		return localeServiceImpl.save(locale);}
 	@GetMapping("/")
 	public List<Locale> findAll() {
 		return localeServiceImpl.findAll();
@@ -58,10 +56,13 @@ public class LocaleWs {
 		return localeServiceImpl.getOne(id);
 	}
 
-	
+
 	@GetMapping("/Redevable/{refRe}")
 	public List<Locale> findByRedevableRef(String refRe) {
-		return localeServiceImpl.findByRedevableRef(refRe);
+		return localeServiceImpl.findByRedevableRef(refRe);}
+
+	public List<Locale> findByRedevable(@PathVariable  String refRe) {
+		return localeServiceImpl.findByRedevable(refRe);
 	}
 	@GetMapping("/reference/{ref}")
 	public Locale findByReference(@PathVariable String ref) {
@@ -74,7 +75,7 @@ public class LocaleWs {
 		return localeServiceImpl.findByCategorieRef(refcategorie);
 	}
 
-	
+
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByReference(@PathVariable String ref) {
 		return localeServiceImpl.deleteByReference(ref);
@@ -91,7 +92,7 @@ public class LocaleWs {
 	public String toString() {
 		return localeServiceImpl.toString();
 	}
-	
-	
-	
+
+
+
 }

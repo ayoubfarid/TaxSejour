@@ -26,9 +26,9 @@ public class CateWS {
 		return categorieService.findAll();
 	}
 	@PostMapping("/")
-    public int save(@RequestBody Categorie categorie) {
+  /*  public int save(@RequestBody Categorie categorie) {
         return categorieService.save(categorie.getRef(),categorie.getLibelle(),categorie.getTautaxsejours());
-    }
+    }*/
     @GetMapping("/ref/{ref}")
     public Categorie findByRef(@PathVariable String ref) {
         return categorieService.findByRef(ref);
