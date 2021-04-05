@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Quartier;
 import com.gestionhotel.sejour.bean.Secteur;
+import com.gestionhotel.sejour.bean.TaxeSejour;
 import com.gestionhotel.sejour.dao.QuartierDao;
 import com.gestionhotel.sejour.vo.QuartierServiceVo;
 
