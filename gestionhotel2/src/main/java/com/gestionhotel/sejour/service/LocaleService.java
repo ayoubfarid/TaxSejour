@@ -4,14 +4,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.gestionhotel.sejour.bean.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gestionhotel.sejour.bean.Categorie;
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Quartier;
 import com.gestionhotel.sejour.bean.Redevable;
-import com.gestionhotel.sejour.bean.Secteur;
 import com.gestionhotel.sejour.dao.LocaleDao;
 import com.gestionhotel.sejour.vo.LocaleServiceVo;
 
