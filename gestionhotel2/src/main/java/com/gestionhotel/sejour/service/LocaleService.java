@@ -3,13 +3,10 @@ package com.gestionhotel.sejour.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gestionhotel.sejour.bean.Quartier;
+import com.gestionhotel.sejour.bean.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gestionhotel.sejour.bean.Categorie;
-import com.gestionhotel.sejour.bean.Locale;
-import com.gestionhotel.sejour.bean.Redevable;
 import com.gestionhotel.sejour.dao.LocaleDao;
 
 @Service
@@ -59,26 +56,50 @@ public class LocaleService {
 	}
 	@Autowired 
 	RedevableService redevableservice;
-	
+	@Autowired
+	SecteurService secteurrservice;
 	@Autowired 
 	CategorieService categorieservice;
-	public int save(Locale locale) {
+	public int save(String ref,String red,String ca,String sec , List<TaxeSejour> taxessejour) {
+		   Redevable r=redevableservice.findByRef(red);
+		   Categorie c=categorieservice.findByRef(ca);
+		   Secteur s=secteurrservice.findByReference(sec);
+		   Locale locale= new Locale();
+		   locale.setCategorie(c);
+		   locale.setRedevable(r);
+		   locale.setReference(ref);
+		   locale.setSecteur(s);
 		Locale monlocale = findByRef(locale.getReference());
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
 		Categorie categorie = categorieservice.findByRef(locale.getCategorie().getRef()) ;
-		
+
 		if(monlocale != null) {
+			monlocale.setReference(ref);
+			monlocale.setCategorie(c);
+			monlocale.setRedevable(r);
+			monlocale.setSecteur(s);
+			monlocale.setTaxessejour(taxessejour);
 			return -1;
 		}
 		if (redevable != null && categorie != null) {
 			locale.setRedevable(redevable);
 			locale.setCategorie(categorie);
 			localeDao.save(locale);
+			if (taxessejour==null) {
+				return -4;
+			}
+			else{
+				for (TaxeSejour t:taxessejour){
+					t.setLocale(locale);
+					taxeSejourService.save(t);
+				}
+			}
 			return 1;
 		}
-		else 
+		else{
 			return -2;
-		
+		}
+
 	}
 
 	public int deleteBySecteurReference(String ref) {
@@ -90,11 +111,15 @@ public class LocaleService {
 	}
 
 	public int deleteByReference(String ref) {
-		return 1;
+		int deleteByLocaleReference= taxeSejourService.deleteByLocaleReference(ref);
+		int deleteByref=localeDao.deleteByReference(ref);
+		return deleteByref+deleteByLocaleReference;
 	}
 
 	public Locale findByReference(String ref) {
-		return new Locale();
+		return localeDao.findByReference(ref);
 
 	}
+
+
 }

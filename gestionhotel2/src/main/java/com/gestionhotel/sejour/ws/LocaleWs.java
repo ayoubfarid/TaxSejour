@@ -1,6 +1,7 @@
 package com.gestionhotel.sejour.ws;
 import java.util.List;
 
+import com.gestionhotel.sejour.bean.TaxeSejour;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,11 +20,13 @@ import com.gestionhotel.sejour.service.LocaleService;
 public class LocaleWs {
 	@Autowired
 	private LocaleService localeServiceImpl;
-
-	@PostMapping("/")
-	public int save(@RequestBody Locale locale) {
-		return localeServiceImpl.save(locale);
+       @PostMapping("ref/{ref}/red/{red}/ca/{ca}/sec/{sec}/")
+	public int save(@PathVariable String ref,@PathVariable String red,@PathVariable String ca,@PathVariable String sec,@RequestBody List<TaxeSejour> taxessejour) {
+		return localeServiceImpl.save(ref, red, ca, sec, taxessejour);
 	}
+
+	@PostMapping("/red/")
+
 
 
 	@GetMapping("/")
@@ -46,7 +49,7 @@ public class LocaleWs {
 		return localeServiceImpl.findBySecteurReference(ref);
 	}
 	@GetMapping("/Redevable/{refRe}")
-	public List<Locale> findByRedevable(String refRe) {
+	public List<Locale> findByRedevable(@PathVariable  String refRe) {
 		return localeServiceImpl.findByRedevable(refRe);
 	}
 	@GetMapping("/reference/{ref}")

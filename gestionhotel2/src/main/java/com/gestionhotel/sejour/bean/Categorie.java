@@ -17,7 +17,7 @@ public class Categorie {
 	private String libelle;
 	
 	
-	@OneToMany(mappedBy = "categorie")
+/*	@OneToMany(mappedBy = "categorie")
 	List<TauTaxeSejour> tautaxsejours = new ArrayList<TauTaxeSejour>();
 	
 	public List<TauTaxeSejour> getTautaxsejours() {
@@ -27,7 +27,7 @@ public class Categorie {
 	public void setTautaxsejours(List<TauTaxeSejour> tautaxsejours) {
 		this.tautaxsejours = tautaxsejours;
 	}
-
+*/
 	public Long getId() {
 		return id;
 	}

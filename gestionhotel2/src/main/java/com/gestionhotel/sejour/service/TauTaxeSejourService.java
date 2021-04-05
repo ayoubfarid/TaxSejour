@@ -56,7 +56,7 @@ public class TauTaxeSejourService {
 	@SuppressWarnings("unchecked")
 	public List<TauTaxeSejour> searchByCriteria(TauTaxSejourVo tautaxesejourvo)
 	{
-			String query ="SELECT t FROM TauTaxeSjour t where 1=1";
+			String query ="SELECT t FROM TauTaxeSejour t where 1=1";
 			/*if ( tautaxesejourvo.getId() != null  )
 				query+=" And t.id like "+tautaxesejourvo.getId()+" ";*/
 			if ( tautaxesejourvo.getMontantNuiteMin() !=  null  )

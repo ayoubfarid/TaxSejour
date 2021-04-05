@@ -10,10 +10,8 @@ import com.gestionhotel.sejour.bean.TaxeSejour;
  @Repository 
 public interface  TaxeSejourDao extends JpaRepository<TaxeSejour,Long>{
      public	List<TaxeSejour>  findByLocaleReference(String reference);
-   /*un redevable peut avoir plusieurs locaux*/
      public List<TaxeSejour>  findByRedevableRef(String reference);
      public  List<TaxeSejour> findByRedevableRefAndLocaleReference(String refredevable,String reflocale);
-     /*faut payer la taxe une fois par trim de chaque annee*/
     public  TaxeSejour findByAnneeAndLocaleReferenceAndTrimAndRedevableRef(int annee,String locale,int trim,String red);
     int deleteByRedevableRefAndLocaleReference(String red,String loca);
 	public int deleteByRedevableRef(String s);

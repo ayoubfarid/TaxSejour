@@ -1,7 +1,10 @@
 package com.gestionhotel.sejour.bean;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +25,18 @@ public class Locale implements Serializable {
 	private Secteur secteur;
 	@ManyToOne
 	private Categorie categorie;
-	
-	
+	@OneToMany(mappedBy = "locale")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private List<TaxeSejour> taxessejour;
+
+	public List<TaxeSejour> getTaxessejour() {
+		return taxessejour;
+	}
+
+	public void setTaxessejour(List<TaxeSejour> taxessejour) {
+		this.taxessejour = taxessejour;
+	}
+
 	public Secteur getSecteur() {
 		return secteur;
 	}
