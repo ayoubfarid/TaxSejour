@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.gestionhotel.sejour.bean.Quartier;
 import com.gestionhotel.sejour.bean.Secteur;
+import com.gestionhotel.sejour.dao.QuartierDao;
 import com.gestionhotel.sejour.dao.SecteurDao;
 import com.gestionhotel.sejour.vo.QuartierServiceVo;
 import com.gestionhotel.sejour.vo.SecteurServiceVo;
@@ -18,8 +19,6 @@ public class SecteurService implements SecteurServiceVo {
 
 	@Autowired
 	private SecteurDao secteurDao;
-	@Autowired
-	private QuartierServiceVo quartierServiceVo;
 	@Autowired
 	private QuartierService quartierService;
 
@@ -39,6 +38,7 @@ public class SecteurService implements SecteurServiceVo {
 	@Override
 	public int save(Secteur secteur) {
 		Secteur isExit = findByReference(secteur.getReference());
+	    //List<Quartier> quartiers = quartierService.findBySecteurReference(secteur.getReference());
 		if(isExit != null) {
 			return -1;
 		}else {

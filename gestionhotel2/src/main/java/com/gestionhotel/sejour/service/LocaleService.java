@@ -24,17 +24,15 @@ public class LocaleService implements LocaleServiceVo{
 	private LocaleService localeService;
 	@Autowired
 	private QuartierService quartierService;
-	
 
 	@Transactional
 	public int deleteByQuartierReference(String ref) {
-		 return localeDao.deleteByQuartierReference(ref);
+		return localeDao.deleteByQuartierReference(ref);
 	}
 
-	public List<Quartier> findByQuartierReference(String ref) {
+	public List<Locale> findByQuartierReference(String ref) {
 		return localeDao.findByQuartierReference(ref);
 	}
-
 	public List<Locale> findByRedevableRef(String redevable) {
 		return localeDao.findByRedevableRef(redevable);
 	}
@@ -53,7 +51,7 @@ public class LocaleService implements LocaleServiceVo{
 	public int deleteByRedevableRef(String ref) {
 		return localeDao.deleteByRedevableRef(ref);
 	}
-    
+
 
 
 	public List<Locale> findByRedevable(String refRe) {
@@ -64,14 +62,14 @@ public class LocaleService implements LocaleServiceVo{
 		return localeDao.findByCategorieRef(refCat);
 	}
 
-	
+
 
 	public List<Locale> findAll() {
 		return localeDao.findAll();
 	}
 	@Autowired 
 	RedevableService redevableservice;
-	
+
 	@Autowired 
 	CategorieService categorieservice;
 	public int save(Locale locale) {
@@ -79,20 +77,26 @@ public class LocaleService implements LocaleServiceVo{
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
 		Categorie categorie = categorieservice.findByRef(locale.getCategorie().getRef()) ;
 		Quartier quartier = quartierService.findByReference(locale.getQuartier().getReference());
-		
-		if(monlocale != null) {
+		List<Locale> listlocales = localeService.findByQuartierReference(locale.getQuartier().getReference());
+
+		if (redevable == null && categorie == null && quartier == null) {
 			return -1;
 		}
-		if (redevable != null && categorie != null && quartier != null) {
-			locale.setRedevable(redevable);
-			locale.setCategorie(categorie);
-			locale.setQuartier(quartier);
-			localeDao.save(locale);
-			return 1;
+		else{
+			int result = 1;
+			for (Locale locales : listlocales) {
+				if(locales.getReference().equals(locale.getReference())) {
+					result = -1;
+				}
+			}if(result == -1) return -2;
+			else{
+				locale.setRedevable(redevable);
+				locale.setCategorie(categorie);
+				locale.setQuartier(quartier);
+				localeDao.save(locale);
+				return 1;
+			}
 		}
-		else 
-			return -2;
-		
 	}
 
 
@@ -113,7 +117,7 @@ public class LocaleService implements LocaleServiceVo{
 			locale.setQuartier(quartier);
 			localeService.save(locale);
 		}
-		
+
 		return 1;
 	}
 }

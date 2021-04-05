@@ -12,7 +12,7 @@ import com.gestionhotel.sejour.bean.Quartier;
 public interface LocaleDao extends JpaRepository<Locale,Long>{
 	
 	public int deleteByQuartierReference(String ref);
-	public List<Quartier> findByQuartierReference(String ref);
+	public List<Locale> findByQuartierReference(String ref);
 	public Locale findByReference(String ref);
 	public Locale findAllByRedevableRef(String ref);
 	

@@ -1,5 +1,6 @@
 package com.gestionhotel.sejour.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -7,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Quartier;
 import com.gestionhotel.sejour.bean.Secteur;
 import com.gestionhotel.sejour.dao.QuartierDao;
@@ -31,18 +33,27 @@ public class QuartierService implements QuartierServiceVo {
 	}
 
 	public int save(Quartier quartier) {
-		
 		Secteur isExitSecteur = secteurService.findByReference(quartier.getSecteur().getReference());
+		List<Quartier> quartierss = quartierService.findBySecteurReference(quartier.getSecteur().getReference());
 		if(isExitSecteur == null) {
 			return -1;
+		}else{
+			int result = 1;
+			for (Quartier quartier2 : quartierss) {
+				if(quartier2.getReference().equals(quartier.getReference())) {
+					System.out.println("\n\n\n\n\n"+quartier.getReference());
+					System.out.println("\n\n\n\n\n"+quartier2.getReference());
+					result = -1;
+				}
+		    }if(result == -1) return -3;
+		    else{
+				List<Locale> loc = quartier.getLocales();
+				quartier.setSecteur(isExitSecteur);
+				quartierDao.save(quartier);
+				localeService.save(quartier , loc);
+				return 1;
+			}
 		}
-		else {
-			quartier.setSecteur(isExitSecteur);
-			quartierDao.save(quartier);
-			localeService.save(quartier, quartier.getLocales());
-			return 1;
-		}
-
 	}
 
 	public Quartier getOne(Long id) {
@@ -60,17 +71,16 @@ public class QuartierService implements QuartierServiceVo {
 	@Transactional
 	public int deleteByReference(String reference) {
 		int res1 = quartierDao.deleteByReference(reference);
-		int res2 = localeService.deleteByQuartierReference(reference);
-		return res1+res2;
+		//int res2 = localeService.deleteByQuartierReference(reference);
+		return res1;
 	}
 
 	@Override
 	public int save(Secteur secteur, List<Quartier> quartiers) {
-		for(Quartier quartie : quartiers) {
-			quartie.setSecteur(secteur);
-			quartierService.save(quartie);
-		}
-		
+		for (Quartier quartier : quartiers) {
+				quartier.setSecteur(secteur);
+				quartierService.save(quartier);
+			}
 		return 1;
 	}
 	

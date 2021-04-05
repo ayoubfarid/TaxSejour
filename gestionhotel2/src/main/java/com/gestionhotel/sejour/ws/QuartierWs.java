@@ -23,7 +23,6 @@ public class QuartierWs {
 	@Autowired
 	private QuartierService quartierService;
 
-
 	@DeleteMapping("/secteur/reference/{reference}")
 	public int deleteBySecteurReference(@PathVariable String reference) {
 		return quartierService.deleteBySecteurReference(reference);

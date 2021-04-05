@@ -18,15 +18,13 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class Secteur implements Serializable {
 
 	private static final long serialVersionUID = 1L; 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String reference;
 	private String nomSecteur;
 	
 	@OneToMany(mappedBy = "secteur")
 	private List<Quartier> quatriers = new ArrayList<Quartier>(); 
-	
-	
 	
 	public List<Quartier> getQuatriers() {
 		return quatriers;
@@ -80,5 +78,26 @@ public class Secteur implements Serializable {
 		return true;
 	}
 
-	
+	/*
+	 * 
+{
+  "id": 0,
+  "nomSecteur": "sect16",
+  "quatriers": [
+    {
+      
+      "num": 15,
+      "reference": "q15"
+    }
+  ],
+ "quatriers": [
+    {
+      
+      "num": 150,
+      "reference": "q16"
+    }
+  ],
+  "reference": "s16"
+}
+	 */
 }

@@ -20,17 +20,15 @@ public class LocaleWs {
 	@Autowired
 	private LocaleService localeServiceImpl;
 
-
 	@DeleteMapping("/quartier/reference/{ref}")
 	public int deleteByQuartierReference(@PathVariable String ref) {
 		return localeServiceImpl.deleteByQuartierReference( ref);
 	}
 
 	@GetMapping("/quartier/reference/{ref}")
-	public List<Quartier> findByQuartierReference(@PathVariable String ref) {
+	public List<Locale> findByQuartierReference(@PathVariable String ref) {
 		return localeServiceImpl.findByQuartierReference(ref);
 	}
-
 	
 	@GetMapping("/redevable/ref/{ref}")
 	public Locale findAllByRedevableRef(@PathVariable String ref) {

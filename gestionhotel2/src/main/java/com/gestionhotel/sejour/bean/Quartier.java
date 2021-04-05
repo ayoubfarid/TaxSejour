@@ -18,24 +18,22 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class Quartier implements Serializable {
 
 	private static final long serialVersionUID = 1L; 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String reference;
 	private int num;
-	
+
 	@OneToMany(mappedBy = "quartier")
 	private List<Locale> locales = new ArrayList<Locale>();
-	
+
 	@ManyToOne
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Secteur secteur;
-	
-	public List<Locale> getLocales() {
-		return locales;
-	}
-	public void setLocales(List<Locale> locales) {
-		this.locales = locales;
-	}
+
+
+	public List<Locale> getLocales() { return locales; } 
+	public void setLocales(List<Locale> locales) { this.locales = locales; }
+
 	public Long getId() {
 		return id;
 	}
@@ -48,7 +46,7 @@ public class Quartier implements Serializable {
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
-	
+
 	public int getNum() {
 		return num;
 	}
@@ -88,4 +86,24 @@ public class Quartier implements Serializable {
 		return true;
 	}
 
+	
+	
+	/*
+	 * 
+   {
+  "locales": [
+    {
+      "reference": "l1"
+    },
+    {
+      "reference": "l2"
+    }
+  ],
+  "num": 20,
+  "reference": "q20",
+  "secteur": {
+    "reference": "s3"
+  }
+}
+	 */
 }

@@ -3,7 +3,11 @@ package com.gestionhotel.sejour.bean;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -12,13 +16,14 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class Locale implements Serializable {
 
 	private static final long serialVersionUID = 1L; 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String reference;
 	@ManyToOne
 	private Redevable redevable;
 	@ManyToOne
 	private Categorie categorie;
+	
 	@ManyToOne
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Quartier quartier;
@@ -29,9 +34,6 @@ public class Locale implements Serializable {
 	public void setQuartier(Quartier quartier) {
 		this.quartier = quartier;
 	}
-	
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,5 +88,25 @@ public class Locale implements Serializable {
 	}
 	
 	
+	
+	/*
+	 * 
+{
+  "categorie": {
+    "ref": "cat3"
+  },
+  "quartier": {
+    "reference": "q1",
+    "secteur": {
+      "reference": "s2"
+    }
+  },
+  "redevable": {
+    "ref": "r2"
+  },
+  "reference": "l4"
+}
+	 
+	 */
 	
 }
