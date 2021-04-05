@@ -10,6 +10,7 @@ import com.gestionhotel.sejour.bean.Categorie;
 import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Quartier;
 import com.gestionhotel.sejour.bean.Redevable;
+import com.gestionhotel.sejour.bean.TaxeSejour;
 import com.gestionhotel.sejour.dao.LocaleDao;
 import com.gestionhotel.sejour.vo.LocaleServiceVo;
 
@@ -78,7 +79,7 @@ public class LocaleService implements LocaleServiceVo{
 		Categorie categorie = categorieservice.findByRef(locale.getCategorie().getRef()) ;
 		Quartier quartier = quartierService.findByReference(locale.getQuartier().getReference());
 		List<Locale> listlocales = localeService.findByQuartierReference(locale.getQuartier().getReference());
-
+		List<TaxeSejour> tax = locale.getTaxessejour();
 		if (redevable == null && categorie == null && quartier == null) {
 			return -1;
 		}
