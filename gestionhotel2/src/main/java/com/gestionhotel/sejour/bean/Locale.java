@@ -2,6 +2,7 @@ package com.gestionhotel.sejour.bean;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.gestionhotel.sejour.service.CategorieService;
 
 @Entity
 public class Locale implements Serializable {
@@ -106,6 +110,36 @@ public class Locale implements Serializable {
   },
   "reference": "l4"
 }
+
+
+@Autowired 
+	CategorieService categorieservice;
+	public int save(Locale locale) {
+		Locale monlocale = findByReference(locale.getReference());
+		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
+		Categorie categorie = categorieservice.findByRef(locale.getCategorie().getRef()) ;
+		Quartier quartier = quartierService.findByReference(locale.getQuartier().getReference());
+		List<Locale> listlocales = localeService.findByQuartierReference(locale.getQuartier().getReference());
+
+		if (redevable == null && categorie == null && quartier == null) {
+			return -1;
+		}
+		else{
+			int result = 1;
+			for (Locale locales : listlocales) {
+				if(locales.getReference().equals(locale.getReference())) {
+					result = -1;
+				}
+			}if(result == -1) return -2;
+			else{
+				locale.setRedevable(redevable);
+				locale.setCategorie(categorie);
+				locale.setQuartier(quartier);
+				localeDao.save(locale);
+				return 1;
+			}
+		}
+	}
 	 
 	 */
 	
