@@ -21,6 +21,7 @@ public class Quartier implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String reference;
+	private String nom;
 	private int num;
 
 	@OneToMany(mappedBy = "quartier")
@@ -47,6 +48,12 @@ public class Quartier implements Serializable {
 		this.reference = reference;
 	}
 
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 	public int getNum() {
 		return num;
 	}

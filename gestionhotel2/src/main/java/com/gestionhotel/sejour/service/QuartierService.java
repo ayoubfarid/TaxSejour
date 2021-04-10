@@ -30,31 +30,30 @@ public class QuartierService implements QuartierServiceVo {
 
 	@Transactional
 	public int deleteBySecteurReference(String reference) {
-		return quartierDao.deleteBySecteurReference(reference);
+		int y = localeService.deleteByQuartierReference(reference);
+		int x = quartierDao.deleteBySecteurReference(reference);
+		return x+y;
 	}
 
 	public int save(Quartier quartier) {
 		Secteur isExitSecteur = secteurService.findByReference(quartier.getSecteur().getReference());
-		List<Quartier> quartierss = quartierService.findBySecteurReference(quartier.getSecteur().getReference());
+		Quartier isExistQuartRef = quartierDao.findByReference(quartier.getReference());
 		if(isExitSecteur == null) {
 			return -1;
-		}else{
-			int result = 1;
-			for (Quartier quartier2 : quartierss) {
-				if(quartier2.getReference().equals(quartier.getReference())) {
-					System.out.println("\n\n\n\n\n"+quartier.getReference());
-					System.out.println("\n\n\n\n\n"+quartier2.getReference());
-					result = -1;
-				}
-		    }if(result == -1) return -3;
-		    else{
-				List<Locale> loc = quartier.getLocales();
-				quartier.setSecteur(isExitSecteur);
-				quartierDao.save(quartier);
-				localeService.save(quartier , loc);
-				return 1;
-			}
 		}
+		else if(isExistQuartRef  != null){
+			return -2;
+		}else if (isExistQuartRef  == null){
+			List<Locale> loc = quartier.getLocales();
+			quartier.setSecteur(isExitSecteur);
+			quartierDao.save(quartier);
+			localeService.save(quartier , loc);
+			return 1;
+		}
+		else {
+			return -3;
+		}
+		
 	}
 
 	public Quartier getOne(Long id) {
@@ -71,9 +70,9 @@ public class QuartierService implements QuartierServiceVo {
 	
 	@Transactional
 	public int deleteByReference(String reference) {
+		int res2 = localeService.deleteByQuartierReference(reference);
 		int res1 = quartierDao.deleteByReference(reference);
-		//int res2 = localeService.deleteByQuartierReference(reference);
-		return res1;
+		return res1+res2;
 	}
 
 	@Override

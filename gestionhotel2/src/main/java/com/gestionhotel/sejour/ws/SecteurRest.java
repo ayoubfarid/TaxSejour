@@ -14,7 +14,7 @@ import com.gestionhotel.sejour.service.SecteurService;
 
 @RestController
 @CrossOrigin( origins = {"http://localhost:4200"} )
-@RequestMapping("/v3-app/secteur")
+@RequestMapping("/taxe-sejour/secteur")
 public class SecteurRest {
 
 	@Autowired

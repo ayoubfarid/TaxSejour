@@ -72,7 +72,7 @@ public class LocaleService implements LocaleServiceVo{
 	SecteurService secteurrservice;
 	@Autowired 
 	CategorieService categorieservice;
-	@Autowired 
+	
 	public int save(Locale locale) {
 		Locale monlocale = findByReference(locale.getReference());
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;

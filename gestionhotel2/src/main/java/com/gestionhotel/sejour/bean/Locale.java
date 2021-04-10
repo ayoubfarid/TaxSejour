@@ -21,12 +21,11 @@ public class Locale implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String reference;
+	private String nomLocale;
 	@ManyToOne
 	private Redevable redevable;
 	@ManyToOne
 	private Categorie categorie;
-	@ManyToOne
-	private Secteur secteur;
 	@ManyToOne
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Quartier quartier;
@@ -38,16 +37,21 @@ public class Locale implements Serializable {
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<TaxeSejour> taxessejour;
 
+	
+	public String getNomLocale() {
+		return nomLocale;
+	}
+
+	public void setNomLocale(String nomLocale) {
+		this.nomLocale = nomLocale;
+	}
+
 	public List<TaxeSejour> getTaxessejour() {
 		return taxessejour;
 	}
 
 	public void setTaxessejour(List<TaxeSejour> taxessejour) {
 		this.taxessejour = taxessejour;
-	}
-
-	public Secteur getSecteur() {
-		return this.secteur;
 	}
 	public void setQuartier(Quartier quartier) {
 		this.quartier = quartier;

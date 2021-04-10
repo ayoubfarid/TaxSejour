@@ -16,8 +16,7 @@ import com.gestionhotel.sejour.service.QuartierService;
 
 @RestController
 @CrossOrigin( origins = {"http://localhost:4200"} )
-@RequestMapping("/v1-app3/quartier")
-
+@RequestMapping("/taxe-sejour/quartier")
 public class QuartierWs {
 	
 	@Autowired

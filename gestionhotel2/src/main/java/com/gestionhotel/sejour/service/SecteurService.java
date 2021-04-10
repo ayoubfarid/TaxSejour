@@ -18,7 +18,7 @@ import com.gestionhotel.sejour.vo.SecteurServiceVo;
 public class SecteurService implements SecteurServiceVo {
 
 
- @Autowired
+    @Autowired
 	private SecteurDao secteurDao;
 	@Autowired
 	private QuartierService quartierService;
@@ -39,11 +39,10 @@ public class SecteurService implements SecteurServiceVo {
 	@Override
 	public int save(Secteur secteur) {
 		Secteur isExit = findByReference(secteur.getReference());
-	    //List<Quartier> quartiers = quartierService.findBySecteurReference(secteur.getReference());
 		if(isExit != null) {
 			return -1;
 		}else {
-			List<Quartier> quart = secteur.getQuatriers();
+			List<Quartier> quart = secteur.getQuartiers();
 			secteurDao.save(secteur);
 			quartierService.save(secteur , quart);
 			return 1;

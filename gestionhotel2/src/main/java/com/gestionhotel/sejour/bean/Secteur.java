@@ -24,13 +24,13 @@ public class Secteur implements Serializable {
 	private String nomSecteur;
 	
 	@OneToMany(mappedBy = "secteur")
-	private List<Quartier> quatriers = new ArrayList<Quartier>(); 
+	private List<Quartier> quartiers = new ArrayList<Quartier>(); 
 	
-	public List<Quartier> getQuatriers() {
-		return quatriers;
+	public List<Quartier> getQuartiers() {
+		return quartiers;
 	}
-	public void setQuatriers(List<Quartier> quatrier) {
-		this.quatriers = quatrier;
+	public void setQuartiers(List<Quartier> quatrier) {
+		this.quartiers = quatrier;
 	}
 	public Long getId() {
 		return id;
