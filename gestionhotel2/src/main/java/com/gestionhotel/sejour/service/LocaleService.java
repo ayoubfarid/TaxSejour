@@ -74,7 +74,7 @@ public class LocaleService implements LocaleServiceVo{
 	CategorieService categorieservice;
 	
 	public int save(Locale locale) {
-		Locale monlocale = findByReference(locale.getReference());
+		Locale monlocale = localeDao.findByReference(locale.getReference());
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
 		Categorie categorie = categorieservice.findByRef(locale.getCategorie().getRef()) ;
 		Quartier quartier = quartierService.findByReference(locale.getQuartier().getReference());
@@ -82,22 +82,18 @@ public class LocaleService implements LocaleServiceVo{
 		List<TaxeSejour> tax = locale.getTaxessejour();
 		if (redevable == null && categorie == null && quartier == null) {
 			return -1;
+		}else if (monlocale!= null ) {
+			return -2;
 		}
 		else{
-			int result = 1;
-			for (Locale locales : listlocales) {
-				if(locales.getReference().equals(locale.getReference())) {
-					result = -1;
-				}
-			}if(result == -1) return -2;
-			else{
 				locale.setRedevable(redevable);
 				locale.setCategorie(categorie);
 				locale.setQuartier(quartier);
 				localeDao.save(locale);
+				System.out.println(redevable);
+				System.out.println(categorie.getRef());
 				return 1;
 			}
-		}
 	}
 
 
