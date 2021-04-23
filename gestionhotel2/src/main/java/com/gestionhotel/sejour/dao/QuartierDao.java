@@ -15,6 +15,7 @@ public interface QuartierDao extends JpaRepository<Quartier,Long>{
 	public List<Quartier> findBySecteurReference(String reference);
 	public int deleteBySecteurReference(String reference);
 	public int deleteByReference(String reference);
+	public List<Quartier> findAll();
 	
 	
 }

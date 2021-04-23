@@ -20,6 +20,24 @@ public class SecteurService implements SecteurServiceVo {
 
     @Autowired
 	private SecteurDao secteurDao;
+   
+    @Override
+	public int updating(Secteur secteur) {
+		Secteur secteurUp = findByReference(secteur.getReference());
+		if(secteurUp == null) {
+			return -1;
+		}else {
+			secteurUp.setNomSecteur(secteur.getNomSecteur());
+			secteurDao.save(secteurUp);
+		    return 1;
+		}
+		 
+    }
+
+	public List<Secteur> findAll() {
+		return secteurDao.findAll();
+	}
+
 	@Autowired
 	private QuartierService quartierService;
 
@@ -41,6 +59,8 @@ public class SecteurService implements SecteurServiceVo {
 		Secteur isExit = findByReference(secteur.getReference());
 		if(isExit != null) {
 			return -1;
+		}else if(secteur.getReference().equals("")){
+			return -2;
 		}else {
 			List<Quartier> quart = secteur.getQuartiers();
 			secteurDao.save(secteur);

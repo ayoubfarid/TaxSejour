@@ -78,8 +78,6 @@ public class LocaleService implements LocaleServiceVo{
 		Redevable redevable = redevableservice.findByRef(locale.getRedevable().getRef()) ;
 		Categorie categorie = categorieservice.findByRef(locale.getCategorie().getRef()) ;
 		Quartier quartier = quartierService.findByReference(locale.getQuartier().getReference());
-		List<Locale> listlocales = localeService.findByQuartierReference(locale.getQuartier().getReference());
-		List<TaxeSejour> tax = locale.getTaxessejour();
 		if (redevable == null && categorie == null && quartier == null) {
 			return -1;
 		}else if (monlocale!= null ) {

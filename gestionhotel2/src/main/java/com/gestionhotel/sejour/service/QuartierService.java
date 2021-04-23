@@ -21,6 +21,11 @@ public class QuartierService implements QuartierServiceVo {
 	
 	@Autowired
 	private QuartierDao quartierDao;
+	
+	public List<Quartier> findAll() {
+		return quartierDao.findAll();
+	}
+
 	@Autowired
 	private SecteurService secteurService;
 	@Autowired
@@ -35,23 +40,34 @@ public class QuartierService implements QuartierServiceVo {
 		return x+y;
 	}
 
+	@Override
+	public int updateQuartier(Quartier quartier) {
+		Quartier quartier2 = findByReference(quartier.getReference());
+		if(null == quartier2) {
+			return -1; 
+		}else {
+			quartier2.setNom(quartier.getNom());
+			quartier2.setNum(quartier.getNum());
+			quartierDao.save(quartier2);
+			return 1;
+		}
+	}
+
 	public int save(Quartier quartier) {
 		Secteur isExitSecteur = secteurService.findByReference(quartier.getSecteur().getReference());
 		Quartier isExistQuartRef = quartierDao.findByReference(quartier.getReference());
 		if(isExitSecteur == null) {
 			return -1;
-		}
-		else if(isExistQuartRef  != null){
+		}else if(isExistQuartRef  != null){
 			return -2;
-		}else if (isExistQuartRef  == null){
+		}else if(quartier.getReference().equals("")){
+			return -3;
+		}else{
 			List<Locale> loc = quartier.getLocales();
 			quartier.setSecteur(isExitSecteur);
 			quartierDao.save(quartier);
 			localeService.save(quartier , loc);
 			return 1;
-		}
-		else {
-			return -3;
 		}
 		
 	}
@@ -78,9 +94,9 @@ public class QuartierService implements QuartierServiceVo {
 	@Override
 	public int save(Secteur secteur, List<Quartier> quartiers) {
 		for (Quartier quartier : quartiers) {
-				quartier.setSecteur(secteur);
-				quartierService.save(quartier);
-			}
+			quartier.setSecteur(secteur);
+			quartierService.save(quartier);
+		}
 		return 1;
 	}
 	

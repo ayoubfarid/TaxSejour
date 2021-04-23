@@ -24,6 +24,7 @@ public class Secteur implements Serializable {
 	private String nomSecteur;
 	
 	@OneToMany(mappedBy = "secteur")
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<Quartier> quartiers = new ArrayList<Quartier>(); 
 	
 	public List<Quartier> getQuartiers() {

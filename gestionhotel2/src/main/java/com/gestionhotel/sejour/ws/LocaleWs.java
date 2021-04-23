@@ -16,7 +16,7 @@ import com.gestionhotel.sejour.bean.Locale;
 import com.gestionhotel.sejour.bean.Quartier;
 import com.gestionhotel.sejour.service.LocaleService;
 @RestController@CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("v2-stock-app20/locale")
+@RequestMapping("/taxe-sejour/locale")
 public class LocaleWs {
 	@Autowired
 	private LocaleService localeServiceImpl;
@@ -46,6 +46,7 @@ public class LocaleWs {
 	@PostMapping("/")
 	public int save(@RequestBody Locale locale) {
 		return localeServiceImpl.save(locale);}
+	
 	@GetMapping("/")
 	public List<Locale> findAll() {
 		return localeServiceImpl.findAll();

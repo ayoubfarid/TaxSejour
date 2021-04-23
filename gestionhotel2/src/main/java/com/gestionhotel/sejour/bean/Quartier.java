@@ -28,7 +28,6 @@ public class Quartier implements Serializable {
 	private List<Locale> locales = new ArrayList<Locale>();
 
 	@ManyToOne
-	@JsonProperty(access = Access.WRITE_ONLY)
 	private Secteur secteur;
 
 
